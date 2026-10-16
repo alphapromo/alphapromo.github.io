@@ -127,6 +127,31 @@ def parse_product(p: dict | None, posicao: int, categoria: str, preco_extra: tup
     )
 
 
+def diagnostico(categoria: str = "MLB1000", n: int = 3) -> None:
+    """Mostra no log onde estão vídeos/clips nos dados de alguns produtos."""
+    import json as _json
+
+    cli = _Client(_token())
+    prods = parse_highlights(cli.get(f"/highlights/MLB/category/{categoria}"))[:n]
+    for pid, _ in prods:
+        p = cli.get(f"/products/{pid}") or {}
+        bb = p.get("buy_box_winner") or {}
+        iid = bb.get("item_id")
+        log.info("PRODUTO %s chaves=%s", pid, sorted(p.keys()))
+        for k, v in p.items():
+            if re.search(r"video|clip|media|short", k, re.I):
+                log.info("  produto.%s = %s", k, _json.dumps(v, ensure_ascii=False)[:400])
+        log.info("  buy_box chaves=%s", sorted(bb.keys()))
+        for path in (f"/items/{iid}", f"/items/{iid}/clips", f"/items/{iid}/videos", f"/products/{pid}/clips",
+                     f"/marketplace/items/{iid}/clips", f"/clips/items/{iid}"):
+            if not iid and "items" in path:
+                continue
+            r = cli.s.get(f"{API}{path}", timeout=30)
+            corpo = r.text[:300].replace("\n", " ")
+            achou = re.findall(r'"([^"]*(?:video|clip)[^"]*)"\s*:', r.text, re.I)[:10]
+            log.info("  GET %s -> %s chaves_video=%s corpo=%s", path, r.status_code, achou, corpo if r.status_code < 400 else "")
+
+
 # ---------------------------------------------------------------- coleta
 def fetch(categorias: dict[str, str]) -> list[Deal]:
     try:

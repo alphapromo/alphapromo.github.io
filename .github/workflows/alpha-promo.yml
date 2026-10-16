@@ -14,7 +14,7 @@ on:
       comando:
         description: "run = automático | curate = refazer as ofertas de hoje | post = publicar uma oferta agora | arte = refazer as artes de hoje"
         type: choice
-        options: [run, curate, post, arte]
+        options: [run, curate, post, arte, diag]
         default: run
       oferta:
         description: "Número da oferta (só para 'post')"

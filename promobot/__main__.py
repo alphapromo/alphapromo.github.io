@@ -205,7 +205,7 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 def main(argv=None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--dry-run", action="store_true")
@@ -220,6 +220,9 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "site":
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+        return 0
+    if a.cmd == "diag":
+        mercadolivre.diagnostico()
         return 0
     if a.cmd == "arte":  # refaz as artes do plano de hoje, sem trocar as ofertas
         plano = state.load_plan(hoje)
