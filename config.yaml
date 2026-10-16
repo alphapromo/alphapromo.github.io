@@ -3,7 +3,7 @@
 
 marca:
   nome: "Alpha Promo"
-  arroba: "@alphapromo"            # troque se o @ final for outro
+  arroba: "@alphapromo.ofertas"
   hashtags_fixas: ["#publi", "#linkdeafiliado", "#alphapromo", "#promocao", "#oferta", "#achadinhos"]
 
 # Horários de Brasília (UTC-3). A curadoria roda antes do primeiro post.
