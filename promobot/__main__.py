@@ -218,6 +218,7 @@ def _hhmm(s: str, hoje: date) -> datetime:
 
 
 def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
+    """Chamado a cada 15 min pelo GitHub. Só faz algo quando há tarefa no horário."""
     agora = now_brt()
     hoje = agora.date()
     ag = cfg["agenda"]
@@ -228,12 +229,18 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
         log.warning("Robô em espera: cadastre ML_CLIENT_ID e ML_CLIENT_SECRET (app do Mercado Livre). Nada foi feito.")
         return 0
     tol = timedelta(minutes=ag["tolerancia_minutos"])
-    if dry_run is False and not mock:
-        instagram.refresh_token_if_due(hoje)
+    if not dry_run and not mock:
+        controle = state.STATE / "token-instagram-renovado.txt"
+        ultimo = controle.read_text().strip() if controle.exists() else ""
+        if hoje.weekday() == 0 and ultimo != hoje.isoformat():
+            instagram.refresh_token_if_due(hoje)
+            controle.write_text(hoje.isoformat())
 
+    mudou = False
     plano = state.load_plan(hoje)
     if plano is None and agora >= _hhmm(ag["curadoria"], hoje) - timedelta(minutes=30):
         plano = curate(cfg, hoje, mock=mock)
+        mudou = True
 
     ok = True
     if plano:
@@ -243,7 +250,12 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
             pendente = not feitos or any(not str(v).startswith("ok:") for v in feitos.values())
             if t <= agora <= t + tol and pendente:
                 ok &= post_slot(cfg, hoje, i, dry_run=dry_run)
-        site.build(hoje, agora.strftime("%d/%m às %Hh%M"))
+                mudou = True
+                plano = state.load_plan(hoje)
+        if mudou:
+            site.build(hoje, agora.strftime("%d/%m às %Hh%M"))
+    if not mudou:
+        log.info("Nada a fazer agora (%s).", agora.strftime("%H:%M"))
     return 0 if ok else 1
 
 

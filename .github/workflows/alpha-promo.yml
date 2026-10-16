@@ -2,13 +2,11 @@ name: Alpha Promo
 
 on:
   schedule:
-    # Horários em UTC (Brasília = UTC-3). Veja config.yaml > agenda.
-    - cron: "40 9 * * *"   # 06:40 curadoria das 5 ofertas
-    - cron: "50 10 * * *"  # 07:50 oferta #1
-    - cron: "50 14 * * *"  # 11:50 oferta #2
-    - cron: "50 20 * * *"  # 17:50 oferta #3
-    - cron: "50 22 * * *"  # 19:50 oferta #4 (melhor do dia)
-    - cron: "20 0 * * *"   # 21:20 oferta #5
+    # O agendador do GitHub atrasa ou pula horários. Por isso o robô acorda a cada
+    # 15 minutos (das 06:30 às 22:45 de Brasília) e faz só o que estiver no horário
+    # definido em config.yaml > agenda. Execuções sem tarefa terminam em segundos.
+    - cron: "7,22,37,52 9-23 * * *"
+    - cron: "7,22,37,52 0-1 * * *"
   workflow_dispatch:
     inputs:
       comando:
