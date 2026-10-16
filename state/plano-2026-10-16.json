@@ -108,5 +108,10 @@
       "desconto": 60
     }
   ],
-  "posts": {}
+  "posts": {
+    "1": {
+      "instagram_feed": "ok:18120260734989426",
+      "instagram_story": "ok:18116273768026961"
+    }
+  }
 }
