@@ -39,6 +39,8 @@ class Settings:
         if custom:
             return custom.rstrip("/")
         owner, name = self.repo.split("/", 1)
+        if name.lower() == f"{owner.lower()}.github.io":  # site da organização: sem /repo no final
+            return f"https://{owner.lower()}.github.io"
         return f"https://{owner.lower()}.github.io/{name}"
 
     def raw_url(self, rel_path: str) -> str:

@@ -21,7 +21,7 @@ Roda de graça no GitHub Actions. Depois de configurado, não precisa de nenhuma
 Todos os valores abaixo vão em **Settings › Secrets and variables › Actions › New repository secret**. Ninguém consegue ler um Secret depois de salvo.
 
 ### 1. GitHub
-- **Settings › Pages**: *Deploy from a branch* → `main` / `/docs`. A página fica em `https://SEU_USUARIO.github.io/alpha-promo`. Coloque esse endereço na bio do Instagram e do TikTok.
+- **Settings › Pages**: *Deploy from a branch* → `main` / `/docs`. A página fica em `https://alphapromo.github.io`. Coloque esse endereço na bio do Instagram e do TikTok.
 - **`GH_PAT`**: github.com/settings/personal-access-tokens › *Fine-grained* › só o repositório `alpha-promo` › permissão **Secrets: Read and write**. Serve para o robô renovar os próprios tokens.
 
 ### 2. Mercado Livre (obrigatório)
