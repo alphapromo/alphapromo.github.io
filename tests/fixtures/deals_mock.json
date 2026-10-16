@@ -1,0 +1,110 @@
+[
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB101",
+  "titulo": "Fone de Ouvido Bluetooth JBL Tune 520BT Sem Fio Preto",
+  "preco": 179.9,
+  "preco_original": 299,
+  "imagem": "tests/fixtures/img/MLB101.png",
+  "url": "https://exemplo.com/MLB101",
+  "categoria": "Eletrônicos, Áudio e Vídeo",
+  "frete_gratis": true,
+  "popularidade": 90
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB102",
+  "titulo": "Air Fryer Mondial Family 4 Litros AFN-40 Preta 127V",
+  "preco": 279.9,
+  "preco_original": 449.9,
+  "imagem": "tests/fixtures/img/MLB102.png",
+  "url": "https://exemplo.com/MLB102",
+  "categoria": "Eletrodomésticos",
+  "frete_gratis": true,
+  "popularidade": 80
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB103",
+  "titulo": "Smartwatch Amazfit Bip 6 Tela AMOLED 1,97 GPS",
+  "preco": 449.0,
+  "preco_original": 699.0,
+  "imagem": "tests/fixtures/img/MLB103.png",
+  "url": "https://exemplo.com/MLB103",
+  "categoria": "Eletrônicos, Áudio e Vídeo",
+  "frete_gratis": true,
+  "popularidade": 70
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB104",
+  "titulo": "SSD Kingston NV3 1TB M.2 NVMe PCIe 4.0",
+  "preco": 399.9,
+  "preco_original": 649.9,
+  "imagem": "tests/fixtures/img/MLB104.png",
+  "url": "https://exemplo.com/MLB104",
+  "categoria": "Informática",
+  "frete_gratis": true,
+  "popularidade": 85
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB105",
+  "titulo": "Kit Halteres Emborrachados 2 a 10kg com Suporte",
+  "preco": 259.0,
+  "preco_original": 399.0,
+  "imagem": "tests/fixtures/img/MLB105.png",
+  "url": "https://exemplo.com/MLB105",
+  "categoria": "Esportes e Fitness",
+  "frete_gratis": false,
+  "popularidade": 40
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB106",
+  "titulo": "Perfume Masculino Importado 100ml Eau de Toilette",
+  "preco": 189.0,
+  "preco_original": 389.0,
+  "imagem": "tests/fixtures/img/MLB106.png",
+  "url": "https://exemplo.com/MLB106",
+  "categoria": "Beleza",
+  "frete_gratis": true,
+  "popularidade": 60
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB107",
+  "titulo": "Controle Sem Fio Xbox Series Carbon Black",
+  "preco": 349.0,
+  "preco_original": 459.0,
+  "imagem": "tests/fixtures/img/MLB107.png",
+  "url": "https://exemplo.com/MLB107",
+  "categoria": "Games",
+  "frete_gratis": true,
+  "popularidade": 95
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB108",
+  "titulo": "Capinha Silicone iPhone 15",
+  "preco": 19.9,
+  "preco_original": 59.9,
+  "imagem": "tests/fixtures/img/MLB108.png",
+  "url": "https://exemplo.com/MLB108",
+  "categoria": "Celulares",
+  "frete_gratis": false,
+  "popularidade": 99
+ },
+ {
+  "loja": "Amazon",
+  "id": "B0TEST0001",
+  "titulo": "Echo Dot 5ª Geração Smart Speaker com Alexa Azul",
+  "preco": 299.0,
+  "preco_original": 449.0,
+  "imagem": "tests/fixtures/img/B0TEST0001.png",
+  "url": "https://exemplo.com/B0TEST0001",
+  "categoria": "echo",
+  "frete_gratis": true,
+  "popularidade": 90
+ }
+]

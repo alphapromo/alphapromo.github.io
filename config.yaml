@@ -1,0 +1,53 @@
+# Alpha Promo — configuração do robô
+# Tudo que é segredo (tokens, tags de afiliado) fica nos "Secrets" do GitHub, nunca aqui.
+
+marca:
+  nome: "Alpha Promo"
+  arroba: "@alphapromo"            # troque se o @ final for outro
+  hashtags_fixas: ["#publi", "#linkdeafiliado", "#alphapromo", "#promocao", "#oferta", "#achadinhos"]
+
+# Horários de Brasília (UTC-3). A curadoria roda antes do primeiro post.
+# Os mesmos horários estão no arquivo .github/workflows/alpha-promo.yml (em UTC).
+agenda:
+  curadoria: "06:40"
+  posts: ["07:50", "11:50", "17:50", "19:50", "21:20"]
+  tolerancia_minutos: 75           # o GitHub às vezes atrasa o agendamento
+
+curadoria:
+  ofertas_por_dia: 5
+  desconto_minimo: 20              # % mínimo de desconto para entrar no ranking
+  preco_minimo: 25.0
+  preco_maximo: 4000.0
+  maximo_por_categoria: 2
+  repetir_produto_apos_dias: 14
+  amazon_quando_disponivel: 2      # quantas das 5 vêm da Amazon quando a API estiver liberada
+  # Categorias do Mercado Livre (as mais procuradas)
+  categorias_ml:
+    MLB1051: "Celulares"
+    MLB1000: "Eletrônicos, Áudio e Vídeo"
+    MLB1648: "Informática"
+    MLB5726: "Eletrodomésticos"
+    MLB1574: "Casa e Decoração"
+    MLB1246: "Beleza"
+    MLB1276: "Esportes e Fitness"
+    MLB1144: "Games"
+  # Buscas na Amazon (usadas só depois que a Creators API for liberada)
+  buscas_amazon:
+    - ["Electronics", "fone bluetooth"]
+    - ["Electronics", "smartwatch"]
+    - ["Kitchen", "air fryer"]
+    - ["Computers", "ssd"]
+    - ["HomeAndKitchen", "aspirador robô"]
+    - ["Beauty", "perfume"]
+    - ["VideoGames", "controle"]
+
+publicar:
+  instagram_feed: true
+  instagram_stories: true
+  tiktok: true
+  tiktok_backend: "uploadpost"     # "uploadpost" (serviço já auditado) ou "oficial" (app próprio auditado)
+  tiktok_musica_automatica: true
+  instagram_api_versao: "v23.0"
+
+site:
+  manter_dias: 7                   # dias de imagens mantidos no repositório
