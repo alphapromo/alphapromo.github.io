@@ -112,7 +112,7 @@ def render_post(deal: Deal, numero: int, formato: str, produto: Image.Image | No
     """partes=True: devolve (fundo, camada de selos RGBA, caixa do produto) para montar vídeo."""
     vertical = formato == "tiktok"
     W, H = (1080, 1920) if vertical else (1080, 1350)
-    pad_l, pad_r, pad_t, pad_b = (72, 140, 200, 420) if vertical else (64, 64, 56, 56)
+    pad_l, pad_r, pad_t, pad_b = (72, 140, 190, 270) if vertical else (64, 64, 56, 56)
     img = Image.new("RGB", (W, H), CREME)
     d = ImageDraw.Draw(img)
     x0, x1 = pad_l, W - pad_r
