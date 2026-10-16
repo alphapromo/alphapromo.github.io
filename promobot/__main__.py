@@ -127,6 +127,16 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False) -> bo
     vert_raw = cfg.raw_url(d.extras["arte_tiktok"])
     vert_pages = f"{cfg.pages_url}/{d.extras['arte_tiktok'].removeprefix('docs/')}"
 
+    ig_ok = bool(env("IG_ACCESS_TOKEN") and env("IG_USER_ID"))
+    tt_ok = bool(env("UPLOADPOST_API_KEY") if pub["tiktok_backend"] != "oficial" else env("TIKTOK_REFRESH_TOKEN"))
+    if not dry_run:
+        if not ig_ok:
+            log.warning("Instagram ainda não configurado — pulando.")
+            pub = {**pub, "instagram_feed": False, "instagram_stories": False}
+        if not tt_ok:
+            log.warning("TikTok ainda não configurado — pulando.")
+            pub = {**pub, "tiktok": False}
+
     tarefas = []
     if pub.get("instagram_feed"):
         tarefas.append(("instagram_feed", lambda: instagram.post_feed(feed_raw, caption.legenda(d, slot, marca, "instagram"), pub["instagram_api_versao"])))
@@ -166,6 +176,9 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
     agora = now_brt()
     hoje = agora.date()
     ag = cfg["agenda"]
+    if not mock and not (env("ML_MATT_WORD") or env("ML_TAG")):
+        log.warning("Robô em espera: cadastre o Secret ML_MATT_WORD (ou ML_TAG) para começar. Nada foi feito.")
+        return 0
     tol = timedelta(minutes=ag["tolerancia_minutos"])
     if dry_run is False and not mock:
         instagram.refresh_token_if_due(hoje)
