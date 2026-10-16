@@ -179,6 +179,9 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
     if not mock and not (env("ML_MATT_WORD") or env("ML_TAG")):
         log.warning("Robô em espera: cadastre o Secret ML_MATT_WORD (ou ML_TAG) para começar. Nada foi feito.")
         return 0
+    if not mock and not (env("ML_CLIENT_ID") and env("ML_CLIENT_SECRET")) and not env("AMAZON_CLIENT_ID"):
+        log.warning("Robô em espera: cadastre ML_CLIENT_ID e ML_CLIENT_SECRET (app do Mercado Livre). Nada foi feito.")
+        return 0
     tol = timedelta(minutes=ag["tolerancia_minutos"])
     if dry_run is False and not mock:
         instagram.refresh_token_if_due(hoje)

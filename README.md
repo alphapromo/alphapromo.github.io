@@ -25,8 +25,8 @@ Todos os valores abaixo vão em **Settings › Secrets and variables › Actions
 - **`GH_PAT`**: github.com/settings/personal-access-tokens › *Fine-grained* › só o repositório `alpha-promo` › permissão **Secrets: Read and write**. Serve para o robô renovar os próprios tokens.
 
 ### 2. Mercado Livre (obrigatório)
-- **`ML_MATT_WORD`** e **`ML_MATT_TOOL`**: no portal afiliados.mercadolivre.com.br › Ferramentas › Gerador de link, gere o link de qualquer produto e abra-o no navegador. O endereço final contém `matt_word=...&matt_tool=...`: copie os dois valores. (Se o seu link tiver só `tag=...`, use o Secret **`ML_TAG`**.)
-- Opcional, deixa a coleta mais estável: crie um app em developers.mercadolivre.com.br e salve **`ML_CLIENT_ID`**, **`ML_CLIENT_SECRET`** e **`ML_REFRESH_TOKEN`**.
+- **`ML_MATT_WORD`** e **`ML_MATT_TOOL`**: no portal afiliados.mercadolivre.com.br › Gerador de link, gere o link de qualquer produto e abra-o. O endereço contém `matt_word=...&matt_tool=...`: copie os dois valores.
+- **`ML_CLIENT_ID`** e **`ML_CLIENT_SECRET`**: o Mercado Livre bloqueou a página pública de ofertas para robôs, então as ofertas vêm da API oficial. Em developers.mercadolivre.com.br › *Minhas aplicações* › *Criar aplicação* (URI de redirect: `https://alphapromo.github.io`; permissões: só leitura). Copie o *App ID* e a *Secret Key*.
 
 ### 3. Amazon
 - **`AMAZON_TAG`**: seu ID de rastreamento do Associados (ex.: `alphapromo-20`). Já vale para o botão "Ofertas do dia na Amazon" da página.
