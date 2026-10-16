@@ -85,12 +85,27 @@ def parse_highlights(data: dict | None) -> list[tuple[str, int]]:
     return out
 
 
-def parse_product(p: dict | None, posicao: int, categoria: str) -> Deal | None:
+def parse_sale_price(sp: dict | None) -> tuple[float | None, float | None]:
+    """/items/{id}/sale_price -> (preço atual, preço "de")."""
+    if not sp:
+        return None, None
+    return sp.get("amount"), sp.get("regular_amount")
+
+
+def parse_product_items(data: dict | None) -> dict:
+    """/products/{id}/items -> o anúncio mais barato, no formato do buy_box_winner."""
+    res = [r for r in (data or {}).get("results", []) if r.get("price")]
+    return min(res, key=lambda r: r["price"]) if res else {}
+
+
+def parse_product(p: dict | None, posicao: int, categoria: str, preco_extra: tuple | None = None) -> Deal | None:
     if not p:
         return None
     bb = p.get("buy_box_winner") or {}
     preco = bb.get("price")
     original = bb.get("original_price")
+    if preco_extra and preco_extra[0] and preco_extra[1]:
+        preco, original = preco_extra
     if not preco or not original or original <= preco:
         return None
     pics = p.get("pictures") or []
@@ -128,7 +143,21 @@ def fetch(categorias: dict[str, str]) -> list[Deal]:
             if pid in vistos:
                 continue
             vistos.add(pid)
-            d = parse_product(cli.get(f"/products/{pid}"), pos, cat_nome)
+            p = cli.get(f"/products/{pid}")
+            if not p:
+                continue
+            bb = p.get("buy_box_winner") or {}
+            extra = None
+            if not (bb.get("price") and bb.get("original_price")):
+                if not bb:  # sem buy box: pega o anúncio mais barato do produto
+                    bb = parse_product_items(cli.get(f"/products/{pid}/items"))
+                    p = {**p, "buy_box_winner": bb}
+                if bb.get("item_id") and not bb.get("original_price"):
+                    extra = parse_sale_price(cli.get(f"/items/{bb['item_id']}/sale_price", context="channel_marketplace"))
+            if len(vistos) == 1:  # diagnóstico (sem dados sensíveis)
+                log.info("ML diagnóstico %s: buy_box=%s sale_price=%s", pid,
+                         {k: bb.get(k) for k in ("item_id", "price", "original_price")}, extra)
+            d = parse_product(p, pos, cat_nome, extra)
             if d:
                 deals.append(d)
                 achados += 1
