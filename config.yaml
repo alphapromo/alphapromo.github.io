@@ -42,6 +42,7 @@ curadoria:
     - ["VideoGames", "controle"]
 
 publicar:
+  reels_ofertas: [2, 4]            # estas ofertas saem como Reel (vídeo) em vez de foto no feed
   instagram_feed: true
   instagram_stories: true
   tiktok: true

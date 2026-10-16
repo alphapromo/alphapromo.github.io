@@ -15,7 +15,11 @@ import shutil
 import sys
 from datetime import date, datetime, timedelta
 
-from . import affiliate, caption, render, site, state
+import time
+
+import requests
+
+from . import affiliate, caption, reel, render, site, state
 from .config import BRT, ROOT, Settings, env, now_brt
 from .models import Deal
 from .publish import instagram, tiktok
@@ -29,6 +33,24 @@ POSTS_DIR = "docs/posts"
 def _mock_deals() -> list[Deal]:
     data = json.loads((ROOT / "tests" / "fixtures" / "deals_mock.json").read_text(encoding="utf-8"))
     return [Deal.from_dict(d) for d in data]
+
+
+def gerar_reel(d: Deal, n: int, hoje: date) -> bool:
+    """Monta o Reel da oferta n com as fotos do produto. Devolve True se deu certo."""
+    urls = d.extras.get("fotos") or []
+    if not urls and d.loja == "Mercado Livre":
+        urls = mercadolivre.fotos_produto(d.id)
+    if not urls:
+        urls = [d.imagem]
+    fotos = [render.baixar_imagem(u) for u in urls]
+    rel = f"{POSTS_DIR}/{hoje.isoformat()}/{n}-reel.mp4"
+    try:
+        reel.montar(d, n, fotos, ROOT / rel)
+    except Exception as e:  # noqa: BLE001
+        log.error("Reel da oferta #%s falhou (vai como foto): %s", n, e)
+        return False
+    d.extras["reel"] = rel
+    return True
 
 
 def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -> dict:
@@ -56,6 +78,8 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -
         render.salvar_jpeg(render.render_post(d, n, "feed", produto), ROOT / feed)
         render.salvar_jpeg(render.render_post(d, n, "tiktok", produto), ROOT / vert)
         d.extras.update({"arte_feed": feed, "arte_tiktok": vert})
+        if n in cfg["publicar"].get("reels_ofertas", []):
+            gerar_reel(d, n, hoje)
         plano["deals"].append(d.to_dict())
         historico[d.chave] = hoje.isoformat()
         log.info("#%s  %s%% OFF  %s  [%s] score=%s", n, d.desconto, d.titulo[:60], d.loja, d.score)
@@ -137,8 +161,15 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False) -> bo
             log.warning("TikTok ainda não configurado — pulando.")
             pub = {**pub, "tiktok": False}
 
+    reel_url = f"{cfg.pages_url}/{d.extras['reel'].removeprefix('docs/')}" if d.extras.get("reel") else ""
+    if reel_url and not dry_run and not _no_ar(reel_url):
+        log.warning("Reel ainda não está no ar (%s) — oferta #%s vai como foto.", reel_url, slot)
+        reel_url = ""
+
     tarefas = []
-    if pub.get("instagram_feed"):
+    if pub.get("instagram_feed") and reel_url:
+        tarefas.append(("instagram_feed", lambda: instagram.post_reel(reel_url, caption.legenda(d, slot, marca, "instagram"), pub["instagram_api_versao"])))
+    elif pub.get("instagram_feed"):
         tarefas.append(("instagram_feed", lambda: instagram.post_feed(feed_raw, caption.legenda(d, slot, marca, "instagram"), pub["instagram_api_versao"])))
     if pub.get("instagram_stories"):
         tarefas.append(("instagram_story", lambda: instagram.post_story(vert_raw, pub["instagram_api_versao"])))
@@ -165,6 +196,20 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False) -> bo
     if not dry_run:
         state.save_plan(hoje, plano)
     return ok
+
+
+def _no_ar(url: str, espera_max: int = 360) -> bool:
+    """Espera o arquivo aparecer no GitHub Pages (o deploy leva ~1 min após o commit)."""
+    fim = time.time() + espera_max
+    while time.time() < fim:
+        try:
+            r = requests.head(url, timeout=20, allow_redirects=True)
+            if r.status_code == 200:
+                return True
+        except requests.RequestException:
+            pass
+        time.sleep(15)
+    return False
 
 
 def _hhmm(s: str, hoje: date) -> datetime:
@@ -205,7 +250,7 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 def main(argv=None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--dry-run", action="store_true")
@@ -221,6 +266,16 @@ def main(argv=None) -> int:
     if a.cmd == "site":
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
         return 0
+    if a.cmd == "reel":  # monta o Reel de uma oferta do plano de hoje (publica no próximo 'post')
+        plano = state.load_plan(hoje)
+        if not plano or not a.slot:
+            p.error("precisa de plano de hoje e --slot")
+        d = Deal.from_dict(plano["deals"][a.slot - 1])
+        if gerar_reel(d, a.slot, hoje):
+            plano["deals"][a.slot - 1] = d.to_dict()
+            state.save_plan(hoje, plano)
+            return 0
+        return 1
     if a.cmd == "diag":
         mercadolivre.diagnostico()
         return 0

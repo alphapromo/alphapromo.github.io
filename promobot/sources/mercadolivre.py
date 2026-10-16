@@ -123,8 +123,19 @@ def parse_product(p: dict | None, posicao: int, categoria: str, preco_extra: tup
         categoria=categoria,
         frete_gratis=bool((bb.get("shipping") or {}).get("free_shipping")),
         popularidade=max(0, 60 - posicao) * 2,  # posição no ranking de mais vendidos
-        extras={"fonte": "api_highlights", "item_id": bb.get("item_id")},
+        extras={"fonte": "api_highlights", "item_id": bb.get("item_id"),
+                "fotos": [_hi_res(x.get("url") or x.get("secure_url", "")) for x in pics[:5]]},
     )
+
+
+def fotos_produto(pid: str, limite: int = 5) -> list[str]:
+    """URLs das fotos de um produto (para montar o Reel)."""
+    try:
+        p = _Client(_token()).get(f"/products/{pid}") or {}
+    except MLAuthError as e:
+        log.warning("ML fotos: %s", e)
+        return []
+    return [_hi_res(x.get("url") or x.get("secure_url", "")) for x in (p.get("pictures") or [])[:limite]]
 
 
 def diagnostico(categoria: str = "MLB1000", n: int = 3) -> None:

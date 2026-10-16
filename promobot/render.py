@@ -108,7 +108,8 @@ def baixar_imagem(url: str) -> Image.Image | None:
 
 
 # ------------------------------------------------------------------ post
-def render_post(deal: Deal, numero: int, formato: str, produto: Image.Image | None) -> Image.Image:
+def render_post(deal: Deal, numero: int, formato: str, produto: Image.Image | None, partes: bool = False):
+    """partes=True: devolve (fundo, camada de selos RGBA, caixa do produto) para montar vídeo."""
     vertical = formato == "tiktok"
     W, H = (1080, 1920) if vertical else (1080, 1350)
     pad_l, pad_r, pad_t, pad_b = (72, 140, 200, 420) if vertical else (64, 64, 56, 56)
@@ -174,26 +175,29 @@ def render_post(deal: Deal, numero: int, formato: str, produto: Image.Image | No
     d.rounded_rectangle([x0, card_top, x1, card_bot], radius=40 if not vertical else 44, fill=BRANCO)
     d.line([x0 + 40, card_bot + 1, x1 - 40, card_bot + 1], fill="#EFE6DB", width=2)
     inner = (x0 + 70, card_top + 110, x1 - 70, card_bot - 60)
-    if produto is not None:
+    if produto is not None and not partes:
         p = produto.copy()
         p.thumbnail((inner[2] - inner[0], inner[3] - inner[1]), Image.LANCZOS)
         px = inner[0] + (inner[2] - inner[0] - p.width) // 2
         py = inner[1] + (inner[3] - inner[1] - p.height) // 2
         img.paste(p, (px, py))
-    else:
+    elif not partes:
         d.text(((x0 + x1) / 2, (card_top + card_bot) / 2), deal.loja, font=font("dm", 32, 500), fill=CINZA_CLARO, anchor="mm")
 
-    # selo da loja
+    # selos (loja e desconto) numa camada própria, por cima do produto
+    camada = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    o = ImageDraw.Draw(camada)
     f_loja = font("dm", 28 if vertical else 26, 700)
-    lw = d.textlength(deal.loja, font=f_loja) + 44
-    d.rounded_rectangle([x0 + 32, card_top + 32, x0 + 32 + lw, card_top + 32 + 54], radius=14, fill=COR_LOJA.get(deal.loja, SALVIA))
-    d.text((x0 + 32 + lw / 2, card_top + 32 + 27), deal.loja, font=f_loja, fill=BRANCO, anchor="mm")
-
-    # selo de desconto
+    lw = o.textlength(deal.loja, font=f_loja) + 44
+    o.rounded_rectangle([x0 + 32, card_top + 32, x0 + 32 + lw, card_top + 32 + 54], radius=14, fill=COR_LOJA.get(deal.loja, SALVIA))
+    o.text((x0 + 32 + lw / 2, card_top + 32 + 27), deal.loja, font=f_loja, fill=BRANCO, anchor="mm")
     r = 85 if vertical else 75
     cx, cy = (x1 - 32 - r, card_bot - 32 - r) if vertical else (x1 - 28 - r, card_top + 28 + r)
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=CORAL)
-    d.text((cx, cy), f"-{deal.desconto}%", font=font("outfit", 58 if vertical else 52, 800), fill=BRANCO, anchor="mm")
+    o.ellipse([cx - r, cy - r, cx + r, cy + r], fill=CORAL)
+    o.text((cx, cy), f"-{deal.desconto}%", font=font("outfit", 58 if vertical else 52, 800), fill=BRANCO, anchor="mm")
+    if partes:
+        return img, camada, inner
+    img.paste(camada, (0, 0), camada)
     return img
 
 

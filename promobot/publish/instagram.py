@@ -49,13 +49,13 @@ def _publish(container_params: dict, versao: str) -> str:
         raise InstagramError("IG_USER_ID / IG_ACCESS_TOKEN não configurados")
     base = f"{HOST}/{versao}"
     cid = _check(requests.post(f"{base}/{uid}/media", data={**container_params, "access_token": token}, timeout=60))["id"]
-    for _ in range(30):  # espera o Instagram processar a imagem
+    for _ in range(60):  # espera o Instagram processar (vídeo demora mais)
         st = _check(requests.get(f"{base}/{cid}", params={"fields": "status_code", "access_token": token}, timeout=30))
         if st.get("status_code") == "FINISHED":
             break
         if st.get("status_code") in ("ERROR", "EXPIRED"):
             raise InstagramError(f"container {cid}: {st}")
-        time.sleep(4)
+        time.sleep(5)
     pub = _check(requests.post(f"{base}/{uid}/media_publish", data={"creation_id": cid, "access_token": token}, timeout=60))
     return pub["id"]
 
@@ -66,3 +66,7 @@ def post_feed(image_url: str, caption: str, versao: str) -> str:
 
 def post_story(image_url: str, versao: str) -> str:
     return _publish({"image_url": image_url, "media_type": "STORIES"}, versao)
+
+
+def post_reel(video_url: str, caption: str, versao: str) -> str:
+    return _publish({"media_type": "REELS", "video_url": video_url, "caption": caption, "share_to_feed": "true"}, versao)
