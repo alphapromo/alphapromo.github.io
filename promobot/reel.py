@@ -22,6 +22,7 @@ SEG = 2.2        # segundos por foto
 FADE = 0.4       # transição entre fotos
 FINAL = 1.6      # segura a última foto no fim
 ZOOM = 0.10      # zoom total de cada foto
+TRILHA = Path(__file__).resolve().parent.parent / "assets" / "audio" / "trilha.m4a"
 
 
 def _encaixar(foto: Image.Image, caixa: tuple[int, int], escala: float) -> Image.Image:
@@ -70,13 +71,21 @@ def montar(deal: Deal, numero: int, fotos: list[Image.Image], destino: Path) -> 
     with tempfile.TemporaryDirectory() as tmp:
         for k, q in enumerate(frames(deal, numero, fotos)):
             q.save(f"{tmp}/{k:04d}.jpg", "JPEG", quality=88)
+        n_quadros = len(list(Path(tmp).glob("*.jpg")))
+        dur = n_quadros / FPS
+        if TRILHA.exists():  # trilha original da Alpha Promo, com fade no fim
+            audio = ["-stream_loop", "-1", "-i", str(TRILHA)]
+            filtro = ["-af", f"volume=0.85,afade=t=in:d=0.15,afade=t=out:st={max(dur - 0.8, 0):.2f}:d=0.8"]
+        else:
+            audio = ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000"]
+            filtro = []
         cmd = [
             "ffmpeg", "-y", "-loglevel", "error",
             "-framerate", str(FPS), "-i", f"{tmp}/%04d.jpg",
-            "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
-            "-shortest", "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p",
+            *audio, *filtro, "-t", f"{dur:.2f}",
+            "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p",
             "-crf", "21", "-preset", "medium", "-r", str(FPS),
-            "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(destino),
+            "-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-movflags", "+faststart", str(destino),
         ]
         subprocess.run(cmd, check=True)
     log.info("Reel da oferta #%s: %s (%.1f MB)", numero, destino, destino.stat().st_size / 1e6)
