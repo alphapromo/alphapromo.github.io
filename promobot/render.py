@@ -132,17 +132,11 @@ def render_post(deal: Deal, numero: int, formato: str, produto: Image.Image | No
         card_top = pad_t + m + 36
 
     # bloco inferior (de baixo para cima)
-    bar_h = 128 if vertical else 96
+    bar_h = 104 if vertical else 96
     bar_top = H - pad_b - bar_h
     d.rounded_rectangle([x0, bar_top, x1, H - pad_b], radius=24, fill=AREIA)
     f_bar = font("outfit", 40 if vertical else 36, 700)
-    f_disc = font("dm", 24 if vertical else 22, 400)
-    if vertical:
-        d.text((x0 + 32, bar_top + 28), f"Link na bio · oferta #{numero}", font=f_bar, fill=TINTA, anchor="lt")
-        d.text((x0 + 32, bar_top + 82), "#publi · link de afiliado", font=f_disc, fill=MARROM, anchor="lt")
-    else:
-        d.text((x0 + 32, bar_top + bar_h / 2), f"Link na bio · oferta #{numero}", font=f_bar, fill=TINTA, anchor="lm")
-        d.text((x1 - 32, bar_top + bar_h / 2), "#publi · link de afiliado", font=f_disc, fill=MARROM, anchor="rm")
+    d.text(((x0 + x1) / 2, bar_top + bar_h / 2), f"Link na bio · oferta #{numero}", font=f_bar, fill=TINTA, anchor="mm")
 
     f_title = font("dm", 40 if vertical else 38, 500)
     f_de = font("dm", 36 if vertical else 34, 400)

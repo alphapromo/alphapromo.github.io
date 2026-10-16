@@ -12,9 +12,9 @@ on:
   workflow_dispatch:
     inputs:
       comando:
-        description: "run = automático | curate = refazer as ofertas de hoje | post = publicar uma oferta agora"
+        description: "run = automático | curate = refazer as ofertas de hoje | post = publicar uma oferta agora | arte = refazer as artes de hoje"
         type: choice
-        options: [run, curate, post]
+        options: [run, curate, post, arte]
         default: run
       oferta:
         description: "Número da oferta (só para 'post')"
