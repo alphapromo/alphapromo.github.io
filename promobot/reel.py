@@ -11,9 +11,11 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from PIL import Image
+from datetime import date
 
-from . import render
+from PIL import Image, ImageDraw
+
+from . import carta, render
 from .models import Deal
 
 log = logging.getLogger(__name__)
@@ -26,18 +28,22 @@ TRILHA = Path(__file__).resolve().parent.parent / "assets" / "audio" / "trilha.m
 
 
 def _encaixar(foto: Image.Image, caixa: tuple[int, int], escala: float) -> Image.Image:
-    """Foto centralizada na caixa (sem cortar o produto), com zoom `escala`, fundo branco."""
+    """Foto centralizada na vitrine (sem cortar o produto), com zoom `escala`, fundo branco."""
     bw, bh = caixa
     f = foto.copy()
-    f.thumbnail((int(bw * escala), int(bh * escala)), Image.LANCZOS)
+    f.thumbnail((int(bw * 0.82 * escala), int(bh * 0.86 * escala)), Image.LANCZOS)
     tela = Image.new("RGB", (bw, bh), render.BRANCO)
     tela.paste(f, ((bw - f.width) // 2, (bh - f.height) // 2))
     return tela
 
 
-def frames(deal: Deal, numero: int, fotos: list[Image.Image]):
-    fundo, camada, inner = render.render_post(deal, numero, "tiktok", None, partes=True)
+def frames(deal: Deal, numero: int, fotos: list[Image.Image], total_dia: int = 5, dia: date | None = None):
+    """Quadros do Reel: a Alpha Card vertical fixa e as fotos passando na vitrine branca."""
+    fundo, inner = carta.render(deal, numero, total_dia, "tiktok", deal.extras.get("num_colecao") or 1,
+                                dia or date.today(), None, vitrine=True)
     bw, bh = inner[2] - inner[0], inner[3] - inner[1]
+    mascara = Image.new("L", (bw, bh), 0)
+    ImageDraw.Draw(mascara).rounded_rectangle([0, 0, bw - 1, bh - 1], radius=30, fill=255)
     n_seg = int(SEG * FPS)
     n_fade = int(FADE * FPS)
     total = n_seg * len(fotos) + int(FINAL * FPS)
@@ -54,12 +60,12 @@ def frames(deal: Deal, numero: int, fotos: list[Image.Image]):
             alfa = (t - (n_seg - n_fade)) / n_fade
             atual = Image.blend(atual, quadro_foto(i + 1, 0), alfa)
         q = fundo.copy()
-        q.paste(atual, (inner[0], inner[1]))
-        q.paste(camada, (0, 0), camada)
+        q.paste(atual, (inner[0], inner[1]), mascara)
         yield q
 
 
-def montar(deal: Deal, numero: int, fotos: list[Image.Image], destino: Path) -> Path:
+def montar(deal: Deal, numero: int, fotos: list[Image.Image], destino: Path, total_dia: int = 5,
+           dia: date | None = None) -> Path:
     if not shutil.which("ffmpeg"):
         raise RuntimeError("ffmpeg não encontrado")
     fotos = [f for f in fotos if f is not None][:4]
@@ -69,7 +75,7 @@ def montar(deal: Deal, numero: int, fotos: list[Image.Image], destino: Path) -> 
         fotos = fotos * 2
     destino.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
-        for k, q in enumerate(frames(deal, numero, fotos)):
+        for k, q in enumerate(frames(deal, numero, fotos, total_dia, dia)):
             q.save(f"{tmp}/{k:04d}.jpg", "JPEG", quality=88)
         n_quadros = len(list(Path(tmp).glob("*.jpg")))
         dur = n_quadros / FPS

@@ -7,17 +7,19 @@ on:
     # definido em config.yaml > agenda. Execuções sem tarefa terminam em segundos.
     - cron: "7,22,37,52 9-23 * * *"
     - cron: "7,22,37,52 0-1 * * *"
-    - cron: "15 2 * * *"   # teste: 23:15 de Brasília
   workflow_dispatch:
     inputs:
       comando:
-        description: "run = automático | curate = refazer as ofertas de hoje | post = publicar uma oferta agora | arte = refazer as artes de hoje"
+        description: "run = automático | curate = refazer as ofertas de hoje | recurar = refazer só as que ainda não saíram | extra = ofertas extras do tema | post = publicar uma oferta agora | arte = refazer as artes de hoje"
         type: choice
-        options: [run, curate, post, arte, reel, diag]
+        options: [run, curate, recurar, extra, post, arte, reel, diag]
         default: run
       oferta:
-        description: "Número da oferta (para 'post' e 'reel')"
+        description: "Número da oferta (para 'post' e 'reel') ou quantas extras (para 'extra')"
         default: ""
+      tema:
+        description: "Tema das extras: 1 achadinho, 2 games, 3 beleza"
+        default: "2"
       forcar:
         description: "Forçar (refazer curadoria / republicar)"
         type: boolean
@@ -78,6 +80,8 @@ jobs:
           CMD="${{ inputs.comando || 'run' }}"
           ARGS=""
           if [ "$CMD" = "post" ] || [ "$CMD" = "reel" ]; then ARGS="--slot ${{ inputs.oferta }}"; fi
+          if [ "$CMD" = "recurar" ]; then CMD="curate"; ARGS="--manter"; fi
+          if [ "$CMD" = "extra" ]; then ARGS="--tema ${{ inputs.tema || '2' }} --quantos ${{ inputs.oferta || '2' }}"; fi
           if [ "${{ inputs.forcar }}" = "true" ]; then ARGS="$ARGS --force"; fi
           python -m promobot $CMD $ARGS
 

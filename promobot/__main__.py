@@ -19,7 +19,7 @@ import time
 
 import requests
 
-from . import affiliate, caption, reel, render, site, state
+from . import affiliate, caption, carta, reel, render, site, state
 from .config import BRT, ROOT, Settings, env, now_brt
 from .models import Deal
 from .publish import instagram, tiktok
@@ -45,7 +45,7 @@ def gerar_reel(d: Deal, n: int, hoje: date) -> bool:
     fotos = [render.baixar_imagem(u) for u in urls]
     rel = f"{POSTS_DIR}/{hoje.isoformat()}/{n}-reel.mp4"
     try:
-        reel.montar(d, n, fotos, ROOT / rel)
+        reel.montar(d, n, fotos, ROOT / rel, dia=hoje)
     except Exception as e:  # noqa: BLE001
         log.error("Reel da oferta #%s falhou (vai como foto): %s", n, e)
         return False
@@ -53,7 +53,36 @@ def gerar_reel(d: Deal, n: int, hoje: date) -> bool:
     return True
 
 
-def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -> dict:
+def _numeros_colecao(hoje: date, quantos: int) -> list[int]:
+    """Próximos números da coleção do mês (001/155, 002/155…)."""
+    arq = state.STATE / "colecao.json"
+    dados = json.loads(arq.read_text()) if arq.exists() else {}
+    chave = hoje.strftime("%Y-%m")
+    ult = int(dados.get(chave, 0))
+    dados[chave] = ult + quantos
+    arq.parent.mkdir(parents=True, exist_ok=True)
+    arq.write_text(json.dumps(dados, indent=2))
+    return list(range(ult + 1, ult + 1 + quantos))
+
+
+def gerar_artes(itens: list[tuple[Deal, int, object]], hoje: date, total_dia: int) -> None:
+    """Desenha a Alpha Card (feed 4:5 e vertical 9:16) de cada (oferta, número, foto)."""
+    pasta = f"{POSTS_DIR}/{hoje.isoformat()}"
+    with carta.Fotografo() as f:
+        for d, n, img in itens:
+            feed, vert = f"{pasta}/{n}-feed.jpg", f"{pasta}/{n}-tiktok.jpg"
+            num = d.extras.get("num_colecao") or 1
+            render.salvar_jpeg(carta.render(d, n, total_dia, "feed", num, hoje, img, f), ROOT / feed)
+            render.salvar_jpeg(carta.render(d, n, total_dia, "tiktok", num, hoje, img, f), ROOT / vert)
+            d.extras.update({"arte_feed": feed, "arte_tiktok": vert})
+
+
+def _publicado(plano: dict, n: int) -> bool:
+    return any(str(v).startswith("ok:") for v in plano.get("posts", {}).get(str(n), {}).values())
+
+
+def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, manter: bool = False) -> dict:
+    """Escolhe as ofertas do dia. manter=True: refaz só as que ainda não foram publicadas."""
     existente = state.load_plan(hoje)
     if existente and not force:
         log.info("Plano de %s já existe.", hoje)
@@ -62,27 +91,51 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -
     if mock:
         deals = _mock_deals()
     else:
-        deals = amazon.fetch(c["buscas_amazon"], c["desconto_minimo"]) + mercadolivre.fetch(c["categorias_ml"])
+        deals = amazon.fetch(c["buscas_amazon"], c["desconto_minimo"]) + mercadolivre.fetch(
+            c["categorias_ml"], c.get("explorar_subcategorias"))
     log.info("Candidatas: %s", len(deals))
     historico = state.load_history()
-    escolhidas = selecionar_com_imagem(deals, c, historico, hoje)
-    if not escolhidas:
+    fixas: dict[int, dict] = {}
+    if existente and manter:
+        fixas = {n: raw for n, raw in enumerate(existente["deals"], start=1) if _publicado(existente, n)}
+    excluir = {Deal.from_dict(r).chave for r in fixas.values()}
+    escolhidas = selecionar_com_imagem(deals, c, historico, hoje, excluir)
+    if not any(img is not None for _, img in escolhidas) and not fixas:
         raise SystemExit("Nenhuma oferta passou nos filtros hoje — verifique as fontes (veja o log acima).")
 
-    pasta = f"{POSTS_DIR}/{hoje.isoformat()}"
-    plano = {"data": hoje.isoformat(), "gerado_em": now_brt().isoformat(timespec="minutes"), "deals": [], "posts": {}}
-    for n, (d, produto) in enumerate(escolhidas, start=1):
+    plano = {"data": hoje.isoformat(), "gerado_em": now_brt().isoformat(timespec="minutes"), "deals": [],
+             "posts": {str(n): existente["posts"][str(n)] for n in fixas} if fixas else {}}
+    # ordem final: as já publicadas ficam no lugar; as novas preenchem os demais horários
+    ordem: list[tuple[int, object, object]] = []  # (n, Deal|raw fixo, foto)
+    for i, (d, img) in enumerate(escolhidas, start=1):
+        if i in fixas:
+            ordem.append((i, fixas[i], None))
+        elif d is not None and img is not None:
+            ordem.append((i, d, img))
+    for i in sorted(fixas):  # extras já publicadas (#6, #7…) continuam no plano
+        if i > len(escolhidas):
+            ordem.append((i, fixas[i], None))
+    ordem = [(k, x, img) for k, (_, x, img) in enumerate(ordem, start=1)]
+    novas = [(n, d, img) for n, d, img in ordem if isinstance(d, Deal)]
+    antigos = {n: Deal.from_dict(existente["deals"][n - 1]).extras.get("num_colecao")
+               for n in range(1, len(existente["deals"]) + 1)} if (existente and manter) else {}
+    faltam = [n for n, _, _ in novas if not antigos.get(n)]
+    numeros = dict(zip(faltam, _numeros_colecao(hoje, len(faltam))))
+    for n, d, _ in novas:
+        d.extras["num_colecao"] = antigos.get(n) or numeros[n]
         if not d.link_afiliado:
             d.link_afiliado = affiliate.afiliar(d.loja, d.url)
-        feed, vert = f"{pasta}/{n}-feed.jpg", f"{pasta}/{n}-tiktok.jpg"
-        render.salvar_jpeg(render.render_post(d, n, "feed", produto), ROOT / feed)
-        render.salvar_jpeg(render.render_post(d, n, "tiktok", produto), ROOT / vert)
-        d.extras.update({"arte_feed": feed, "arte_tiktok": vert})
+    gerar_artes([(d, n, img) for n, d, img in novas], hoje, len(ordem))
+    for n, d, _ in ordem:
+        if not isinstance(d, Deal):
+            plano["deals"].append(d)
+            continue
         if n in cfg["publicar"].get("reels_ofertas", []):
             gerar_reel(d, n, hoje)
         plano["deals"].append(d.to_dict())
         historico[d.chave] = hoje.isoformat()
-        log.info("#%s  %s%% OFF  %s  [%s] score=%s", n, d.desconto, d.titulo[:60], d.loja, d.score)
+        log.info("#%s  %-20s %s%% OFF  R$ %.2f  %s  [%s] score=%s carta=%s", n, d.extras.get("tema", "melhor do dia")[:20],
+                 d.desconto, d.preco, d.titulo[:55], d.categoria, d.score, d.extras["num_colecao"])
 
     state.save_plan(hoje, plano)
     state.save_history(historico, hoje)
@@ -91,35 +144,89 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -
     return plano
 
 
-def selecionar_com_imagem(deals, c, historico, hoje):
-    """Seleciona e garante que a foto do produto baixa; se não baixar, pega a próxima."""
-    pool = list(deals)
-    final = []
-    while pool and len(final) < c["ofertas_por_dia"]:
-        faltam = c["ofertas_por_dia"] - len(final)
-        ja = {d.chave: hoje.isoformat() for d, _ in final}
-        lote = [d for d in ranking_selecionar(pool, {**c, "ofertas_por_dia": faltam}, {**historico, **ja}, hoje) if d]
-        if not lote:
+def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = False) -> list[int]:
+    """Acrescenta ao plano de hoje `quantos` ofertas extras do tema (ex.: 2 = Games).
+
+    Só escolhe e desenha; a publicação é feita depois com `post --slot N`
+    (as artes precisam estar no ar no GitHub antes de ir para o Instagram).
+    """
+    from .ranking import _bonus_palavras, _no_tema, _parecido, score
+
+    plano = state.load_plan(hoje)
+    if not plano:
+        raise SystemExit("Ainda não há plano hoje — rode a curadoria antes.")
+    c = cfg["curadoria"]
+    tema = {int(k): v for k, v in c["temas"].items()}[tema_n]
+    if mock:
+        deals = _mock_deals()
+    else:
+        cats = {k: c["categorias_ml"].get(k, tema["nome"]) for k in tema.get("categorias", [])} or c["categorias_ml"]
+        explorar = {k: v for k, v in (c.get("explorar_subcategorias") or {}).items() if k in cats}
+        deals = mercadolivre.fetch(cats, explorar)
+    historico = state.load_history()
+    corte = (hoje - timedelta(days=c["repetir_produto_apos_dias"])).isoformat()
+    ja = [Deal.from_dict(r) for r in plano["deals"]]
+    cand = []
+    for d in deals:
+        if historico.get(d.chave, "") >= corte or not (c["desconto_minimo"] <= d.desconto <= 90):
+            continue
+        if not d.imagem or not _no_tema(d, tema, relaxado=True):
+            continue
+        d.score = score(d) + _bonus_palavras(d, tema)
+        cand.append(d)
+    cand.sort(key=lambda d: d.score, reverse=True)
+    escolhidas = []
+    for d in cand:
+        if len(escolhidas) >= quantos:
             break
-        for d in lote:
-            pool.remove(d)
+        if any(_parecido(d.titulo, u.titulo) for u in ja + [e for e, _ in escolhidas]):
+            continue
+        img = render.baixar_imagem(d.imagem)
+        if img is not None:
+            escolhidas.append((d, img))
+    if not escolhidas:
+        raise SystemExit(f"Nenhuma oferta de {tema['nome']} disponível agora.")
+    base = len(plano["deals"])
+    numeros = _numeros_colecao(hoje, len(escolhidas))
+    itens = []
+    for k, (d, img) in enumerate(escolhidas):
+        d.extras.update({"tema": tema["nome"], "num_colecao": numeros[k], "extra": True})
+        if not d.link_afiliado:
+            d.link_afiliado = affiliate.afiliar(d.loja, d.url)
+        itens.append((d, base + k + 1, img))
+    gerar_artes(itens, hoje, base + len(itens))
+    for d, n, _ in itens:
+        plano["deals"].append(d.to_dict())
+        historico[d.chave] = hoje.isoformat()
+        log.info("Extra #%s  %s%% OFF  R$ %.2f  %s  carta=%s", n, d.desconto, d.preco, d.titulo[:60], d.extras["num_colecao"])
+    state.save_plan(hoje, plano)
+    state.save_history(historico, hoje)
+    site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+    return [n for _, n, _ in itens]
+
+
+def selecionar_com_imagem(deals, c, historico, hoje, excluir=None):
+    """Escolhe uma oferta por horário (com tema) e garante que a foto baixa; se não, troca."""
+    from .ranking import selecionar_por_tema
+
+    ruins: set[str] = set(excluir or ())
+    fotos: dict[str, object] = {}
+    for _ in range(6):
+        escolha = selecionar_por_tema(deals, c, historico, hoje, excluir=ruins)
+        faltou = False
+        for d in escolha:
+            if d is None or d.chave in fotos:
+                continue
             img = render.baixar_imagem(d.imagem)
-            if img is not None:
-                final.append((d, img))
-            else:
+            if img is None:
                 log.warning("Pulando %s: imagem indisponível", d.titulo[:50])
-    # reaplica a ordem de horários (melhor oferta no horário nobre)
-    ordem = ranking_selecionar([d for d, _ in final], {**c, "repetir_produto_apos_dias": 0, "desconto_minimo": 0,
-                                                       "preco_minimo": 0, "preco_maximo": 10**9, "maximo_por_categoria": 99},
-                               {}, hoje)
-    por_chave = {d.chave: (d, img) for d, img in final}
-    return [por_chave[d.chave] for d in ordem if d and d.chave in por_chave]
-
-
-def ranking_selecionar(*a, **k):
-    from .ranking import selecionar
-
-    return selecionar(*a, **k)
+                ruins.add(d.chave)
+                faltou = True
+            else:
+                fotos[d.chave] = img
+        if not faltou:
+            break
+    return [(d, fotos.get(d.chave) if d is not None else None) for d in escolha]
 
 
 def _limpar(hoje: date, dias: int) -> None:
@@ -262,9 +369,12 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 def main(argv=None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
+    p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
+    p.add_argument("--tema", type=int, default=2, help="extra: número do tema (2 = Games)")
+    p.add_argument("--quantos", type=int, default=2)
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--mock", action="store_true")
     a = p.parse_args(argv)
@@ -295,15 +405,20 @@ def main(argv=None) -> int:
         plano = state.load_plan(hoje)
         if not plano:
             p.error("sem plano para hoje")
-        for n, raw in enumerate(plano["deals"], start=1):
-            d = Deal.from_dict(raw)
-            img = render.baixar_imagem(d.imagem)
-            render.salvar_jpeg(render.render_post(d, n, "feed", img), ROOT / d.extras["arte_feed"])
-            render.salvar_jpeg(render.render_post(d, n, "tiktok", img), ROOT / d.extras["arte_tiktok"])
+        itens = [(Deal.from_dict(raw), n, None) for n, raw in enumerate(plano["deals"], start=1)
+                 if not _publicado(plano, n)]
+        itens = [(d, n, render.baixar_imagem(d.imagem)) for d, n, _ in itens]
+        gerar_artes(itens, hoje, len(plano["deals"]))
+        for d, n, _ in itens:
+            plano["deals"][n - 1] = d.to_dict()
+        state.save_plan(hoje, plano)
         log.info("Artes de %s refeitas.", hoje)
         return 0
     if a.cmd == "curate":
-        curate(cfg, hoje, mock=a.mock, force=a.force)
+        curate(cfg, hoje, mock=a.mock, force=a.force or a.manter, manter=a.manter)
+        return 0
+    if a.cmd == "extra":
+        extra(cfg, hoje, a.tema, a.quantos, mock=a.mock)
         return 0
     if a.cmd == "post":
         if not a.slot:

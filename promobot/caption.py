@@ -13,7 +13,7 @@ def _curto(titulo: str, n: int) -> str:
 def legenda(d: Deal, numero: int, marca: dict, plataforma: str) -> str:
     onde = "Toque no link da bio" if plataforma == "instagram" else "Link na bio"
     linhas = [
-        f"🔥 Oferta #{numero} do dia: {_curto(d.titulo, 110)}",
+        f"🔥 {d.extras.get('tema') or 'Oferta'} · #{numero} do dia: {_curto(d.titulo, 100)}",
         "",
         f"De {brl(d.preco_original)} por {brl(d.preco)} ({d.desconto}% OFF) na {d.loja}.",
     ]
