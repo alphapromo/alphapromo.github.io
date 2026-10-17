@@ -100,7 +100,7 @@ def _bonus_palavras(d: Deal, tema: dict) -> float:
 
 
 def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str], hoje: date,
-                        excluir: set[str] | None = None) -> list[Deal | None]:
+                        excluir: set[str] | None = None, ja_usados: list[Deal] | None = None) -> list[Deal | None]:
     """Uma oferta por horário: horários com tema primeiro, depois a melhor do dia nos demais.
 
     A melhor oferta restante vai para o 4º horário (19:50, nobre); a seguinte para o 5º.
@@ -121,7 +121,7 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
     total = cfg["ofertas_por_dia"]
     temas = {int(k): v for k, v in (cfg.get("temas") or {}).items()}
     final: list[Deal | None] = [None] * total
-    usados: list[Deal] = []
+    usados: list[Deal] = list(ja_usados or [])
 
     def livre(d: Deal) -> bool:
         return d not in usados and not any(_parecido(d.titulo, u.titulo) for u in usados)
@@ -131,8 +131,10 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
             continue
         tema = temas[slot]
         escolhido = None
-        for relaxado in (False, True):
-            opcoes = [d for d in base if livre(d) and _no_tema(d, tema, relaxado)]
+        # 1º: no tema e com palavra-chave no título; 2º: no tema; 3º: faixa de preço mais folgada
+        for relaxado, exige_palavra in ((False, bool(tema.get("palavras"))), (False, False), (True, False)):
+            opcoes = [d for d in base if livre(d) and _no_tema(d, tema, relaxado)
+                      and (not exige_palavra or _bonus_palavras(d, tema) > 0)]
             if opcoes:
                 escolhido = max(opcoes, key=lambda d: d.score + _bonus_palavras(d, tema))
                 break
@@ -147,6 +149,8 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
     sem_tema.sort(key=lambda i: (i != 3, i != 4, i))  # 4º horário primeiro, depois o 5º
     def cat_cheia(d: Deal) -> bool:
         raiz = d.extras.get("cat_raiz") or d.categoria
+        if any(u.categoria == d.categoria for u in usados):  # nada de dois smartwatches no mesmo dia
+            return True
         return sum(1 for u in usados if (u.extras.get("cat_raiz") or u.categoria) == raiz) >= cfg["maximo_por_categoria"]
 
     for i in sem_tema:

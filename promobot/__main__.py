@@ -99,7 +99,8 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
     if existente and manter:
         fixas = {n: raw for n, raw in enumerate(existente["deals"], start=1) if _publicado(existente, n)}
     excluir = {Deal.from_dict(r).chave for r in fixas.values()}
-    escolhidas = selecionar_com_imagem(deals, c, historico, hoje, excluir)
+    escolhidas = selecionar_com_imagem(deals, c, historico, hoje, excluir,
+                                       [Deal.from_dict(r) for r in fixas.values()])
     if not any(img is not None for _, img in escolhidas) and not fixas:
         raise SystemExit("Nenhuma oferta passou nos filtros hoje — verifique as fontes (veja o log acima).")
 
@@ -205,14 +206,14 @@ def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = Fal
     return [n for _, n, _ in itens]
 
 
-def selecionar_com_imagem(deals, c, historico, hoje, excluir=None):
+def selecionar_com_imagem(deals, c, historico, hoje, excluir=None, ja_usados=None):
     """Escolhe uma oferta por horário (com tema) e garante que a foto baixa; se não, troca."""
     from .ranking import selecionar_por_tema
 
     ruins: set[str] = set(excluir or ())
     fotos: dict[str, object] = {}
     for _ in range(6):
-        escolha = selecionar_por_tema(deals, c, historico, hoje, excluir=ruins)
+        escolha = selecionar_por_tema(deals, c, historico, hoje, excluir=ruins, ja_usados=ja_usados)
         faltou = False
         for d in escolha:
             if d is None or d.chave in fotos:
