@@ -62,7 +62,8 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -
     if mock:
         deals = _mock_deals()
     else:
-        deals = amazon.fetch(c["buscas_amazon"], c["desconto_minimo"]) + mercadolivre.fetch(c["categorias_ml"])
+        deals = amazon.fetch(c["buscas_amazon"], c["desconto_minimo"]) + mercadolivre.fetch(
+            c["categorias_ml"], c.get("explorar_subcategorias"))
     log.info("Candidatas: %s", len(deals))
     historico = state.load_history()
     escolhidas = selecionar_com_imagem(deals, c, historico, hoje)
@@ -82,7 +83,8 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -
             gerar_reel(d, n, hoje)
         plano["deals"].append(d.to_dict())
         historico[d.chave] = hoje.isoformat()
-        log.info("#%s  %s%% OFF  %s  [%s] score=%s", n, d.desconto, d.titulo[:60], d.loja, d.score)
+        log.info("#%s  %-20s %s%% OFF  R$ %.2f  %s  [%s] score=%s", n, d.extras.get("tema", "melhor do dia")[:20],
+                 d.desconto, d.preco, d.titulo[:55], d.categoria, d.score)
 
     state.save_plan(hoje, plano)
     state.save_history(historico, hoje)
@@ -92,34 +94,27 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False) -
 
 
 def selecionar_com_imagem(deals, c, historico, hoje):
-    """Seleciona e garante que a foto do produto baixa; se não baixar, pega a próxima."""
-    pool = list(deals)
-    final = []
-    while pool and len(final) < c["ofertas_por_dia"]:
-        faltam = c["ofertas_por_dia"] - len(final)
-        ja = {d.chave: hoje.isoformat() for d, _ in final}
-        lote = [d for d in ranking_selecionar(pool, {**c, "ofertas_por_dia": faltam}, {**historico, **ja}, hoje) if d]
-        if not lote:
-            break
-        for d in lote:
-            pool.remove(d)
+    """Escolhe uma oferta por horário (com tema) e garante que a foto baixa; se não, troca."""
+    from .ranking import selecionar_por_tema
+
+    ruins: set[str] = set()
+    fotos: dict[str, object] = {}
+    for _ in range(6):
+        escolha = selecionar_por_tema(deals, c, historico, hoje, excluir=ruins)
+        faltou = False
+        for d in escolha:
+            if d is None or d.chave in fotos:
+                continue
             img = render.baixar_imagem(d.imagem)
-            if img is not None:
-                final.append((d, img))
-            else:
+            if img is None:
                 log.warning("Pulando %s: imagem indisponível", d.titulo[:50])
-    # reaplica a ordem de horários (melhor oferta no horário nobre)
-    ordem = ranking_selecionar([d for d, _ in final], {**c, "repetir_produto_apos_dias": 0, "desconto_minimo": 0,
-                                                       "preco_minimo": 0, "preco_maximo": 10**9, "maximo_por_categoria": 99},
-                               {}, hoje)
-    por_chave = {d.chave: (d, img) for d, img in final}
-    return [por_chave[d.chave] for d in ordem if d and d.chave in por_chave]
-
-
-def ranking_selecionar(*a, **k):
-    from .ranking import selecionar
-
-    return selecionar(*a, **k)
+                ruins.add(d.chave)
+                faltou = True
+            else:
+                fotos[d.chave] = img
+        if not faltou:
+            break
+    return [(d, fotos[d.chave]) for d in escolha if d is not None and d.chave in fotos]
 
 
 def _limpar(hoje: date, dias: int) -> None:

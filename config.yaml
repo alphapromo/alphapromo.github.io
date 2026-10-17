@@ -20,6 +20,30 @@ curadoria:
   preco_maximo: 4000.0
   maximo_por_categoria: 2
   repetir_produto_apos_dias: 14
+  # Tema de cada horário (oferta #1 a #5). Sem tema = melhor oferta do dia.
+  # Se não achar nada no tema, o robô afrouxa o filtro e, no último caso, usa a melhor oferta.
+  temas:
+    1:
+      nome: "Achadinho até R$ 20"        # manhã (07:50)
+      preco_minimo: 5
+      preco_maximo: 20
+    2:
+      nome: "Games"                      # almoço / saída da escola (11:50)
+      categorias: [MLB1144]
+      palavras: ["jogo", "game", "ps5", "ps4", "playstation", "xbox", "nintendo", "switch", "controle", "headset gamer"]
+    3:
+      nome: "Beleza em alta"             # fim da tarde (17:50)
+      categorias: [MLB1246]
+      preco_minimo: 5
+      preco_maximo: 90
+      palavras: ["coreana", "coreano", "k-beauty", "skin1004", "cosrx", "tirtir", "anua", "joseon", "centella", "sérum", "serum", "lip tint", "tint", "gloss", "blush", "base", "corretivo", "máscara de cílios", "rímel", "batom", "maquiagem", "protetor solar", "skincare"]
+  # Também busca os mais vendidos das subcategorias destas categorias (mais variedade e itens baratos).
+  # Número = quantas subcategorias explorar.
+  explorar_subcategorias:
+    MLB1144: 6
+    MLB1246: 8
+    MLB1574: 6
+    MLB1051: 6
   amazon_quando_disponivel: 2      # quantas das 5 vêm da Amazon quando a API estiver liberada
   # Categorias do Mercado Livre (as mais procuradas)
   categorias_ml:

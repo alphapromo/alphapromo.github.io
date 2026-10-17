@@ -9,7 +9,10 @@
   "url": "https://exemplo.com/MLB101",
   "categoria": "Eletrônicos, Áudio e Vídeo",
   "frete_gratis": true,
-  "popularidade": 90
+  "popularidade": 90,
+  "extras": {
+   "cat_raiz": "MLB1000"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -21,7 +24,10 @@
   "url": "https://exemplo.com/MLB102",
   "categoria": "Eletrodomésticos",
   "frete_gratis": true,
-  "popularidade": 80
+  "popularidade": 80,
+  "extras": {
+   "cat_raiz": "MLB1000"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -33,7 +39,10 @@
   "url": "https://exemplo.com/MLB103",
   "categoria": "Eletrônicos, Áudio e Vídeo",
   "frete_gratis": true,
-  "popularidade": 70
+  "popularidade": 70,
+  "extras": {
+   "cat_raiz": "MLB1000"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -45,7 +54,10 @@
   "url": "https://exemplo.com/MLB104",
   "categoria": "Informática",
   "frete_gratis": true,
-  "popularidade": 85
+  "popularidade": 85,
+  "extras": {
+   "cat_raiz": "MLB1000"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -57,7 +69,10 @@
   "url": "https://exemplo.com/MLB105",
   "categoria": "Esportes e Fitness",
   "frete_gratis": false,
-  "popularidade": 40
+  "popularidade": 40,
+  "extras": {
+   "cat_raiz": "MLB1000"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -69,7 +84,10 @@
   "url": "https://exemplo.com/MLB106",
   "categoria": "Beleza",
   "frete_gratis": true,
-  "popularidade": 60
+  "popularidade": 60,
+  "extras": {
+   "cat_raiz": "MLB1246"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -81,7 +99,10 @@
   "url": "https://exemplo.com/MLB107",
   "categoria": "Games",
   "frete_gratis": true,
-  "popularidade": 95
+  "popularidade": 95,
+  "extras": {
+   "cat_raiz": "MLB1144"
+  }
  },
  {
   "loja": "Mercado Livre",
@@ -93,7 +114,10 @@
   "url": "https://exemplo.com/MLB108",
   "categoria": "Celulares",
   "frete_gratis": false,
-  "popularidade": 99
+  "popularidade": 99,
+  "extras": {
+   "cat_raiz": "MLB1051"
+  }
  },
  {
   "loja": "Amazon",
@@ -105,6 +129,99 @@
   "url": "https://exemplo.com/B0TEST0001",
   "categoria": "echo",
   "frete_gratis": true,
-  "popularidade": 90
+  "popularidade": 90,
+  "extras": {
+   "cat_raiz": "MLB1000"
+  }
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB201",
+  "titulo": "Kit 3 Esponjas de Maquiagem Gota Profissional",
+  "preco": 12.9,
+  "preco_original": 29.9,
+  "imagem": "tests/fixtures/img/MLB201.png",
+  "url": "https://exemplo.com/MLB201",
+  "categoria": "Maquiagem",
+  "frete_gratis": true,
+  "popularidade": 80,
+  "extras": {
+   "cat_raiz": "MLB1246"
+  }
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB202",
+  "titulo": "Organizador de Cabos Adesivo 10 Peças",
+  "preco": 15.9,
+  "preco_original": 39.9,
+  "imagem": "tests/fixtures/img/MLB202.png",
+  "url": "https://exemplo.com/MLB202",
+  "categoria": "Organização",
+  "frete_gratis": false,
+  "popularidade": 70,
+  "extras": {
+   "cat_raiz": "MLB1574"
+  }
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB203",
+  "titulo": "Lip Tint Coreano Peripera Ink Velvet",
+  "preco": 39.9,
+  "preco_original": 79.9,
+  "imagem": "tests/fixtures/img/MLB203.png",
+  "url": "https://exemplo.com/MLB203",
+  "categoria": "Maquiagem",
+  "frete_gratis": true,
+  "popularidade": 90,
+  "extras": {
+   "cat_raiz": "MLB1246"
+  }
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB204",
+  "titulo": "Sérum Skin1004 Centella Ampoule 100ml",
+  "preco": 69.9,
+  "preco_original": 149.0,
+  "imagem": "tests/fixtures/img/MLB204.png",
+  "url": "https://exemplo.com/MLB204",
+  "categoria": "Cuidados com a Pele",
+  "frete_gratis": true,
+  "popularidade": 85,
+  "extras": {
+   "cat_raiz": "MLB1246"
+  }
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB205",
+  "titulo": "Jogo EA Sports FC 26 PS5 Mídia Física",
+  "preco": 199.0,
+  "preco_original": 349.0,
+  "imagem": "tests/fixtures/img/MLB205.png",
+  "url": "https://exemplo.com/MLB205",
+  "categoria": "Jogos",
+  "frete_gratis": true,
+  "popularidade": 95,
+  "extras": {
+   "cat_raiz": "MLB1144"
+  }
+ },
+ {
+  "loja": "Mercado Livre",
+  "id": "MLB206",
+  "titulo": "Cabo USB-C Turbo 1m Reforçado",
+  "preco": 18.5,
+  "preco_original": 45.0,
+  "imagem": "tests/fixtures/img/MLB206.png",
+  "url": "https://exemplo.com/MLB206",
+  "categoria": "Acessórios para Celulares",
+  "frete_gratis": false,
+  "popularidade": 60,
+  "extras": {
+   "cat_raiz": "MLB1051"
+  }
  }
 ]

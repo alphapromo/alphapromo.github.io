@@ -164,7 +164,44 @@ def diagnostico(categoria: str = "MLB1000", n: int = 3) -> None:
 
 
 # ---------------------------------------------------------------- coleta
-def fetch(categorias: dict[str, str]) -> list[Deal]:
+MAX_PRODUTOS_POR_SUBCATEGORIA = 10
+
+
+def _coletar(cli: _Client, cat_id: str, cat_nome: str, raiz: str, limite: int, vistos: set[str], deals: list[Deal]) -> int:
+    produtos = parse_highlights(cli.get(f"/highlights/MLB/category/{cat_id}"))
+    achados = 0
+    for pid, pos in produtos[:limite]:
+        if pid in vistos:
+            continue
+        vistos.add(pid)
+        p = cli.get(f"/products/{pid}")
+        if not p:
+            continue
+        bb = p.get("buy_box_winner") or {}
+        extra = None
+        if not (bb.get("price") and bb.get("original_price")):
+            if not bb:  # sem buy box: pega o anúncio mais barato do produto
+                bb = parse_product_items(cli.get(f"/products/{pid}/items"))
+                p = {**p, "buy_box_winner": bb}
+            if bb.get("item_id") and not bb.get("original_price"):
+                extra = parse_sale_price(cli.get(f"/items/{bb['item_id']}/sale_price", context="channel_marketplace"))
+        d = parse_product(p, pos, cat_nome, extra)
+        if d:
+            d.extras["cat_raiz"] = raiz
+            deals.append(d)
+            achados += 1
+    log.info("ML %s (%s): %s mais vendidos, %s com desconto", cat_nome, cat_id, len(produtos), achados)
+    return achados
+
+
+def subcategorias(cli: _Client, cat_id: str, n: int) -> list[tuple[str, str]]:
+    info = cli.get(f"/categories/{cat_id}") or {}
+    filhos = info.get("children_categories") or []
+    filhos.sort(key=lambda c: c.get("total_items_in_this_category") or 0, reverse=True)
+    return [(c["id"], c.get("name", c["id"])) for c in filhos[:n] if c.get("id")]
+
+
+def fetch(categorias: dict[str, str], explorar: dict[str, int] | None = None) -> list[Deal]:
     try:
         cli = _Client(_token())
     except MLAuthError as e:
@@ -173,30 +210,9 @@ def fetch(categorias: dict[str, str]) -> list[Deal]:
     deals: list[Deal] = []
     vistos: set[str] = set()
     for cat_id, cat_nome in categorias.items():
-        produtos = parse_highlights(cli.get(f"/highlights/MLB/category/{cat_id}"))
-        achados = 0
-        for pid, pos in produtos[:MAX_PRODUTOS_POR_CATEGORIA]:
-            if pid in vistos:
-                continue
-            vistos.add(pid)
-            p = cli.get(f"/products/{pid}")
-            if not p:
-                continue
-            bb = p.get("buy_box_winner") or {}
-            extra = None
-            if not (bb.get("price") and bb.get("original_price")):
-                if not bb:  # sem buy box: pega o anúncio mais barato do produto
-                    bb = parse_product_items(cli.get(f"/products/{pid}/items"))
-                    p = {**p, "buy_box_winner": bb}
-                if bb.get("item_id") and not bb.get("original_price"):
-                    extra = parse_sale_price(cli.get(f"/items/{bb['item_id']}/sale_price", context="channel_marketplace"))
-            if len(vistos) == 1:  # diagnóstico (sem dados sensíveis)
-                log.info("ML diagnóstico %s: buy_box=%s sale_price=%s", pid,
-                         {k: bb.get(k) for k in ("item_id", "price", "original_price")}, extra)
-            d = parse_product(p, pos, cat_nome, extra)
-            if d:
-                deals.append(d)
-                achados += 1
-        log.info("ML %s (%s): %s mais vendidos, %s com desconto", cat_nome, cat_id, len(produtos), achados)
+        _coletar(cli, cat_id, cat_nome, cat_id, MAX_PRODUTOS_POR_CATEGORIA, vistos, deals)
+    for raiz, n in (explorar or {}).items():
+        for sub_id, sub_nome in subcategorias(cli, raiz, n):
+            _coletar(cli, sub_id, sub_nome, raiz, MAX_PRODUTOS_POR_SUBCATEGORIA, vistos, deals)
     log.info("ML: %s ofertas com desconto (%s chamadas à API)", len(deals), cli.chamadas)
     return deals

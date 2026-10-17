@@ -80,3 +80,79 @@ def selecionar(deals: list[Deal], cfg: dict, historico: dict[str, str], hoje: da
 def _parecido(a: str, b: str) -> bool:
     wa, wb = set(a.lower().split()[:5]), set(b.lower().split()[:5])
     return len(wa & wb) >= 4
+
+
+# ---------------------------------------------------------------- temas por horário
+def _no_tema(d: Deal, tema: dict, relaxado: bool) -> bool:
+    pmin = tema.get("preco_minimo", 0)
+    pmax = tema.get("preco_maximo", 10**9) * (1.5 if relaxado else 1)
+    if not (pmin <= d.preco <= pmax):
+        return False
+    cats = tema.get("categorias")
+    if cats and d.extras.get("cat_raiz") not in cats:
+        return False
+    return True
+
+
+def _bonus_palavras(d: Deal, tema: dict) -> float:
+    titulo = d.titulo.lower()
+    return 15.0 if any(p in titulo for p in tema.get("palavras", [])) else 0.0
+
+
+def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str], hoje: date,
+                        excluir: set[str] | None = None) -> list[Deal | None]:
+    """Uma oferta por horário: horários com tema primeiro, depois a melhor do dia nos demais.
+
+    A melhor oferta restante vai para o 4º horário (19:50, nobre); a seguinte para o 5º.
+    """
+    corte = (hoje - timedelta(days=cfg["repetir_produto_apos_dias"])).isoformat()
+    excluir = excluir or set()
+    base = []
+    for d in deals:
+        if d.chave in excluir or d.desconto < cfg["desconto_minimo"] or d.desconto > 90:
+            continue
+        if not d.imagem or not d.titulo or PALAVRAS_RUINS.search(d.titulo):
+            continue
+        if historico.get(d.chave, "") >= corte:
+            continue
+        d.score = score(d)
+        base.append(d)
+
+    total = cfg["ofertas_por_dia"]
+    temas = {int(k): v for k, v in (cfg.get("temas") or {}).items()}
+    final: list[Deal | None] = [None] * total
+    usados: list[Deal] = []
+
+    def livre(d: Deal) -> bool:
+        return d not in usados and not any(_parecido(d.titulo, u.titulo) for u in usados)
+
+    for slot in sorted(temas):
+        if slot > total:
+            continue
+        tema = temas[slot]
+        escolhido = None
+        for relaxado in (False, True):
+            opcoes = [d for d in base if livre(d) and _no_tema(d, tema, relaxado)]
+            if opcoes:
+                escolhido = max(opcoes, key=lambda d: d.score + _bonus_palavras(d, tema))
+                break
+        if escolhido:
+            escolhido.extras["tema"] = tema.get("nome", "")
+            final[slot - 1] = escolhido
+            usados.append(escolhido)
+
+    geral = [d for d in base if cfg["preco_minimo"] <= d.preco <= cfg["preco_maximo"]]
+    geral.sort(key=lambda d: d.score, reverse=True)
+    sem_tema = [i for i in range(total) if final[i] is None]
+    sem_tema.sort(key=lambda i: (i != 3, i != 4, i))  # 4º horário primeiro, depois o 5º
+    def cat_cheia(d: Deal) -> bool:
+        raiz = d.extras.get("cat_raiz") or d.categoria
+        return sum(1 for u in usados if (u.extras.get("cat_raiz") or u.categoria) == raiz) >= cfg["maximo_por_categoria"]
+
+    for i in sem_tema:
+        for d in geral:
+            if livre(d) and not cat_cheia(d):
+                final[i] = d
+                usados.append(d)
+                break
+    return final
