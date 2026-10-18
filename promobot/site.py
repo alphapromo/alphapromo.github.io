@@ -74,6 +74,19 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <p>As ofertas de hoje saem logo cedo. Volte em instantes.</p>
 {% endfor %}
 
+{% if semana %}
+<h2>Top 5 da semana</h2>
+{% for d in semana %}
+<a class="deal" href="{{ d.link }}" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#{{ d.numero }}</span>
+<img src="{{ d.imagem }}" alt="" loading="lazy">
+<span class="info"><span class="t">{{ d.titulo }}</span>
+<span class="p"><s>{{ d.de }}</s><b>{{ d.por }}</b><span class="tag">{{ d.loja }}</span></span></span>
+<span class="off">-{{ d.desconto }}%</span>
+</a>
+{% endfor %}
+{% endif %}
+
 <a class="amz" href="{{ amazon }}" rel="nofollow sponsored noopener" target="_blank">Ver todas as ofertas do dia na Amazon</a>
 
 {% for dia in anteriores %}
@@ -120,6 +133,13 @@ def _itens(plan: dict) -> list[dict]:
     return out
 
 
+def _semana(hoje: date) -> dict:
+    from . import carrossel
+
+    c = carrossel.mais_recente(hoje)
+    return c if c and str(c.get("post", "")).startswith("ok:") else {}
+
+
 def build(hoje: date, atualizado: str) -> None:
     DOCS.mkdir(exist_ok=True)
     brand = DOCS / "brand"
@@ -139,6 +159,6 @@ def build(hoje: date, atualizado: str) -> None:
         if p:
             anteriores.append({"titulo": nomes[k] + f" ({dia.strftime('%d/%m')})", "deals": _itens(p)})
     html = TEMPLATE.render(
-        hoje=_itens(plano), anteriores=anteriores, atualizado=atualizado, amazon=amazon_ofertas_do_dia()
+        hoje=_itens(plano), anteriores=anteriores, semana=_itens(_semana(hoje)), atualizado=atualizado, amazon=amazon_ofertas_do_dia()
     )
     (DOCS / "index.html").write_text(html, encoding="utf-8")

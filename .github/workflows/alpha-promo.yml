@@ -12,7 +12,7 @@ on:
       comando:
         description: "run = automático | curate = refazer as ofertas de hoje | recurar = refazer só as que ainda não saíram | extra = ofertas extras do tema | post = publicar uma oferta agora | arte = refazer as artes de hoje"
         type: choice
-        options: [run, curate, recurar, extra, post, arte, reel, diag]
+        options: [run, curate, recurar, extra, carrossel, post, arte, reel, diag]
         default: run
       oferta:
         description: "Número da oferta (para 'post' e 'reel') ou quantas extras (para 'extra')"

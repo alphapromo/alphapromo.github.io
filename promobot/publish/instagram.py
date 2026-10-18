@@ -68,6 +68,27 @@ def post_story(image_url: str, versao: str) -> str:
     return _publish({"image_url": image_url, "media_type": "STORIES"}, versao)
 
 
+def post_carousel(image_urls: list[str], caption: str, versao: str) -> str:
+    """Carrossel: cria um container por imagem e depois o container do carrossel."""
+    uid, token = env("IG_USER_ID"), env("IG_ACCESS_TOKEN")
+    if not (uid and token):
+        raise InstagramError("IG_USER_ID / IG_ACCESS_TOKEN não configurados")
+    base = f"{HOST}/{versao}"
+    filhos = []
+    for url in image_urls[:10]:
+        filhos.append(_check(requests.post(f"{base}/{uid}/media", timeout=60, data={
+            "image_url": url, "is_carousel_item": "true", "access_token": token}))["id"])
+    for cid in filhos:
+        for _ in range(24):
+            st = _check(requests.get(f"{base}/{cid}", params={"fields": "status_code", "access_token": token}, timeout=30))
+            if st.get("status_code") == "FINISHED":
+                break
+            if st.get("status_code") in ("ERROR", "EXPIRED"):
+                raise InstagramError(f"item {cid}: {st}")
+            time.sleep(5)
+    return _publish({"media_type": "CAROUSEL", "children": ",".join(filhos), "caption": caption}, versao)
+
+
 def post_reel(video_url: str, caption: str, versao: str) -> str:
     return _publish({"media_type": "REELS", "video_url": video_url, "caption": caption, "share_to_feed": "true"}, versao)
 

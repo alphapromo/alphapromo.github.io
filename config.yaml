@@ -11,11 +11,16 @@ marca:
 agenda:
   curadoria: "06:40"
   posts: ["07:50", "11:50", "17:50", "19:50", "21:20"]
+  carrossel_semanal: {dia_semana: 6, hora: "10:50"}   # domingo (0 = segunda … 6 = domingo)
   tolerancia_minutos: 75           # o GitHub às vezes atrasa o agendamento
 
 curadoria:
   ofertas_por_dia: 5
-  desconto_minimo: 20              # % mínimo de desconto para entrar no ranking
+  desconto_minimo: 10              # % mínimo de desconto real (o que manda é ser mais vendido)
+  desconto_maximo: 70              # acima disso costuma ser preço "de" inflado
+  top_mais_vendidos: 10            # horários livres: só o top 10 de mais vendidos de cada categoria
+  marcas_permitidas:               # categorias que só aceitam estas marcas
+    MLB1144: ["Nintendo", "Sony", "PlayStation", "Microsoft", "Xbox", "8BitDo"]
   preco_minimo: 25.0
   preco_maximo: 4000.0
   maximo_por_categoria: 2
@@ -37,7 +42,7 @@ curadoria:
       preco_minimo: 5
       preco_maximo: 90
       palavras: ["coreana", "coreano", "k-beauty", "skin1004", "cosrx", "tirtir", "anua", "joseon", "centella", "sérum", "serum", "lip tint", "tint", "gloss", "blush", "base", "corretivo", "máscara de cílios", "rímel", "batom", "maquiagem", "protetor solar", "skincare"]
-  # Também busca os mais vendidos das subcategorias destas categorias (mais variedade e itens baratos).
+  # Também busca os mais vendidos das subcategorias destas categorias (só para os horários com tema).
   # Número = quantas subcategorias explorar.
   explorar_subcategorias:
     MLB1144: 6
@@ -66,7 +71,7 @@ curadoria:
     - ["VideoGames", "controle"]
 
 publicar:
-  reels_ofertas: [2, 4]            # estas ofertas saem como Reel (vídeo) em vez de foto no feed
+  reels_ofertas: [2, 3, 4, 5]      # estas ofertas saem como Reel (vídeo) em vez de foto no feed
   instagram_feed: true
   instagram_stories: true
   tiktok: true

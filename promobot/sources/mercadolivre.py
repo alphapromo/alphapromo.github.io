@@ -111,6 +111,8 @@ def parse_product(p: dict | None, posicao: int, categoria: str, preco_extra: tup
     pics = p.get("pictures") or []
     imagem = _hi_res(pics[0].get("url") or pics[0].get("secure_url", "")) if pics else ""
     pid = p.get("id", "")
+    marca = next((a.get("value_name") for a in (p.get("attributes") or [])
+                  if a.get("id") == "BRAND" and a.get("value_name")), "")
     link = p.get("permalink") or f"https://www.mercadolivre.com.br/p/{pid}"
     return Deal(
         loja="Mercado Livre",
@@ -123,7 +125,7 @@ def parse_product(p: dict | None, posicao: int, categoria: str, preco_extra: tup
         categoria=categoria,
         frete_gratis=bool((bb.get("shipping") or {}).get("free_shipping")),
         popularidade=max(0, 60 - posicao) * 2,  # posição no ranking de mais vendidos
-        extras={"fonte": "api_highlights", "item_id": bb.get("item_id"),
+        extras={"fonte": "api_highlights", "item_id": bb.get("item_id"), "posicao": posicao, "marca": marca,
                 "fotos": [_hi_res(x.get("url") or x.get("secure_url", "")) for x in pics[:5]]},
     )
 
@@ -167,7 +169,8 @@ def diagnostico(categoria: str = "MLB1000", n: int = 3) -> None:
 MAX_PRODUTOS_POR_SUBCATEGORIA = 10
 
 
-def _coletar(cli: _Client, cat_id: str, cat_nome: str, raiz: str, limite: int, vistos: set[str], deals: list[Deal]) -> int:
+def _coletar(cli: _Client, cat_id: str, cat_nome: str, raiz: str, limite: int, vistos: set[str], deals: list[Deal],
+             sub: bool = False) -> int:
     produtos = parse_highlights(cli.get(f"/highlights/MLB/category/{cat_id}"))
     achados = 0
     for pid, pos in produtos[:limite]:
@@ -188,6 +191,7 @@ def _coletar(cli: _Client, cat_id: str, cat_nome: str, raiz: str, limite: int, v
         d = parse_product(p, pos, cat_nome, extra)
         if d:
             d.extras["cat_raiz"] = raiz
+            d.extras["subcategoria"] = sub
             deals.append(d)
             achados += 1
     log.info("ML %s (%s): %s mais vendidos, %s com desconto", cat_nome, cat_id, len(produtos), achados)
@@ -213,6 +217,30 @@ def fetch(categorias: dict[str, str], explorar: dict[str, int] | None = None) ->
         _coletar(cli, cat_id, cat_nome, cat_id, MAX_PRODUTOS_POR_CATEGORIA, vistos, deals)
     for raiz, n in (explorar or {}).items():
         for sub_id, sub_nome in subcategorias(cli, raiz, n):
-            _coletar(cli, sub_id, sub_nome, raiz, MAX_PRODUTOS_POR_SUBCATEGORIA, vistos, deals)
+            _coletar(cli, sub_id, sub_nome, raiz, MAX_PRODUTOS_POR_SUBCATEGORIA, vistos, deals, sub=True)
     log.info("ML: %s ofertas com desconto (%s chamadas à API)", len(deals), cli.chamadas)
     return deals
+
+
+def atualizar(deals: list[Deal]) -> list[Deal]:
+    """Confere de novo o preço atual de ofertas antigas (para o carrossel da semana)."""
+    try:
+        cli = _Client(_token())
+    except MLAuthError as e:
+        log.error("Mercado Livre: %s", e)
+        return []
+    out = []
+    for d in deals:
+        p = cli.get(f"/products/{d.id}")
+        if not p:
+            continue
+        bb = p.get("buy_box_winner") or {}
+        extra = None
+        if bb.get("item_id") and not bb.get("original_price"):
+            extra = parse_sale_price(cli.get(f"/items/{bb['item_id']}/sale_price", context="channel_marketplace"))
+        novo = parse_product(p, int(d.extras.get("posicao") or 10), d.categoria, extra)
+        if novo:
+            novo.extras = {**d.extras, **novo.extras, "posicao": d.extras.get("posicao")}
+            novo.link_afiliado = d.link_afiliado
+            out.append(novo)
+    return out

@@ -10,16 +10,41 @@ from .models import Deal
 PALAVRAS_RUINS = re.compile(r"\b(usado|recondicionado|refil|capinha|película|pelicula|adesivo|kit \d+ un)\b", re.I)
 
 
+def posicao(d: Deal) -> int:
+    """Posição no ranking de mais vendidos do dia (1 = o mais vendido da categoria)."""
+    if d.extras.get("posicao"):
+        return int(d.extras["posicao"])
+    return max(1, 60 - int(d.popularidade / 2)) if d.popularidade else 50
+
+
 def score(d: Deal) -> float:
-    s = d.desconto * 1.0
-    s += min(math.log10(1 + d.popularidade), 2.5) * 10
-    s += 4 if d.frete_gratis else 0
-    # descontos absurdos (>85%) costumam ser preço "de" inflado
-    if d.desconto > 85:
-        s -= 40
-    # economia em reais também importa: R$ 300 off chama mais atenção que R$ 8 off
-    s += min((d.preco_original - d.preco) / 50, 10)
+    """Mais vendido manda; desconto é bônus.
+
+    1º lugar = 100 pontos, 10º = 55. Cada 1% de desconto vale 0,4 (60% OFF = +24).
+    """
+    s = max(0, 21 - posicao(d)) * 5.0
+    s += min(d.desconto, 60) * 0.4
+    s += 3 if d.frete_gratis else 0
+    s += min((d.preco_original - d.preco) / 50, 5)
     return round(s, 2)
+
+
+def _norm(t: str) -> str:
+    import unicodedata
+    return unicodedata.normalize("NFKD", (t or "").lower()).encode("ascii", "ignore").decode()
+
+
+def marca_ok(d: Deal, cfg: dict) -> bool:
+    """Categorias com lista de marcas (ex.: Games só Nintendo, Sony, Microsoft e 8BitDo)."""
+    permitidas = (cfg.get("marcas_permitidas") or {}).get(d.extras.get("cat_raiz") or "")
+    if not permitidas:
+        return True
+    permitidas = [_norm(m) for m in permitidas]
+    marca = _norm(d.extras.get("marca", ""))
+    if marca:
+        return any(m == marca or m in marca.split() for m in permitidas)
+    titulo = _norm(d.titulo)  # sem marca cadastrada: só aceita se o título cita a marca e não é "compatível"
+    return any(m in titulo for m in permitidas) and not re.search(r"compativel|para (ps|xbox|switch|nintendo)", titulo)
 
 
 def selecionar(deals: list[Deal], cfg: dict, historico: dict[str, str], hoje: date) -> list[Deal]:
@@ -109,9 +134,11 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
     excluir = excluir or set()
     base = []
     for d in deals:
-        if d.chave in excluir or d.desconto < cfg["desconto_minimo"] or d.desconto > 90:
+        if d.chave in excluir or d.desconto < cfg["desconto_minimo"] or d.desconto > cfg.get("desconto_maximo", 70):
             continue
         if not d.imagem or not d.titulo or PALAVRAS_RUINS.search(d.titulo):
+            continue
+        if not marca_ok(d, cfg):
             continue
         if historico.get(d.chave, "") >= corte:
             continue
@@ -124,6 +151,9 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
     usados: list[Deal] = list(ja_usados or [])
 
     def livre(d: Deal) -> bool:
+        marca = _norm(d.extras.get("marca", ""))
+        if marca and any(_norm(u.extras.get("marca", "")) == marca for u in usados):
+            return False  # no máximo 1 produto por marca no dia
         return d not in usados and not any(_parecido(d.titulo, u.titulo) for u in usados)
 
     for slot in sorted(temas):
@@ -143,7 +173,10 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
             final[slot - 1] = escolhido
             usados.append(escolhido)
 
-    geral = [d for d in base if cfg["preco_minimo"] <= d.preco <= cfg["preco_maximo"]]
+    # horários livres: só os mais vendidos das categorias principais (top N), nada de subcategoria
+    top = cfg.get("top_mais_vendidos", 10)
+    geral = [d for d in base if cfg["preco_minimo"] <= d.preco <= cfg["preco_maximo"]
+             and not d.extras.get("subcategoria") and posicao(d) <= top]
     geral.sort(key=lambda d: d.score, reverse=True)
     sem_tema = [i for i in range(total) if final[i] is None]
     sem_tema.sort(key=lambda i: (i != 3, i != 4, i))  # 4º horário primeiro, depois o 5º

@@ -24,6 +24,7 @@ SEG = 2.2        # segundos por foto
 FADE = 0.4       # transição entre fotos
 FINAL = 1.6      # segura a última foto no fim
 ZOOM = 0.10      # zoom total de cada foto
+GANCHO = 1.3     # segundos da frase de impacto no começo (antes das fotos)
 TRILHA = Path(__file__).resolve().parent.parent / "assets" / "audio" / "trilha.m4a"
 
 
@@ -34,6 +35,27 @@ def _encaixar(foto: Image.Image, caixa: tuple[int, int], escala: float) -> Image
     f.thumbnail((int(bw * 0.82 * escala), int(bh * 0.86 * escala)), Image.LANCZOS)
     tela = Image.new("RGB", (bw, bh), render.BRANCO)
     tela.paste(f, ((bw - f.width) // 2, (bh - f.height) // 2))
+    return tela
+
+
+def _gancho(deal: Deal, caixa: tuple[int, int]) -> Image.Image:
+    """Frase de impacto do primeiro segundo: '#2 mais vendido / em Games hoje'."""
+    bw, bh = caixa
+    tela = Image.new("RGB", (bw, bh), render.BRANCO)
+    d = ImageDraw.Draw(tela)
+    pos = deal.extras.get("posicao")
+    if pos and int(pos) <= 20:
+        l1, l2 = f"#{int(pos)} mais vendido", f"em {deal.categoria} hoje"
+    else:
+        l1, l2 = f"{deal.desconto}% OFF", "só hoje, olha isso"
+    f1 = render.font("outfit", 96, 800)
+    while d.textlength(l1, font=f1) > bw - 80 and f1.size > 50:
+        f1 = render.font("outfit", f1.size - 6, 800)
+    f2 = render.font("dm", 44, 600)
+    while d.textlength(l2, font=f2) > bw - 80 and f2.size > 26:
+        f2 = render.font("dm", f2.size - 4, 600)
+    d.text((bw / 2, bh / 2 - 40), l1, font=f1, fill=render.TINTA, anchor="mm")
+    d.text((bw / 2, bh / 2 + 60), l2, font=f2, fill=render.CORAL_TXT, anchor="mm")
     return tela
 
 
@@ -52,6 +74,14 @@ def frames(deal: Deal, numero: int, fotos: list[Image.Image], total_dia: int = 5
         i = min(i, len(fotos) - 1)
         prog = min(t / (n_seg + n_fade), 1.0)
         return _encaixar(fotos[i], (bw, bh), 1.0 + ZOOM * prog)
+
+    gancho = _gancho(deal, (bw, bh))
+    n_g = int(GANCHO * FPS)
+    for k in range(n_g + n_fade):  # gancho e transição para a primeira foto
+        atual = gancho if k < n_g else Image.blend(gancho, quadro_foto(0, 0), (k - n_g) / n_fade)
+        q = fundo.copy()
+        q.paste(atual, (inner[0], inner[1]), mascara)
+        yield q
 
     for k in range(total):
         i, t = divmod(k, n_seg)

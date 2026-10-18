@@ -19,7 +19,7 @@ import time
 
 import requests
 
-from . import affiliate, caption, carta, reel, render, site, state
+from . import affiliate, caption, carrossel, carta, reel, render, site, state
 from .config import BRT, ROOT, Settings, env, now_brt
 from .models import Deal
 from .publish import instagram, tiktok
@@ -151,7 +151,7 @@ def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = Fal
     Só escolhe e desenha; a publicação é feita depois com `post --slot N`
     (as artes precisam estar no ar no GitHub antes de ir para o Instagram).
     """
-    from .ranking import _bonus_palavras, _no_tema, _parecido, score
+    from .ranking import _bonus_palavras, _no_tema, _parecido, marca_ok, score
 
     plano = state.load_plan(hoje)
     if not plano:
@@ -169,7 +169,9 @@ def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = Fal
     ja = [Deal.from_dict(r) for r in plano["deals"]]
     cand = []
     for d in deals:
-        if historico.get(d.chave, "") >= corte or not (c["desconto_minimo"] <= d.desconto <= 90):
+        if historico.get(d.chave, "") >= corte or not (c["desconto_minimo"] <= d.desconto <= c.get("desconto_maximo", 70)):
+            continue
+        if not marca_ok(d, c):
             continue
         if not d.imagem or not _no_tema(d, tema, relaxado=True):
             continue
@@ -369,8 +371,20 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
                 ok &= post_slot(cfg, hoje, i, dry_run=dry_run)
                 mudou = True
                 plano = state.load_plan(hoje)
-        if mudou:
-            site.build(hoje, agora.strftime("%d/%m às %Hh%M"))
+
+    # carrossel "Top 5 da semana": prepara ~1h antes e publica no horário (as imagens precisam estar no ar)
+    cs = ag.get("carrossel_semanal")
+    if cs and agora.weekday() == int(cs["dia_semana"]):
+        hora = _hhmm(cs["hora"], hoje)
+        dados = carrossel.carregar(hoje)
+        if dados is None and hora - timedelta(minutes=75) <= agora < hora + tol:
+            carrossel.preparar(cfg, hoje)
+            mudou = True
+        elif dados and not str(dados.get("post", "")).startswith(("ok:", "pulado")) and hora <= agora <= hora + tol:
+            ok &= carrossel.publicar(cfg, hoje, dry_run=dry_run)
+            mudou = True
+    if mudou:
+        site.build(hoje, agora.strftime("%d/%m às %Hh%M"))
     if not mudou:
         log.info("Nada a fazer agora (%s).", agora.strftime("%H:%M"))
     return 0 if ok else 1
@@ -379,7 +393,7 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 def main(argv=None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
@@ -426,6 +440,13 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "curate":
         curate(cfg, hoje, mock=a.mock, force=a.force or a.manter, manter=a.manter)
+        return 0
+    if a.cmd == "carrossel":  # prepara (1ª vez) ou publica (2ª vez) o Top 5 da semana de hoje
+        if carrossel.carregar(hoje) is None or a.force:
+            carrossel.preparar(cfg, hoje)
+        else:
+            carrossel.publicar(cfg, hoje, dry_run=dry)
+        site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
         return 0
     if a.cmd == "extra":
         extra(cfg, hoje, a.tema, a.quantos, mock=a.mock)
