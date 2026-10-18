@@ -11,7 +11,7 @@ marca:
 agenda:
   curadoria: "06:40"
   posts: ["07:50", "11:50", "17:50", "19:50", "21:20"]
-  carrossel_semanal: {dia_semana: 6, hora: "10:50"}   # domingo (0 = segunda … 6 = domingo)
+  carrossel_semanal: {dia_semana: 6, hora: "10:50", inicio: "2026-10-25"}   # domingo (0 = segunda … 6 = domingo)
   tolerancia_minutos: 75           # o GitHub às vezes atrasa o agendamento
 
 curadoria:

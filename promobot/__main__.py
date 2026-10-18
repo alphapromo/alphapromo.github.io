@@ -381,7 +381,7 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 
     # carrossel "Top 5 da semana": prepara ~1h antes e publica no horário (as imagens precisam estar no ar)
     cs = ag.get("carrossel_semanal")
-    if cs and agora.weekday() == int(cs["dia_semana"]):
+    if cs and agora.weekday() == int(cs["dia_semana"]) and hoje.isoformat() >= str(cs.get("inicio", "")):
         hora = _hhmm(cs["hora"], hoje)
         dados = carrossel.carregar(hoje)
         if dados is None and hora - timedelta(minutes=75) <= agora < hora + tol:
