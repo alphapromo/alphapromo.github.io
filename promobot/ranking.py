@@ -113,6 +113,9 @@ def _no_tema(d: Deal, tema: dict, relaxado: bool) -> bool:
     pmax = tema.get("preco_maximo", 10**9) * (1.5 if relaxado else 1)
     if not (pmin <= d.preco <= pmax):
         return False
+    titulo = d.titulo.lower()
+    if any(p in titulo for p in tema.get("excluir_palavras", [])):
+        return False
     cats = tema.get("categorias")
     if cats and d.extras.get("cat_raiz") not in cats:
         return False

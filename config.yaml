@@ -42,6 +42,7 @@ curadoria:
       preco_minimo: 5
       preco_maximo: 90
       palavras: ["coreana", "coreano", "k-beauty", "skin1004", "cosrx", "tirtir", "anua", "joseon", "centella", "sérum", "serum", "lip tint", "tint", "gloss", "blush", "base", "corretivo", "máscara de cílios", "rímel", "batom", "maquiagem", "protetor solar", "skincare"]
+      excluir_palavras: ["expositor", "organizador", "porta ", "suporte", "maleta", "necessaire", "espelho", "prateleira"]
   # Também busca os mais vendidos das subcategorias destas categorias (só para os horários com tema).
   # Número = quantas subcategorias explorar.
   explorar_subcategorias:
