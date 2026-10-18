@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from . import carta, render, state
 from .config import ROOT, Settings
 from .models import Deal, brl
-from .ranking import posicao, score
+from .ranking import marca_ok, posicao, score
 
 log = logging.getLogger(__name__)
 
@@ -92,7 +92,7 @@ def preparar(cfg: Settings, hoje: date) -> dict | None:
     from .sources import mercadolivre
 
     c = cfg["curadoria"]
-    cand = _publicadas(hoje)
+    cand = [d for d in _publicadas(hoje) if marca_ok(d, c) and d.desconto <= c.get("desconto_maximo", 70)]
     cand.sort(key=lambda d: (posicao(d), -score(d)))
     atuais = [d for d in mercadolivre.atualizar(cand[:12])
               if c["desconto_minimo"] <= d.desconto <= c.get("desconto_maximo", 70)]

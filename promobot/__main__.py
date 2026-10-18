@@ -53,6 +53,13 @@ def gerar_reel(d: Deal, n: int, hoje: date) -> bool:
     return True
 
 
+def _aviso(msg: str) -> None:
+    """Log + anotação no GitHub Actions (aparece no resumo da execução, sem abrir o log)."""
+    log.info(msg)
+    if env("GITHUB_ACTIONS"):
+        print(f"::notice::{msg}", flush=True)
+
+
 def _numeros_colecao(hoje: date, quantos: int) -> list[int]:
     """Próximos números da coleção do mês (001/155, 002/155…)."""
     arq = state.STATE / "colecao.json"
@@ -135,8 +142,8 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
             gerar_reel(d, n, hoje)
         plano["deals"].append(d.to_dict())
         historico[d.chave] = hoje.isoformat()
-        log.info("#%s  %-20s %s%% OFF  R$ %.2f  %s  [%s] score=%s carta=%s", n, d.extras.get("tema", "melhor do dia")[:20],
-                 d.desconto, d.preco, d.titulo[:55], d.categoria, d.score, d.extras["num_colecao"])
+        _aviso(f"#{n} {d.extras.get('tema', 'melhor do dia')} | top {d.extras.get('posicao')} em {d.categoria} | "
+               f"{d.desconto}% OFF R$ {d.preco:.2f} | {d.extras.get('marca') or '-'} | {d.titulo[:60]}")
 
     state.save_plan(hoje, plano)
     state.save_history(historico, hoje)
@@ -201,7 +208,7 @@ def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = Fal
     for d, n, _ in itens:
         plano["deals"].append(d.to_dict())
         historico[d.chave] = hoje.isoformat()
-        log.info("Extra #%s  %s%% OFF  R$ %.2f  %s  carta=%s", n, d.desconto, d.preco, d.titulo[:60], d.extras["num_colecao"])
+        _aviso(f"Extra #{n} | top {d.extras.get('posicao')} | {d.desconto}% OFF R$ {d.preco:.2f} | {d.extras.get('marca') or '-'} | {d.titulo[:60]}")
     state.save_plan(hoje, plano)
     state.save_history(historico, hoje)
     site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
