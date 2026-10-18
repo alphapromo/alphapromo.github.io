@@ -257,8 +257,36 @@ def _tem(nome: str, termo: str) -> bool:
     return any(re.search(rf"\b{re.escape(_norm(t.strip()))}\b", n) for t in termo.split("|") if t.strip())
 
 
+def produto_por_id(pid: str, item_id: str = "") -> Deal | None:
+    """Produto do catálogo pelo código (MLB…) da página /p/; item_id = anúncio (wid) se não houver buy box."""
+    aviso = logging.getLogger("promobot.aviso")
+    cli = _Client(_token())
+    p = cli.get(f"/products/{pid}")
+    if not p:
+        aviso.info("produto %s não encontrado", pid)
+        return None
+    bb = p.get("buy_box_winner") or {}
+    preco, original = bb.get("price"), bb.get("original_price")
+    iid = bb.get("item_id") or item_id
+    if iid and (not preco or not original):
+        sp = cli.get(f"/items/{iid}/sale_price", context="channel_marketplace") or {}
+        preco = preco or sp.get("amount")
+        original = original or sp.get("regular_amount")
+    aviso.info("produto %s | %s | preço=%s de=%s | item=%s", pid, p.get("name"), preco, original, iid)
+    if not preco:
+        return None
+    original = max(original or preco, preco)
+    d = parse_product({**p, "buy_box_winner": {**bb, "price": preco, "original_price": original + 0.0001, "item_id": iid}}, 1, "Games")
+    if d and d.preco_original - d.preco < 0.01:
+        d.preco_original = d.preco
+    return d
+
+
 def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
     """Procura um produto no catálogo do ML e devolve o anúncio vencedor (aceita sem desconto)."""
+    if busca.upper().startswith("MLB"):  # códigos diretos: "MLB74108173" ou "MLB74108173,MLB7413456100"
+        ids = [x.strip().upper() for x in busca.split(",")]
+        return produto_por_id(ids[0], ids[1] if len(ids) > 1 else "")
     cli = _Client(_token())
     r = cli.s.get(f"{API}/products/search", params={"status": "active", "site_id": "MLB", "q": busca, "limit": 20}, timeout=30)
     if r.status_code != 200:
