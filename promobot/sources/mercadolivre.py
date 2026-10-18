@@ -251,6 +251,12 @@ def _norm(t: str) -> str:
     return unicodedata.normalize("NFKD", (t or "").lower()).encode("ascii", "ignore").decode()
 
 
+def _tem(nome: str, termo: str) -> bool:
+    """Palavra inteira no nome; 'ps5|playstation 5' aceita qualquer uma das opções."""
+    n = _norm(nome)
+    return any(re.search(rf"\b{re.escape(_norm(t.strip()))}\b", n) for t in termo.split("|") if t.strip())
+
+
 def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
     """Procura um produto no catálogo do ML e devolve o anúncio vencedor (aceita sem desconto)."""
     cli = _Client(_token())
@@ -264,7 +270,7 @@ def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
     melhores = []
     for pid in ids[:15]:
         p = cli.get(f"/products/{pid}")
-        if not p or not all(_norm(x) in _norm(p.get("name", "")) for x in exigir):
+        if not p or not all(_tem(p.get("name", ""), x) for x in exigir):
             continue
         bb = p.get("buy_box_winner") or parse_product_items(cli.get(f"/products/{pid}/items"))
         if not bb.get("price"):
