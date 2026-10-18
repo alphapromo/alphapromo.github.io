@@ -42,6 +42,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # sempre a versão mais nova (o evento agendado pode apontar para um commit antigo)
 
       - uses: actions/setup-python@v5
         with:
@@ -93,7 +95,7 @@ jobs:
           git add -A state docs
           if git diff --cached --quiet; then echo "nada para salvar"; exit 0; fi
           git commit -m "robô: $(TZ=America/Sao_Paulo date '+%d/%m %H:%M')"
-          for i in 1 2 3; do git pull --rebase -X ours && git push && exit 0; sleep 5; done
+          for i in 1 2 3; do git pull --rebase -X theirs && git push && exit 0; sleep 5; done
           exit 1
 
       - name: Falhou? (o GitHub te avisa por e-mail)

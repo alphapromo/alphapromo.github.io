@@ -70,3 +70,31 @@ def post_story(image_url: str, versao: str) -> str:
 
 def post_reel(video_url: str, caption: str, versao: str) -> str:
     return _publish({"media_type": "REELS", "video_url": video_url, "caption": caption, "share_to_feed": "true"}, versao)
+
+
+def ja_publicado(primeira_linha: str, versao: str, horas: int = 20) -> str | None:
+    """Confere no próprio Instagram se já existe post recente com essa primeira linha de legenda.
+
+    Trava de segurança contra post duplicado (por ex., duas execuções do robô ao mesmo tempo).
+    """
+    from datetime import datetime, timedelta, timezone
+
+    uid, token = env("IG_USER_ID"), env("IG_ACCESS_TOKEN")
+    if not (uid and token):
+        return None
+    try:
+        r = requests.get(f"{HOST}/{versao}/{uid}/media", timeout=30,
+                         params={"fields": "id,caption,timestamp", "limit": 25, "access_token": token})
+        itens = _check(r).get("data", [])
+    except Exception as e:  # noqa: BLE001
+        log.warning("Instagram: não consegui conferir posts recentes: %s", e)
+        return None
+    corte = datetime.now(timezone.utc) - timedelta(hours=horas)
+    for m in itens:
+        try:
+            quando = datetime.strptime(m.get("timestamp", ""), "%Y-%m-%dT%H:%M:%S%z")
+        except ValueError:
+            continue
+        if quando >= corte and (m.get("caption") or "").split("\n", 1)[0].strip() == primeira_linha.strip():
+            return m["id"]
+    return None

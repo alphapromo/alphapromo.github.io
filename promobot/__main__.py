@@ -286,6 +286,15 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False) -> bo
         tarefas.append(("tiktok", lambda: tiktok.post(url_tt, caption.titulo_tiktok(d, slot), caption.legenda(d, slot, marca, "tiktok"),
                                                        pub["tiktok_backend"], pub.get("tiktok_musica_automatica", True))))
 
+    # trava contra duplicado: se o post do feed já está no Instagram, não publica de novo (nem o story)
+    if not dry_run and ig_ok and pub.get("instagram_feed") and not str(feito.get("instagram_feed", "")).startswith("ok:"):
+        primeira = caption.legenda(d, slot, marca, "instagram").split("\n", 1)[0]
+        existente = instagram.ja_publicado(primeira, pub["instagram_api_versao"])
+        if existente:
+            log.warning("Oferta #%s já está no Instagram (%s) — não vou publicar de novo.", slot, existente)
+            feito["instagram_feed"] = f"ok:{existente}"
+            feito.setdefault("instagram_story", "ok:ja-publicado")
+
     for nome, fn in tarefas:
         if str(feito.get(nome, "")).startswith("ok:"):
             log.info("%s da oferta #%s já publicado — pulando.", nome, slot)
