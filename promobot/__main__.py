@@ -432,6 +432,13 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 
 def main(argv=None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
+    if env("GITHUB_ACTIONS"):  # avisos e erros viram anotações no resumo da execução
+        class _Anotar(logging.Handler):
+            def emit(self, r):
+                nivel = "error" if r.levelno >= logging.ERROR else "warning" if r.levelno >= logging.WARNING else "notice"
+                if nivel != "notice" or r.name.endswith(".aviso"):
+                    print(f"::{nivel}::{self.format(r)}".replace("\n", " "), flush=True)
+        logging.getLogger().addHandler(_Anotar())
     p = argparse.ArgumentParser(prog="promobot")
     p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
@@ -514,4 +521,12 @@ def main(argv=None) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except SystemExit as e:
+        if isinstance(e.code, str):
+            print(f"::error::{e.code}", flush=True)
+        raise
+    except Exception as e:  # noqa: BLE001
+        print(f"::error::{type(e).__name__}: {e}"[:900], flush=True)
+        raise

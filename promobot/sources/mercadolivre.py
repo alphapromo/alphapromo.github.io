@@ -254,9 +254,13 @@ def _norm(t: str) -> str:
 def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
     """Procura um produto no catálogo do ML e devolve o anúncio vencedor (aceita sem desconto)."""
     cli = _Client(_token())
-    res = cli.get("/products/search", status="active", site_id="MLB", q=busca, limit=20) or {}
+    r = cli.s.get(f"{API}/products/search", params={"status": "active", "site_id": "MLB", "q": busca, "limit": 20}, timeout=30)
+    if r.status_code != 200:
+        log.error("ML /products/search -> %s: %s", r.status_code, r.text[:200])
+    res = r.json() if r.status_code == 200 else {}
     ids = [r.get("id") for r in res.get("results", []) if r.get("id")]
-    log.info("ML busca '%s': %s produtos no catálogo", busca, len(ids))
+    aviso = logging.getLogger("promobot.aviso")
+    aviso.info("ML busca '%s': %s produtos no catálogo (%s)", busca, len(ids), [r.get("name", "")[:40] for r in res.get("results", [])][:6])
     melhores = []
     for pid in ids[:15]:
         p = cli.get(f"/products/{pid}")
@@ -273,6 +277,6 @@ def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
         if d:
             if d.preco_original - d.preco < 0.01:
                 d.preco_original = d.preco
-            log.info("  candidato %s | %s | R$ %.2f", pid, d.titulo[:70], d.preco)
+            aviso.info("candidato %s | %s | R$ %.2f", pid, d.titulo[:70], d.preco)
             melhores.append(d)
     return min(melhores, key=lambda d: d.preco) if melhores else None
