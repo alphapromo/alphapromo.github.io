@@ -175,7 +175,12 @@
       "desconto": 28
     }
   ],
-  "posts": {},
+  "posts": {
+    "1": {
+      "instagram_feed": "ok:18105122294001355",
+      "instagram_story": "ok:18113177801520905"
+    }
+  },
   "avulsos": [
     {
       "loja": "Mercado Livre",
