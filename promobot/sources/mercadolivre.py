@@ -272,9 +272,17 @@ def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
         p = cli.get(f"/products/{pid}")
         if not p or not all(_tem(p.get("name", ""), x) for x in exigir):
             continue
-        bb = p.get("buy_box_winner") or parse_product_items(cli.get(f"/products/{pid}/items"))
+        itens = None
+        bb = p.get("buy_box_winner") or {}
         if not bb.get("price"):
-            continue
+            r_it = cli.s.get(f"{API}/products/{pid}/items", timeout=30)
+            itens = r_it.json() if r_it.status_code == 200 else None
+            bb = parse_product_items(itens)
+            if not bb.get("price"):
+                aviso.info("sem preço %s | status=%s | buy_box=%s | items=%s %s | price_range=%s", pid, p.get("status"),
+                           p.get("buy_box_winner"), r_it.status_code, r_it.text[:150],
+                           p.get("buy_box_winner_price_range"))
+                continue
         preco, original = bb["price"], bb.get("original_price")
         if bb.get("item_id") and not original:
             _, original = parse_sale_price(cli.get(f"/items/{bb['item_id']}/sale_price", context="channel_marketplace"))
