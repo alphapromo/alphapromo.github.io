@@ -123,6 +123,8 @@ def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -
     pill_tam = 44 if pill.startswith("-") else 30
     if tem_desc:
         de_txt, de_estilo = f"de R$ {_sem_rs(d.preco_original)}", "text-decoration:line-through"
+        if d.extras.get("pix"):
+            de_txt, de_estilo = f"no Pix · ou R$ {_sem_rs(d.preco_original)} parcelado", ""
         dir_rotulo, dir_valor = "VOCÊ ECONOMIZA", f"R$ {economia}"
     else:
         de_txt, de_estilo = "preço no Mercado Livre", ""

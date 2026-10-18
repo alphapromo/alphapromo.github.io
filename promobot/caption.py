@@ -12,11 +12,15 @@ def _curto(titulo: str, n: int) -> str:
 
 def legenda_lancamento(d: Deal, marca: dict) -> str:
     preco = f"{brl(d.preco)} no {d.loja}"
-    if d.desconto >= 5:
+    if d.extras.get("pix"):
+        preco = f"{brl(d.preco)} no Pix ou {brl(d.preco_original)} parcelado, no {d.loja}"
+    elif d.desconto >= 5:
         preco = f"De {brl(d.preco_original)} por {brl(d.preco)} ({d.desconto}% OFF) no {d.loja}"
     linhas = [f"🎮 {d.extras.get('tema') or 'Lançamento'}: {_curto(d.titulo, 100)}", "", preco + "."]
     if d.extras.get("lancamento"):
         linhas.append(f"Lançamento: {d.extras['lancamento']}.")
+    if d.extras.get("obs"):
+        linhas.append(d.extras["obs"])
     linhas += ["", "👉 Link na bio, seção \"Lançamentos e pré-vendas\".", "",
                "Preço conferido agora; preço e estoque podem mudar a qualquer momento.",
                "Contém link de afiliado: posso ganhar comissão, sem custo extra para você.", "",

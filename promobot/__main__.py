@@ -159,7 +159,15 @@ def produto(cfg: Settings, hoje: date, busca: str, exigir: list[str], rotulo: st
 
     Fica em plano["avulsos"] (não ocupa os horários do dia). Publicar depois com `post --avulso --slot N`.
     """
-    d = mercadolivre.buscar_produto(busca, exigir, preco)
+    def _num(x: str) -> float:
+        return float(x.strip().replace(".", "").replace(",", "."))
+    pix = original = None
+    if preco and "/" in preco:  # "418,41/449,90" = preço no Pix / preço normal
+        pix, original = _num(preco.split("/")[0]), _num(preco.split("/")[1])
+    d = mercadolivre.buscar_produto(busca, exigir, pix or (_num(preco) if preco else None))
+    if d is not None and original and original > d.preco:
+        d.preco_original = original
+        d.extras["pix"] = True
     if d is not None and d.extras.get("item_id") and "wid=" not in d.url and busca.upper().startswith("MLB") and "," in busca:
         d.url = f"{d.url.split('?')[0]}?wid={busca.split(',')[1].strip()}"  # mesmo anúncio que você viu
     if d is None:
@@ -506,7 +514,7 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "produto":
         produto(cfg, hoje, a.busca, [x.strip() for x in a.exigir.split(",") if x.strip()], a.rotulo, a.lancamento,
-                float(a.preco.replace(".", "").replace(",", ".")) if a.preco else None)
+                a.preco or None)
         return 0
     if a.cmd == "extra":
         extra(cfg, hoje, a.tema, a.quantos, mock=a.mock)
