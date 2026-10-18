@@ -38,5 +38,11 @@
       },
       "desconto": 7
     }
-  ]
+  ],
+  "posts_avulsos": {
+    "1": {
+      "instagram_feed": "ok:18608323696064120",
+      "instagram_story": "ok:17897794449655451"
+    }
+  }
 }
