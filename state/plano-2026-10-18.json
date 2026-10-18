@@ -1,6 +1,180 @@
 {
   "data": "2026-10-18",
-  "deals": [],
+  "gerado_em": "2026-10-18T06:16-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB75011116",
+      "titulo": "Esmalte Em Gel X&d Premium 15ml Alta Pigmentação XD01",
+      "preco": 19.99,
+      "preco_original": 39.39,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_833057-MLA113001704072_072026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB75011116",
+      "categoria": "Manicure e Pedicure",
+      "frete_gratis": false,
+      "popularidade": 110,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB75011116?matt_word=alphapromo&matt_tool=19164688",
+      "score": 99.99,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7389617846",
+        "posicao": 5,
+        "marca": "BMED",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_833057-MLA113001704072_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_751648-MLA113001903812_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_740933-MLA114218885577_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_645739-MLA113001733692_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_895806-MLA114218966647_072026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 7,
+        "arte_feed": "docs/posts/2026-10-18/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-18/1-tiktok.jpg"
+      },
+      "desconto": 49
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB78026014",
+      "titulo": "EA Sports FC 27 - PS4",
+      "preco": 324.0,
+      "preco_original": 379.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_855638-MLA115157177774_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB78026014",
+      "categoria": "Video Games",
+      "frete_gratis": true,
+      "popularidade": 114,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB78026014?matt_word=alphapromo&matt_tool=19164688",
+      "score": 100.12,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7703233082",
+        "posicao": 3,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_855638-MLA115157177774_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_996832-MLA116553414281_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_816946-MLA115156601564_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_658013-MLA115156975976_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_681225-MLA116553989205_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 8,
+        "arte_feed": "docs/posts/2026-10-18/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-18/2-tiktok.jpg",
+        "reel": "docs/posts/2026-10-18/2-reel.mp4"
+      },
+      "desconto": 15
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19755099",
+      "titulo": "Protetor Solar Facial Antioleosidade FPS 80 Anthelios La Roche-Posay 40g",
+      "preco": 83.57,
+      "preco_original": 120.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_752201-MLA113617929791_062026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19755099",
+      "categoria": "Beleza",
+      "frete_gratis": true,
+      "popularidade": 102,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19755099?matt_word=alphapromo&matt_tool=19164688",
+      "score": 76.15,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4195198970",
+        "posicao": 9,
+        "marca": "La Roche-Posay",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_752201-MLA113617929791_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_794248-MLA112452912468_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_712130-MLA113617697143_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_976885-MLA112453205368_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_983895-MLA113617697155_062026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": false,
+        "tema": "Beleza em alta",
+        "num_colecao": 9,
+        "arte_feed": "docs/posts/2026-10-18/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-18/3-tiktok.jpg",
+        "reel": "docs/posts/2026-10-18/3-reel.mp4"
+      },
+      "desconto": 31
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB40656539",
+      "titulo": "Starlink Mini Kit Antena Satélite com Roteador Wi-Fi",
+      "preco": 489.3,
+      "preco_original": 699.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_799612-MLA95359719699_102025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB40656539",
+      "categoria": "Eletrônicos, Áudio e Vídeo",
+      "frete_gratis": true,
+      "popularidade": 116,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB40656539?matt_word=alphapromo&matt_tool=19164688",
+      "score": 114.19,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7826361742",
+        "posicao": 2,
+        "marca": "Starlink",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_799612-MLA95359719699_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_607302-MLA110946584985_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_909903-MLA118686760773_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_936659-MLA110583872038_052026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_880337-MLA111529967809_052026-O.jpg"
+        ],
+        "cat_raiz": "MLB1000",
+        "subcategoria": false,
+        "num_colecao": 10,
+        "arte_feed": "docs/posts/2026-10-18/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-18/4-tiktok.jpg",
+        "reel": "docs/posts/2026-10-18/4-reel.mp4"
+      },
+      "desconto": 30
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB23487120",
+      "titulo": "Filamento Voolt 3d Pla Verde Efeito Fosco Velvet Premium 1kg Verde Velvet",
+      "preco": 104.9,
+      "preco_original": 145.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB23487120",
+      "categoria": "Informática",
+      "frete_gratis": true,
+      "popularidade": 114,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB23487120?matt_word=alphapromo&matt_tool=19164688",
+      "score": 105.0,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5288497247",
+        "posicao": 3,
+        "marca": "Voolt3D",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_904508-MLA115152627734_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_878283-MLA115152426578_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_809204-MLA116549519761_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_766720-MLA116549491787_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1648",
+        "subcategoria": false,
+        "num_colecao": 11,
+        "arte_feed": "docs/posts/2026-10-18/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-18/5-tiktok.jpg",
+        "reel": "docs/posts/2026-10-18/5-reel.mp4"
+      },
+      "desconto": 28
+    }
+  ],
   "posts": {},
   "avulsos": [
     {
