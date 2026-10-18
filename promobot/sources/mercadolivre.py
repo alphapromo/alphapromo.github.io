@@ -272,6 +272,19 @@ def produto_por_id(pid: str, item_id: str = "") -> Deal | None:
         sp = cli.get(f"/items/{iid}/sale_price", context="channel_marketplace") or {}
         preco = preco or sp.get("amount")
         original = original or sp.get("regular_amount")
+    if iid and not preco:
+        for path, params in ((f"/items/{iid}/sale_price", {}), (f"/items/{iid}/prices", {}), (f"/items/{iid}", {}),
+                             ("/items", {"ids": iid, "attributes": "price,original_price,status"})):
+            r = cli.s.get(f"{API}{path}", params=params or None, timeout=30)
+            aviso.info("diag %s -> %s %s", path, r.status_code, r.text[:160].replace("\n", " "))
+            if r.status_code == 200:
+                j = r.json()
+                j = j[0].get("body", {}) if isinstance(j, list) and j else j
+                preco = preco or j.get("amount") or j.get("price") or next(
+                    (x.get("amount") for x in j.get("prices", []) if x.get("type") == "standard"), None)
+                original = original or j.get("regular_amount") or j.get("original_price")
+                if preco:
+                    break
     aviso.info("produto %s | %s | preço=%s de=%s | item=%s", pid, p.get("name"), preco, original, iid)
     if not preco:
         return None
