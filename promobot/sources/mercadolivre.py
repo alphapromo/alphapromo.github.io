@@ -257,7 +257,7 @@ def _tem(nome: str, termo: str) -> bool:
     return any(re.search(rf"\b{re.escape(_norm(t.strip()))}\b", n) for t in termo.split("|") if t.strip())
 
 
-def produto_por_id(pid: str, item_id: str = "") -> Deal | None:
+def produto_por_id(pid: str, item_id: str = "", preco_manual: float | None = None) -> Deal | None:
     """Produto do catálogo pelo código (MLB…) da página /p/; item_id = anúncio (wid) se não houver buy box."""
     aviso = logging.getLogger("promobot.aviso")
     cli = _Client(_token())
@@ -285,6 +285,8 @@ def produto_por_id(pid: str, item_id: str = "") -> Deal | None:
                 original = original or j.get("regular_amount") or j.get("original_price")
                 if preco:
                     break
+    if not preco and preco_manual:
+        preco = preco_manual  # preço informado à mão (anúncio que a API não deixa ler)
     aviso.info("produto %s | %s | preço=%s de=%s | item=%s", pid, p.get("name"), preco, original, iid)
     if not preco:
         return None
@@ -295,11 +297,11 @@ def produto_por_id(pid: str, item_id: str = "") -> Deal | None:
     return d
 
 
-def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
+def buscar_produto(busca: str, exigir: list[str], preco_manual: float | None = None) -> Deal | None:
     """Procura um produto no catálogo do ML e devolve o anúncio vencedor (aceita sem desconto)."""
     if busca.upper().startswith("MLB"):  # códigos diretos: "MLB74108173" ou "MLB74108173,MLB7413456100"
         ids = [x.strip().upper() for x in busca.split(",")]
-        return produto_por_id(ids[0], ids[1] if len(ids) > 1 else "")
+        return produto_por_id(ids[0], ids[1] if len(ids) > 1 else "", preco_manual)
     cli = _Client(_token())
     r = cli.s.get(f"{API}/products/search", params={"status": "active", "site_id": "MLB", "q": busca, "limit": 20}, timeout=30)
     if r.status_code != 200:

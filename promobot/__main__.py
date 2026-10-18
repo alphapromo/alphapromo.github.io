@@ -153,12 +153,15 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
     return plano
 
 
-def produto(cfg: Settings, hoje: date, busca: str, exigir: list[str], rotulo: str, lancamento: str = "") -> int:
+def produto(cfg: Settings, hoje: date, busca: str, exigir: list[str], rotulo: str, lancamento: str = "",
+            preco: float | None = None) -> int:
     """Lançamento/pré-venda escolhido a dedo: busca no catálogo do Mercado Livre e desenha a carta.
 
     Fica em plano["avulsos"] (não ocupa os horários do dia). Publicar depois com `post --avulso --slot N`.
     """
-    d = mercadolivre.buscar_produto(busca, exigir)
+    d = mercadolivre.buscar_produto(busca, exigir, preco)
+    if d is not None and d.extras.get("item_id") and "wid=" not in d.url and busca.upper().startswith("MLB") and "," in busca:
+        d.url = f"{d.url.split('?')[0]}?wid={busca.split(',')[1].strip()}"  # mesmo anúncio que você viu
     if d is None:
         raise SystemExit(f"Não achei '{busca}' com preço no Mercado Livre.")
     img = render.baixar_imagem(d.imagem)
@@ -449,6 +452,7 @@ def main(argv=None) -> int:
     p.add_argument("--busca", default="", help="produto: o que procurar no catálogo")
     p.add_argument("--exigir", default="", help="produto: palavras obrigatórias no nome, separadas por vírgula")
     p.add_argument("--rotulo", default="Pré-venda")
+    p.add_argument("--preco", default="", help="produto: preço à vista informado à mão (ex.: 449,90)")
     p.add_argument("--lancamento", default="", help="produto: data de lançamento (ex.: 19/11)")
     p.add_argument("--avulso", action="store_true", help="post: publica um lançamento (L1, L2…)")
     p.add_argument("--dry-run", action="store_true")
@@ -501,7 +505,8 @@ def main(argv=None) -> int:
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
         return 0
     if a.cmd == "produto":
-        produto(cfg, hoje, a.busca, [x.strip() for x in a.exigir.split(",") if x.strip()], a.rotulo, a.lancamento)
+        produto(cfg, hoje, a.busca, [x.strip() for x in a.exigir.split(",") if x.strip()], a.rotulo, a.lancamento,
+                float(a.preco.replace(".", "").replace(",", ".")) if a.preco else None)
         return 0
     if a.cmd == "extra":
         extra(cfg, hoje, a.tema, a.quantos, mock=a.mock)

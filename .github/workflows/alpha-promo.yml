@@ -29,6 +29,9 @@ on:
       lancamento:
         description: "produto: data de lançamento (ex.: 19/11/2026)"
         default: ""
+      preco:
+        description: "produto: preço informado à mão, se a API não mostrar (ex.: 449,90)"
+        default: ""
       forcar:
         description: "Forçar (refazer curadoria / republicar)"
         type: boolean
@@ -72,6 +75,7 @@ jobs:
           IN_BUSCA: ${{ inputs.busca }}
           IN_EXIGIR: ${{ inputs.exigir }}
           IN_LANC: ${{ inputs.lancamento }}
+          IN_PRECO: ${{ inputs.preco }}
           GH_PAT: ${{ secrets.GH_PAT }}
           SITE_URL: ${{ vars.SITE_URL }}
           ML_MATT_WORD: ${{ secrets.ML_MATT_WORD }}
@@ -97,7 +101,7 @@ jobs:
           if [ "$CMD" = "recurar" ]; then CMD="curate"; ARGS="--manter"; fi
           if [ "$CMD" = "post-lancamento" ]; then CMD="post"; ARGS="--avulso --slot ${{ inputs.oferta }}"; fi
           if [ "$CMD" = "produto" ]; then
-            python -m promobot produto --busca "$IN_BUSCA" --exigir "$IN_EXIGIR" --lancamento "$IN_LANC"
+            python -m promobot produto --busca "$IN_BUSCA" --exigir "$IN_EXIGIR" --lancamento "$IN_LANC" --preco "$IN_PRECO"
             exit $?
           fi
           if [ "$CMD" = "extra" ]; then ARGS="--tema ${{ inputs.tema || '2' }} --quantos ${{ inputs.oferta || '2' }}"; fi
