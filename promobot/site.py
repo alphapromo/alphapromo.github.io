@@ -61,6 +61,19 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <p>As ofertas mais quentes do dia. Atualizado {{ atualizado }}.</p>
 </header>
 
+{% if lancamentos %}
+<h2>Lançamentos e pré-vendas</h2>
+{% for d in lancamentos %}
+<a class="deal" href="{{ d.link }}" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">L{{ d.numero }}</span>
+<img src="{{ d.imagem }}" alt="" loading="lazy">
+<span class="info"><span class="t">{{ d.titulo }}</span>
+<span class="p">{% if d.desconto >= 5 %}<s>{{ d.de }}</s>{% endif %}<b>{{ d.por }}</b><span class="tag">{{ d.loja }}</span></span></span>
+{% if d.desconto >= 5 %}<span class="off">-{{ d.desconto }}%</span>{% endif %}
+</a>
+{% endfor %}
+{% endif %}
+
 <h2>Ofertas de hoje</h2>
 {% for d in hoje %}
 <a class="deal" href="{{ d.link }}" rel="nofollow sponsored noopener" target="_blank">
@@ -114,9 +127,9 @@ Como Associado da Amazon, recebo por compras qualificadas.</footer>
 )
 
 
-def _itens(plan: dict) -> list[dict]:
+def _itens(plan: dict, lista: str = "deals") -> list[dict]:
     out = []
-    for i, raw in enumerate(plan.get("deals", []), start=1):
+    for i, raw in enumerate(plan.get(lista, []), start=1):
         d = Deal.from_dict(raw)
         out.append(
             {
@@ -130,6 +143,20 @@ def _itens(plan: dict) -> list[dict]:
                 "link": d.link_afiliado or d.url,
             }
         )
+    return out
+
+
+def _lancamentos(hoje: date) -> list[dict]:
+    """Lançamentos publicados nos últimos 7 dias (os mais novos primeiro)."""
+    out = []
+    for k in range(7):
+        p = state.load_plan(hoje - timedelta(days=k)) or {}
+        feitos = p.get("posts_avulsos", {})
+        for item in _itens(p, "avulsos"):
+            if any(str(v).startswith("ok:") for v in feitos.get(str(item["numero"]), {}).values()):
+                out.append(item)
+    for i, item in enumerate(out, start=1):
+        item["numero"] = i
     return out
 
 
@@ -159,6 +186,6 @@ def build(hoje: date, atualizado: str) -> None:
         if p:
             anteriores.append({"titulo": nomes[k] + f" ({dia.strftime('%d/%m')})", "deals": _itens(p)})
     html = TEMPLATE.render(
-        hoje=_itens(plano), anteriores=anteriores, semana=_itens(_semana(hoje)), atualizado=atualizado, amazon=amazon_ofertas_do_dia()
+        hoje=_itens(plano), anteriores=anteriores, semana=_itens(_semana(hoje)), lancamentos=_lancamentos(hoje), atualizado=atualizado, amazon=amazon_ofertas_do_dia()
     )
     (DOCS / "index.html").write_text(html, encoding="utf-8")

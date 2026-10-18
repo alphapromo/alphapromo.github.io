@@ -91,7 +91,7 @@ def _publicado(plano: dict, n: int) -> bool:
 def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, manter: bool = False) -> dict:
     """Escolhe as ofertas do dia. manter=True: refaz só as que ainda não foram publicadas."""
     existente = state.load_plan(hoje)
-    if existente and not force:
+    if existente and existente.get("deals") and not force:
         log.info("Plano de %s já existe.", hoje)
         return existente
     c = cfg["curadoria"]
@@ -103,7 +103,7 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
     log.info("Candidatas: %s", len(deals))
     historico = state.load_history()
     fixas: dict[int, dict] = {}
-    if existente and manter:
+    if existente and manter and existente.get("deals"):
         fixas = {n: raw for n, raw in enumerate(existente["deals"], start=1) if _publicado(existente, n)}
     excluir = {Deal.from_dict(r).chave for r in fixas.values()}
     escolhidas = selecionar_com_imagem(deals, c, historico, hoje, excluir,
@@ -112,7 +112,8 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
         raise SystemExit("Nenhuma oferta passou nos filtros hoje — verifique as fontes (veja o log acima).")
 
     plano = {"data": hoje.isoformat(), "gerado_em": now_brt().isoformat(timespec="minutes"), "deals": [],
-             "posts": {str(n): existente["posts"][str(n)] for n in fixas} if fixas else {}}
+             "posts": {str(n): existente["posts"][str(n)] for n in fixas} if fixas else {},
+             "avulsos": (existente or {}).get("avulsos", []), "posts_avulsos": (existente or {}).get("posts_avulsos", {})}
     # ordem final: as já publicadas ficam no lugar; as novas preenchem os demais horários
     ordem: list[tuple[int, object, object]] = []  # (n, Deal|raw fixo, foto)
     for i, (d, img) in enumerate(escolhidas, start=1):
@@ -126,7 +127,7 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
     ordem = [(k, x, img) for k, (_, x, img) in enumerate(ordem, start=1)]
     novas = [(n, d, img) for n, d, img in ordem if isinstance(d, Deal)]
     antigos = {n: Deal.from_dict(existente["deals"][n - 1]).extras.get("num_colecao")
-               for n in range(1, len(existente["deals"]) + 1)} if (existente and manter) else {}
+               for n in range(1, len(existente["deals"]) + 1)} if (existente and manter and existente.get("deals")) else {}
     faltam = [n for n, _, _ in novas if not antigos.get(n)]
     numeros = dict(zip(faltam, _numeros_colecao(hoje, len(faltam))))
     for n, d, _ in novas:
@@ -150,6 +151,36 @@ def curate(cfg: Settings, hoje: date, mock: bool = False, force: bool = False, m
     _limpar(hoje, cfg["site"]["manter_dias"])
     site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
     return plano
+
+
+def produto(cfg: Settings, hoje: date, busca: str, exigir: list[str], rotulo: str, lancamento: str = "") -> int:
+    """Lançamento/pré-venda escolhido a dedo: busca no catálogo do Mercado Livre e desenha a carta.
+
+    Fica em plano["avulsos"] (não ocupa os horários do dia). Publicar depois com `post --avulso --slot N`.
+    """
+    d = mercadolivre.buscar_produto(busca, exigir)
+    if d is None:
+        raise SystemExit(f"Não achei '{busca}' com preço no Mercado Livre.")
+    img = render.baixar_imagem(d.imagem)
+    if img is None:
+        raise SystemExit("Produto sem foto disponível.")
+    plano = state.load_plan(hoje) or {"data": hoje.isoformat(), "deals": [], "posts": {}}
+    avulsos = plano.setdefault("avulsos", [])
+    n = len(avulsos) + 1
+    d.link_afiliado = affiliate.afiliar(d.loja, d.url)
+    d.extras.update({"tema": rotulo, "avulso": True, "lancamento": lancamento,
+                     "num_colecao": _numeros_colecao(hoje, 1)[0]})
+    pasta = f"{POSTS_DIR}/{hoje.isoformat()}"
+    with carta.Fotografo() as f:
+        feed, vert = f"{pasta}/L{n}-feed.jpg", f"{pasta}/L{n}-tiktok.jpg"
+        render.salvar_jpeg(carta.render(d, n, 0, "feed", d.extras["num_colecao"], hoje, img, f), ROOT / feed)
+        render.salvar_jpeg(carta.render(d, n, 0, "tiktok", d.extras["num_colecao"], hoje, img, f), ROOT / vert)
+    d.extras.update({"arte_feed": feed, "arte_tiktok": vert})
+    avulsos.append(d.to_dict())
+    state.save_plan(hoje, plano)
+    site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+    _aviso(f"Lançamento L{n} | {d.titulo[:70]} | R$ {d.preco:.2f} | de R$ {d.preco_original:.2f} | {d.extras.get('marca') or '-'} | {d.url}")
+    return n
 
 
 def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = False) -> list[int]:
@@ -253,15 +284,17 @@ def _limpar(hoje: date, dias: int) -> None:
 
 
 # ------------------------------------------------------------------ publicação
-def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False) -> bool:
+def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False, avulso: bool = False) -> bool:
+    """Publica a oferta #slot do plano (ou o lançamento/pré-venda nº slot, se avulso=True)."""
+    lista, chave_posts = ("avulsos", "posts_avulsos") if avulso else ("deals", "posts")
     plano = state.load_plan(hoje)
-    if not plano or slot > len(plano["deals"]):
-        log.error("Sem oferta #%s no plano de %s", slot, hoje)
+    if not plano or slot > len(plano.get(lista, [])):
+        log.error("Sem %s #%s no plano de %s", lista, slot, hoje)
         return False
-    d = Deal.from_dict(plano["deals"][slot - 1])
+    d = Deal.from_dict(plano[lista][slot - 1])
     pub = cfg["publicar"]
     marca = cfg["marca"]
-    feito = plano["posts"].setdefault(str(slot), {})
+    feito = plano.setdefault(chave_posts, {}).setdefault(str(slot), {})
     ok = True
 
     feed_raw = cfg.raw_url(d.extras["arte_feed"])
@@ -364,12 +397,12 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 
     mudou = False
     plano = state.load_plan(hoje)
-    if plano is None and agora >= _hhmm(ag["curadoria"], hoje) - timedelta(minutes=30):
+    if (plano is None or not plano.get("deals")) and agora >= _hhmm(ag["curadoria"], hoje) - timedelta(minutes=30):
         plano = curate(cfg, hoje, mock=mock)
         mudou = True
 
     ok = True
-    if plano:
+    if plano and plano.get("deals"):
         for i, horario in enumerate(ag["posts"], start=1):
             t = _hhmm(horario, hoje)
             feitos = plano["posts"].get(str(i), {})
@@ -400,12 +433,17 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
 def main(argv=None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
     p.add_argument("--tema", type=int, default=2, help="extra: número do tema (2 = Games)")
     p.add_argument("--quantos", type=int, default=2)
+    p.add_argument("--busca", default="", help="produto: o que procurar no catálogo")
+    p.add_argument("--exigir", default="", help="produto: palavras obrigatórias no nome, separadas por vírgula")
+    p.add_argument("--rotulo", default="Pré-venda")
+    p.add_argument("--lancamento", default="", help="produto: data de lançamento (ex.: 19/11)")
+    p.add_argument("--avulso", action="store_true", help="post: publica um lançamento (L1, L2…)")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--mock", action="store_true")
     a = p.parse_args(argv)
@@ -455,6 +493,9 @@ def main(argv=None) -> int:
             carrossel.publicar(cfg, hoje, dry_run=dry)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
         return 0
+    if a.cmd == "produto":
+        produto(cfg, hoje, a.busca, [x.strip() for x in a.exigir.split(",") if x.strip()], a.rotulo, a.lancamento)
+        return 0
     if a.cmd == "extra":
         extra(cfg, hoje, a.tema, a.quantos, mock=a.mock)
         return 0
@@ -466,7 +507,7 @@ def main(argv=None) -> int:
             plano.get("posts", {}).pop(str(a.slot), None)
             if plano:
                 state.save_plan(hoje, plano)
-        ok = post_slot(cfg, hoje, a.slot, dry_run=dry)
+        ok = post_slot(cfg, hoje, a.slot, dry_run=dry, avulso=a.avulso)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
         return 0 if ok else 1
     return run(cfg, dry_run=dry, mock=a.mock)

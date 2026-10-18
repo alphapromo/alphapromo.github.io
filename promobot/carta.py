@@ -102,14 +102,31 @@ def _fontes() -> str:
     return _CSS_FONTES
 
 
+def _lancamento(d: Deal) -> bool:
+    return bool(d.extras.get("avulso"))
+
+
+def _tier(d: Deal) -> dict:
+    return TIERS["lendaria" if _lancamento(d) else raridade(d.desconto)]
+
+
 def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -> str:
-    t = TIERS[raridade(d.desconto)]
+    t = _tier(d)
     produto = html.escape(_nome_curto(d.titulo))
     tam_nome = 46 if len(produto) <= 34 else 40 if len(produto) <= 46 else 36
-    categoria = html.escape((d.extras.get("tema") or d.categoria or d.loja).upper())
+    categoria = html.escape(((d.categoria if _lancamento(d) else d.extras.get("tema")) or d.categoria or d.loja).upper())
     por = _sem_rs(d.preco)
     tam_por = 116 if len(por) <= 6 else 100 if len(por) <= 8 else 86
     economia = _sem_rs(d.preco_original - d.preco)
+    tem_desc = d.desconto >= 5
+    pill = f"-{d.desconto}%" if tem_desc and not _lancamento(d) else html.escape((d.extras.get("tema") or "Lançamento").upper())
+    pill_tam = 44 if pill.startswith("-") else 30
+    if tem_desc:
+        de_txt, de_estilo = f"de R$ {_sem_rs(d.preco_original)}", "text-decoration:line-through"
+        dir_rotulo, dir_valor = "VOCÊ ECONOMIZA", f"R$ {economia}"
+    else:
+        de_txt, de_estilo = "preço no Mercado Livre", ""
+        dir_rotulo, dir_valor = ("LANÇAMENTO", html.escape(d.extras["lancamento"])) if d.extras.get("lancamento") else ("", "")
     foto = f'<img src="{img_uri}" style="max-width:82%;max-height:86%;object-fit:contain">' if img_uri else ""
     return f"""
 <div style="position:absolute;left:70px;top:48px;width:940px;height:1254px;border-radius:44px;padding:12px;box-sizing:border-box;background:{t['moldura']};box-shadow:0 30px 70px rgba(80,60,40,.18),0 4px 14px rgba(80,60,40,.10)">
@@ -121,17 +138,17 @@ def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -
     <span style="font-size:18px;font-weight:700;letter-spacing:4px;color:{t['tinta']}">{categoria}</span>
     <span style="font-family:Outfit;font-size:{tam_nome}px;font-weight:800;letter-spacing:-1px;line-height:1.05;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{produto}</span>
    </div>
-   <span style="flex-shrink:0;padding:12px 22px;border-radius:999px;background:#E07A62;color:#fff;font-family:Outfit;font-size:44px;font-weight:800">-{d.desconto}%</span>
+   <span style="flex-shrink:0;padding:12px 22px;border-radius:999px;background:#E07A62;color:#fff;font-family:Outfit;font-size:{pill_tam}px;font-weight:800;white-space:nowrap">{pill}</span>
   </div>
   <div id="vitrine" style="position:absolute;left:44px;right:44px;top:200px;height:640px;border-radius:30px;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(36,40,59,.06),0 10px 30px rgba(80,60,40,.08);display:flex;align-items:center;justify-content:center;overflow:hidden">{foto}</div>
   <div style="position:absolute;left:44px;right:44px;top:870px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px">
    <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
-    <span style="font-size:26px;color:#6B6F7E;text-decoration:line-through">de R$ {_sem_rs(d.preco_original)}</span>
+    <span style="font-size:26px;color:#6B6F7E;{de_estilo}">{de_txt}</span>
     <span style="font-family:Outfit;font-size:{tam_por}px;font-weight:800;letter-spacing:-3px;line-height:1;white-space:nowrap">R$ {por}</span>
    </div>
    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-bottom:14px;flex-shrink:0">
-    <span style="font-size:16px;font-weight:700;letter-spacing:3px;color:#6B6F7E">VOCÊ ECONOMIZA</span>
-    <span style="font-family:Outfit;font-size:40px;font-weight:800;color:{t['tinta']};white-space:nowrap">R$ {economia}</span>
+    <span style="font-size:16px;font-weight:700;letter-spacing:3px;color:#6B6F7E">{dir_rotulo}</span>
+    <span style="font-family:Outfit;font-size:40px;font-weight:800;color:{t['tinta']};white-space:nowrap">{dir_valor}</span>
    </div>
   </div>
   <div style="position:absolute;left:44px;right:44px;top:1052px;font-size:21px;font-weight:500;color:#6B6F7E">{html.escape(d.loja)}{' · frete grátis' if d.frete_gratis else ''}</div>
@@ -147,25 +164,29 @@ def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -
 def pagina(d: Deal, n_dia: int, total_dia: int, formato: str, num_colecao: int, dia: date, img: Image.Image | None) -> str:
     nome_col, total_col = colecao(dia)
     numero = f"{num_colecao:03d}/{max(total_col, num_colecao)}"
-    t = TIERS[raridade(d.desconto)]
+    t = _tier(d)
     carta = _carta_html(d, numero, nome_col, _data_uri(img))
     base = (f"<!doctype html><html><head><meta charset='utf-8'><style>{_fontes()}"
             "body{margin:0}*{-webkit-font-smoothing:antialiased}</style></head><body>")
     if formato != "tiktok":
         return (base + f'<div id="arte" style="width:1080px;height:1350px;position:relative;background:#FBF7F2;'
                 f'font-family:\'DM Sans\';color:#24283B;overflow:hidden">{carta}</div></body></html>')
-    barras = "".join(
+    if _lancamento(d):
+        topo, rodape, total_dia = "CARTA ESPECIAL · LANÇAMENTO", "Link na bio · lançamentos", 0
+    else:
+        topo, rodape = f"PACOTE DE HOJE · CARTA {n_dia} DE {max(total_dia, n_dia)}", f"Link na bio · carta #{n_dia}"
+    barras = "" if _lancamento(d) else "".join(
         f'<span style="width:70px;height:8px;border-radius:4px;background:{t["barra"] if k <= n_dia else t["barra"] + "40"}"></span>'
         for k in range(1, max(total_dia, n_dia) + 1))
     return base + f"""
 <div id="arte" style="width:1080px;height:1920px;position:relative;background:#FBF7F2;font-family:'DM Sans';color:#24283B;overflow:hidden">
  <div style="position:absolute;left:72px;right:140px;top:150px;display:flex;flex-direction:column;gap:14px">
-  <span style="font-size:24px;font-weight:700;letter-spacing:6px;color:{t['tinta']}">PACOTE DE HOJE · CARTA {n_dia} DE {max(total_dia, n_dia)}</span>
+  <span style="font-size:24px;font-weight:700;letter-spacing:6px;color:{t['tinta']}">{topo}</span>
   <div style="display:flex;gap:10px">{barras}</div>
  </div>
  <div style="position:absolute;left:0;top:250px;width:1080px;height:1350px">{carta}</div>
  <div style="position:absolute;left:72px;right:140px;top:1620px;display:flex;align-items:center;justify-content:space-between">
-  <span style="font-family:Outfit;font-size:44px;font-weight:800">Link na bio · carta #{n_dia}</span>
+  <span style="font-family:Outfit;font-size:44px;font-weight:800">{rodape}</span>
   <span style="display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;letter-spacing:3px;color:{t['tinta']}">{_simbolo(t, 22)} {t['nome']}</span>
  </div>
 </div></body></html>"""

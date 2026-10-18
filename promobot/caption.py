@@ -10,7 +10,23 @@ def _curto(titulo: str, n: int) -> str:
     return titulo if len(titulo) <= n else titulo[: n - 1].rsplit(" ", 1)[0] + "…"
 
 
+def legenda_lancamento(d: Deal, marca: dict) -> str:
+    preco = f"{brl(d.preco)} no {d.loja}"
+    if d.desconto >= 5:
+        preco = f"De {brl(d.preco_original)} por {brl(d.preco)} ({d.desconto}% OFF) no {d.loja}"
+    linhas = [f"🎮 {d.extras.get('tema') or 'Lançamento'}: {_curto(d.titulo, 100)}", "", preco + "."]
+    if d.extras.get("lancamento"):
+        linhas.append(f"Lançamento: {d.extras['lancamento']}.")
+    linhas += ["", "👉 Link na bio, seção \"Lançamentos e pré-vendas\".", "",
+               "Preço conferido agora; preço e estoque podem mudar a qualquer momento.",
+               "Contém link de afiliado: posso ganhar comissão, sem custo extra para você.", "",
+               " ".join(marca["hashtags_fixas"] + ["#prevenda", "#lancamento", "#games", TAG_LOJA.get(d.loja, "")]).strip()]
+    return "\n".join(linhas)
+
+
 def legenda(d: Deal, numero: int, marca: dict, plataforma: str) -> str:
+    if d.extras.get("avulso"):
+        return legenda_lancamento(d, marca)
     onde = "Toque no link da bio" if plataforma == "instagram" else "Link na bio"
     linhas = [
         f"🔥 {d.extras.get('tema') or 'Oferta'} · #{numero} do dia: {_curto(d.titulo, 100)}",

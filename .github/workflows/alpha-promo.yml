@@ -12,7 +12,7 @@ on:
       comando:
         description: "run = automático | curate = refazer as ofertas de hoje | recurar = refazer só as que ainda não saíram | extra = ofertas extras do tema | post = publicar uma oferta agora | arte = refazer as artes de hoje"
         type: choice
-        options: [run, curate, recurar, extra, carrossel, post, arte, reel, diag]
+        options: [run, curate, recurar, extra, produto, post-lancamento, carrossel, post, arte, reel, diag]
         default: run
       oferta:
         description: "Número da oferta (para 'post' e 'reel') ou quantas extras (para 'extra')"
@@ -20,6 +20,15 @@ on:
       tema:
         description: "Tema das extras: 1 achadinho, 2 games, 3 beleza"
         default: "2"
+      busca:
+        description: "produto: o que procurar no Mercado Livre (ex.: gta vi ps5)"
+        default: ""
+      exigir:
+        description: "produto: palavras obrigatórias no nome, separadas por vírgula"
+        default: ""
+      lancamento:
+        description: "produto: data de lançamento (ex.: 19/11/2026)"
+        default: ""
       forcar:
         description: "Forçar (refazer curadoria / republicar)"
         type: boolean
@@ -60,6 +69,9 @@ jobs:
         continue-on-error: true
         env:
           DRY_RUN: ${{ inputs.teste && '1' || '' }}
+          IN_BUSCA: ${{ inputs.busca }}
+          IN_EXIGIR: ${{ inputs.exigir }}
+          IN_LANC: ${{ inputs.lancamento }}
           GH_PAT: ${{ secrets.GH_PAT }}
           SITE_URL: ${{ vars.SITE_URL }}
           ML_MATT_WORD: ${{ secrets.ML_MATT_WORD }}
@@ -83,6 +95,11 @@ jobs:
           ARGS=""
           if [ "$CMD" = "post" ] || [ "$CMD" = "reel" ]; then ARGS="--slot ${{ inputs.oferta }}"; fi
           if [ "$CMD" = "recurar" ]; then CMD="curate"; ARGS="--manter"; fi
+          if [ "$CMD" = "post-lancamento" ]; then CMD="post"; ARGS="--avulso --slot ${{ inputs.oferta }}"; fi
+          if [ "$CMD" = "produto" ]; then
+            python -m promobot produto --busca "$IN_BUSCA" --exigir "$IN_EXIGIR" --lancamento "$IN_LANC"
+            exit $?
+          fi
           if [ "$CMD" = "extra" ]; then ARGS="--tema ${{ inputs.tema || '2' }} --quantos ${{ inputs.oferta || '2' }}"; fi
           if [ "${{ inputs.forcar }}" = "true" ]; then ARGS="$ARGS --force"; fi
           python -m promobot $CMD $ARGS

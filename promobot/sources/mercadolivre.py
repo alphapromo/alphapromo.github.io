@@ -244,3 +244,35 @@ def atualizar(deals: list[Deal]) -> list[Deal]:
             novo.link_afiliado = d.link_afiliado
             out.append(novo)
     return out
+
+
+def _norm(t: str) -> str:
+    import unicodedata
+    return unicodedata.normalize("NFKD", (t or "").lower()).encode("ascii", "ignore").decode()
+
+
+def buscar_produto(busca: str, exigir: list[str]) -> Deal | None:
+    """Procura um produto no catálogo do ML e devolve o anúncio vencedor (aceita sem desconto)."""
+    cli = _Client(_token())
+    res = cli.get("/products/search", status="active", site_id="MLB", q=busca, limit=20) or {}
+    ids = [r.get("id") for r in res.get("results", []) if r.get("id")]
+    log.info("ML busca '%s': %s produtos no catálogo", busca, len(ids))
+    melhores = []
+    for pid in ids[:15]:
+        p = cli.get(f"/products/{pid}")
+        if not p or not all(_norm(x) in _norm(p.get("name", "")) for x in exigir):
+            continue
+        bb = p.get("buy_box_winner") or parse_product_items(cli.get(f"/products/{pid}/items"))
+        if not bb.get("price"):
+            continue
+        preco, original = bb["price"], bb.get("original_price")
+        if bb.get("item_id") and not original:
+            _, original = parse_sale_price(cli.get(f"/items/{bb['item_id']}/sale_price", context="channel_marketplace"))
+        p = {**p, "buy_box_winner": {**bb, "price": preco, "original_price": max(original or preco, preco) + 0.0001}}
+        d = parse_product(p, 1, "Games")
+        if d:
+            if d.preco_original - d.preco < 0.01:
+                d.preco_original = d.preco
+            log.info("  candidato %s | %s | R$ %.2f", pid, d.titulo[:70], d.preco)
+            melhores.append(d)
+    return min(melhores, key=lambda d: d.preco) if melhores else None
