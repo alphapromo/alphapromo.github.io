@@ -75,14 +75,6 @@ def frames(deal: Deal, numero: int, fotos: list[Image.Image], total_dia: int = 5
         prog = min(t / (n_seg + n_fade), 1.0)
         return _encaixar(fotos[i], (bw, bh), 1.0 + ZOOM * prog)
 
-    gancho = _gancho(deal, (bw, bh))
-    n_g = int(GANCHO * FPS)
-    for k in range(n_g + n_fade):  # gancho e transição para a primeira foto
-        atual = gancho if k < n_g else Image.blend(gancho, quadro_foto(0, 0), (k - n_g) / n_fade)
-        q = fundo.copy()
-        q.paste(atual, (inner[0], inner[1]), mascara)
-        yield q
-
     for k in range(total):
         i, t = divmod(k, n_seg)
         atual = quadro_foto(i, t)
