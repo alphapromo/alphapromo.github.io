@@ -182,7 +182,7 @@
     },
     "2": {
       "instagram_feed": "ok:17917475943464589",
-      "instagram_story": "erro:400: {'message': 'The requested resource does not exist', 'type': 'OAuthException', 'code': 24, 'error_subcode': 2207006, 'is_transient': False, 'error_user_title': 'Media Not Found', 'error_user_msg': 'The media with 18,248,399,815,313,809 cannot be found.', 'fbtrace_id': 'AilU6-ckxKFJbXHiVaJRxJp'}"
+      "instagram_story": "ok:18105402260527522"
     }
   },
   "avulsos": [],
