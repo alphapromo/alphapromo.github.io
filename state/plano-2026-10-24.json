@@ -1,0 +1,146 @@
+{
+  "data": "2026-10-24",
+  "gerado_em": "2026-10-24T06:16-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB26942336",
+      "titulo": "Sabonete Líquido Corpo Mãos Chá Branco Coala Home 500ml",
+      "preco": 12.45,
+      "preco_original": 23.75,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_937856-MLA110921130953_042026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB26942336",
+      "categoria": "Higiene Pessoal",
+      "frete_gratis": false,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB26942336?matt_word=alphapromo&matt_tool=19164688",
+      "score": 74.43,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3445334455",
+        "posicao": 10,
+        "marca": "Coala",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_937856-MLA110921130953_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_946214-MLA110921218221_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_920097-MLA116859882463_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_880790-MLA109675753264_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_822247-MLA115849350100_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 34,
+        "arte_feed": "docs/posts/2026-10-24/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-24/1-tiktok.jpg"
+      },
+      "desconto": 48
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB28083897",
+      "titulo": "Controle DualSense Sem Fio PlayStation 5 Cobalt Blue",
+      "preco": 437.59,
+      "preco_original": 583.47,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_934470-MLA99513531000_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB28083897",
+      "categoria": "Acessórios para PC Gaming",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB28083897?matt_word=alphapromo&matt_tool=19164688",
+      "score": 100.92,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4320354421",
+        "posicao": 4,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_934470-MLA99513531000_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_942071-MLA99513797530_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_672263-MLA95502062846_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_861782-MLA99997906867_112025-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 35,
+        "arte_feed": "docs/posts/2026-10-24/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-24/2-tiktok.jpg",
+        "reel": "docs/posts/2026-10-24/2-reel.mp4"
+      },
+      "desconto": 25
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB25904875",
+      "titulo": "Creme Multirreparador Pele Sensível Cicaplast Baume B5+ La Roche-Posay 20ml",
+      "preco": 38.89,
+      "preco_original": 59.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_906529-MLA115584916886_092026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB25904875",
+      "categoria": "Beleza",
+      "frete_gratis": false,
+      "popularidade": 114,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB25904875?matt_word=alphapromo&matt_tool=19164688",
+      "score": 104.42,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3954266250",
+        "posicao": 3,
+        "marca": "La Roche-Posay",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_906529-MLA115584916886_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_827429-MLA117023927817_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_621830-MLA117024629063_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_895563-MLA117024482959_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_928198-MLA115584044142_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": false,
+        "tema": "Beleza em alta",
+        "num_colecao": 36,
+        "arte_feed": "docs/posts/2026-10-24/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-24/3-tiktok.jpg",
+        "reel": "docs/posts/2026-10-24/3-reel.mp4"
+      },
+      "desconto": 35
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB75542419",
+      "titulo": "Percarbonato De Sódio 100% Puro Tira Manchas Alvejante - 1kg Calisul",
+      "preco": 26.0,
+      "preco_original": 39.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_670568-MLA113572446412_072026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB75542419",
+      "categoria": "Casa e Decoração",
+      "frete_gratis": false,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB75542419?matt_word=alphapromo&matt_tool=19164688",
+      "score": 89.28,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5226404229",
+        "posicao": 6,
+        "marca": "Calisul",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_670568-MLA113572446412_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_779292-MLA116759723675_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_749702-MLA116763344195_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_973291-MLA116760509105_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_762410-MLA116760159437_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": false,
+        "num_colecao": 37,
+        "arte_feed": "docs/posts/2026-10-24/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-24/4-tiktok.jpg",
+        "reel": "docs/posts/2026-10-24/4-reel.mp4"
+      },
+      "desconto": 35
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
