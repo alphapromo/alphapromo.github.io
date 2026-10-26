@@ -105,7 +105,12 @@
       "desconto": 10
     }
   ],
-  "posts": {},
+  "posts": {
+    "1": {
+      "instagram_feed": "ok:18397784347164619",
+      "instagram_story": "ok:17913555999549538"
+    }
+  },
   "avulsos": [],
   "posts_avulsos": {}
 }
