@@ -1,0 +1,111 @@
+{
+  "data": "2026-10-26",
+  "gerado_em": "2026-10-26T06:44-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19533185",
+      "titulo": "Creatina Integralmedica 100% Pura 60 Cápsulas - Aumento de Resistência e Desempenho para Atletas e Treinos Intensos",
+      "preco": 16.98,
+      "preco_original": 32.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_782298-MLA100076194863_122025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19533185",
+      "categoria": "Esportes e Fitness",
+      "frete_gratis": false,
+      "popularidade": 96,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19533185?matt_word=alphapromo&matt_tool=19164688",
+      "score": 64.1,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3905011775",
+        "posicao": 12,
+        "marca": "Integralmédica",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_782298-MLA100076194863_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_963283-MLA100592417610_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_901784-MLA100592194644_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_833772-MLA101087071037_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_646849-MLA101086963639_122025-O.jpg"
+        ],
+        "cat_raiz": "MLB1276",
+        "subcategoria": false,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 43,
+        "arte_feed": "docs/posts/2026-10-26/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-26/1-tiktok.jpg"
+      },
+      "desconto": 47
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19380821",
+      "titulo": "Deo Colônia Natura Hoje Masculino 100ml",
+      "preco": 87.2,
+      "preco_original": 168.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_809219-MLU72675777427_112023-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19380821",
+      "categoria": "Perfumes",
+      "frete_gratis": true,
+      "popularidade": 106,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19380821?matt_word=alphapromo&matt_tool=19164688",
+      "score": 93.83,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4782846831",
+        "posicao": 7,
+        "marca": "Natura",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_809219-MLU72675777427_112023-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_769629-MLA113883795518_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_606255-MLA115188280267_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_633989-MLA116171768848_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_883719-MLA117658354811_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 44,
+        "arte_feed": "docs/posts/2026-10-26/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-26/2-tiktok.jpg",
+        "reel": "docs/posts/2026-10-26/2-reel.mp4"
+      },
+      "desconto": 48
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB66453791",
+      "titulo": "Papel Higiênico Familiar Folha Dupla Kit 24 Rolos de 30 m",
+      "preco": 34.9,
+      "preco_original": 38.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_790904-MLA108570211465_032026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB66453791",
+      "categoria": "Casa e Decoração",
+      "frete_gratis": false,
+      "popularidade": 102,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB66453791?matt_word=alphapromo&matt_tool=19164688",
+      "score": 64.08,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB6474450898",
+        "posicao": 9,
+        "marca": "Familiar",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_790904-MLA108570211465_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_790072-MLA108570002419_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_858237-MLA109142302936_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_877277-MLA114922744521_072026-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": false,
+        "num_colecao": 45,
+        "arte_feed": "docs/posts/2026-10-26/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-26/3-tiktok.jpg",
+        "reel": "docs/posts/2026-10-26/3-reel.mp4"
+      },
+      "desconto": 10
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
