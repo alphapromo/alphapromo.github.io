@@ -1,0 +1,78 @@
+{
+  "data": "2026-10-27",
+  "gerado_em": "2026-10-27T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB64531761",
+      "titulo": "Algodao Prensado Para Limpeza De Unhas 1000un BMED",
+      "preco": 19.0,
+      "preco_original": 22.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_695032-MLA116846349410_092026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB64531761",
+      "categoria": "Manicure e Pedicure",
+      "frete_gratis": false,
+      "popularidade": 98,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB64531761?matt_word=alphapromo&matt_tool=19164688",
+      "score": 56.88,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB6176148558",
+        "posicao": 11,
+        "marca": "BMED",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_695032-MLA116846349410_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_848924-MLA117624686347_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_726776-MLA116595124123_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_666178-MLA116139458148_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_826267-MLA115601612276_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 46,
+        "arte_feed": "docs/posts/2026-10-27/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-27/1-tiktok.jpg"
+      },
+      "desconto": 17
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB24366895",
+      "titulo": "Pancake Pó Branco Colormake 10g Maquiagem Artística Tom Branco",
+      "preco": 20.17,
+      "preco_original": 26.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_636793-MLA92731632563_092025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB24366895",
+      "categoria": "Maquiagem",
+      "frete_gratis": false,
+      "popularidade": 94,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB24366895?matt_word=alphapromo&matt_tool=19164688",
+      "score": 50.13,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4613871494",
+        "posicao": 13,
+        "marca": "ColorMake",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_636793-MLA92731632563_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_702946-MLA111660964372_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_768972-MLA92324157206_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_647878-MLA92731770245_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_880247-MLA92731632617_092025-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 47,
+        "arte_feed": "docs/posts/2026-10-27/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-10-27/2-tiktok.jpg",
+        "reel": "docs/posts/2026-10-27/2-reel.mp4"
+      },
+      "desconto": 25
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
