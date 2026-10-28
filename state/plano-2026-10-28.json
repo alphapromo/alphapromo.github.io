@@ -149,8 +149,8 @@
       "instagram_story": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'A7oBYyw-Gy7dx7YwcIM_NEF'}"
     },
     "3": {
-      "instagram_feed": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'A6Jb-xmqO-ByAR-qNzgFHG_'}",
-      "instagram_story": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'AJU--_JIOIMu16ADaoWMvel'}"
+      "instagram_feed": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'AsdBQxhcV_v-Ws9pdTgLrdJ'}",
+      "instagram_story": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'Az1st6Nj8AeLTOqfsrFEvj8'}"
     }
   },
   "avulsos": [],
