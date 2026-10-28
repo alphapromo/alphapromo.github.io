@@ -189,10 +189,17 @@ def selecionar_por_tema(deals: list[Deal], cfg: dict, historico: dict[str, str],
             return True
         return sum(1 for u in usados if (u.extras.get("cat_raiz") or u.categoria) == raiz) >= cfg["maximo_por_categoria"]
 
-    for i in sem_tema:
-        for d in geral:
-            if livre(d) and not cat_cheia(d):
-                final[i] = d
-                usados.append(d)
-                break
+    # se faltar oferta, afrouxa aos poucos: top 20 e subcategorias, depois sem limite de categoria
+    reserva = sorted([d for d in base if cfg["preco_minimo"] <= d.preco <= cfg["preco_maximo"] and posicao(d) <= 20],
+                     key=lambda d: d.score, reverse=True)
+    ultima = sorted(base, key=lambda d: d.score, reverse=True)
+    for lista, checa_cat in ((geral, True), (reserva, True), (reserva, False), (ultima, False)):
+        for i in sem_tema:
+            if final[i] is not None:
+                continue
+            for d in lista:
+                if livre(d) and not (checa_cat and cat_cheia(d)):
+                    final[i] = d
+                    usados.append(d)
+                    break
     return final

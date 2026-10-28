@@ -418,7 +418,7 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
             t = _hhmm(horario, hoje)
             feitos = plano["posts"].get(str(i), {})
             pendente = not feitos or any(not str(v).startswith("ok:") for v in feitos.values())
-            if t <= agora <= t + tol and pendente:
+            if t <= agora <= t + tol and pendente and i <= len(plano["deals"]):
                 ok &= post_slot(cfg, hoje, i, dry_run=dry_run)
                 mudou = True
                 plano = state.load_plan(hoje)
