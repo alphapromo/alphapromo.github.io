@@ -175,7 +175,12 @@
       "desconto": 48
     }
   ],
-  "posts": {},
+  "posts": {
+    "1": {
+      "instagram_feed": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'AgkhNb80rqfs_S0zFtBllwV'}",
+      "instagram_story": "erro:400: {'message': 'Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.', 'type': 'OAuthException', 'code': 190, 'error_subcode': 0, 'fbtrace_id': 'AHlNO2Te1YwMIpMnNwE4OV4'}"
+    }
+  },
   "avulsos": [],
   "posts_avulsos": {}
 }
