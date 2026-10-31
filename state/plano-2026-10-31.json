@@ -174,7 +174,12 @@
       "desconto": 52
     }
   ],
-  "posts": {},
+  "posts": {
+    "1": {
+      "instagram_feed": "erro:400: {'message': 'Invalid OAuth access token - Cannot parse access token', 'type': 'OAuthException', 'code': 190, 'fbtrace_id': 'ARiyXW-Gxh3Kp7FFMit6pSt'}",
+      "instagram_story": "erro:400: {'message': 'Invalid OAuth access token - Cannot parse access token', 'type': 'OAuthException', 'code': 190, 'fbtrace_id': 'AZbYyJJ8RG_VBIaDxb3KBuC'}"
+    }
+  },
   "avulsos": [],
   "posts_avulsos": {}
 }
