@@ -183,6 +183,10 @@
     "2": {
       "instagram_feed": "erro:400: {'message': 'Invalid OAuth access token - Cannot parse access token', 'type': 'OAuthException', 'code': 190, 'fbtrace_id': 'Akj-ZJv18o0OcZpJrw6SDfK'}",
       "instagram_story": "erro:400: {'message': 'Invalid OAuth access token - Cannot parse access token', 'type': 'OAuthException', 'code': 190, 'fbtrace_id': 'ALC9Zz5ZJLeOeVlES-9zUQ-'}"
+    },
+    "3": {
+      "instagram_feed": "erro:400: {'message': 'Invalid OAuth access token - Cannot parse access token', 'type': 'OAuthException', 'code': 190, 'fbtrace_id': 'AchkDw5eIG55jy34yO2gooA'}",
+      "instagram_story": "erro:400: {'message': 'Invalid OAuth access token - Cannot parse access token', 'type': 'OAuthException', 'code': 190, 'fbtrace_id': 'A6PDjwmE1p4_LPLX9cEBnHd'}"
     }
   },
   "avulsos": [],
