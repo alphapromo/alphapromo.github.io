@@ -1,0 +1,181 @@
+{
+  "data": "2026-11-01",
+  "gerado_em": "2026-11-01T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19745649",
+      "titulo": "Água sanitária e alvejante cloro ativo 5 litros Ypê",
+      "preco": 14.99,
+      "preco_original": 19.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_950605-MLA99927683925_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19745649",
+      "categoria": "Casa e Decoração",
+      "frete_gratis": false,
+      "popularidade": 90,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19745649?matt_word=alphapromo&matt_tool=19164688",
+      "score": 40.1,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3795381493",
+        "posicao": 15,
+        "marca": "Ypê",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_950605-MLA99927683925_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_755096-MLA91618483832_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_868301-MLA92018240075_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_957547-MLA91618846848_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_994439-MLA99416681886_112025-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": false,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 1,
+        "arte_feed": "docs/posts/2026-11-01/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-01/1-tiktok.jpg"
+      },
+      "desconto": 25
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB76247569",
+      "titulo": "Onimusha: Way of the Sword - PS5",
+      "preco": 316.1,
+      "preco_original": 699.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_881104-MLA115527858355_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB76247569",
+      "categoria": "Video Games",
+      "frete_gratis": true,
+      "popularidade": 110,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB76247569?matt_word=alphapromo&matt_tool=19164688",
+      "score": 110.0,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7706161022",
+        "posicao": 5,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_881104-MLA115527858355_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_837979-MLA115528262953_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_683284-MLA115527858369_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_746891-MLA115527858379_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_951545-MLA115527771407_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 2,
+        "arte_feed": "docs/posts/2026-11-01/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-01/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-01/2-reel.mp4"
+      },
+      "desconto": 55
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19767143",
+      "titulo": "Protetor Solar Facial Alta Cobertura Anthelios La Roche-Posay Cor 3.0 30g",
+      "preco": 74.9,
+      "preco_original": 109.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_728452-MLA103883256579_012026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19767143",
+      "categoria": "Beleza",
+      "frete_gratis": false,
+      "popularidade": 80,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19767143?matt_word=alphapromo&matt_tool=19164688",
+      "score": 18.5,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3340533709",
+        "posicao": 20,
+        "marca": "La Roche-Posay",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_728452-MLA103883256579_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_735859-MLA103364903972_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_966427-MLA103883335407_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_771058-MLA103883276355_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_662639-MLA103883276369_012026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": false,
+        "tema": "Beleza em alta",
+        "num_colecao": 3,
+        "arte_feed": "docs/posts/2026-11-01/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-01/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-01/3-reel.mp4"
+      },
+      "desconto": 32
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB6087971",
+      "titulo": "Proteína Max Titanium Whey Pro Concetrado em pó sabor Morango x 1kg",
+      "preco": 78.9,
+      "preco_original": 179.84,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_608162-MLA112813208483_062026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB6087971",
+      "categoria": "Esportes e Fitness",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB6087971?matt_word=alphapromo&matt_tool=19164688",
+      "score": 112.42,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB2147833620",
+        "posicao": 4,
+        "marca": "Max Titanium",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_608162-MLA112813208483_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_843094-MLA111725130250_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_620992-MLA111725070334_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_787333-MLA111725070348_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_813096-MLA115515570430_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1276",
+        "subcategoria": false,
+        "num_colecao": 4,
+        "arte_feed": "docs/posts/2026-11-01/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-01/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-01/4-reel.mp4"
+      },
+      "desconto": 56
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB47889235",
+      "titulo": "Carregador Super Rápido 25w Para Samsung Galaxy S24 S23 S22 S21 S20 Fe Ultra Motorola M22 M31 M32 M62 M63 M64 G15 Xiaomi Redmi Note 12 13 14 15 LG - Super Fast Cabo Blindado Tipo Usb C -Dtimp",
+      "preco": 32.9,
+      "preco_original": 78.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_923598-MLA113044313715_062026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB47889235",
+      "categoria": "Celulares",
+      "frete_gratis": false,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB47889235?matt_word=alphapromo&matt_tool=19164688",
+      "score": 109.12,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4235549699",
+        "posicao": 4,
+        "marca": "DTimp",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_923598-MLA113044313715_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_735419-MLA96418162102_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_846029-MLA100252076252_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_886196-MLA116277516123_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_926622-MLA100070309803_122025-O.jpg"
+        ],
+        "cat_raiz": "MLB1051",
+        "subcategoria": false,
+        "num_colecao": 5,
+        "arte_feed": "docs/posts/2026-11-01/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-01/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-01/5-reel.mp4"
+      },
+      "desconto": 58
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
