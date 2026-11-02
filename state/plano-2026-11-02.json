@@ -1,0 +1,179 @@
+{
+  "data": "2026-11-02",
+  "gerado_em": "2026-11-02T06:16-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB75011116",
+      "titulo": "Esmalte Em Gel X&d Premium 15ml Alta Pigmentação XD01",
+      "preco": 19.99,
+      "preco_original": 39.39,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_833057-MLA113001704072_072026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB75011116",
+      "categoria": "Manicure e Pedicure",
+      "frete_gratis": false,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB75011116?matt_word=alphapromo&matt_tool=19164688",
+      "score": 119.99,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7389617846",
+        "posicao": 1,
+        "marca": "BMED",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_833057-MLA113001704072_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_751648-MLA113001903812_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_740933-MLA114218885577_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_645739-MLA113001733692_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_895806-MLA114218966647_072026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 6,
+        "arte_feed": "docs/posts/2026-11-02/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-02/1-tiktok.jpg"
+      },
+      "desconto": 49
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB29473724",
+      "titulo": "Cortina 4,00x2,80 Metros Blackout Blecaute Preto Corta Luz Em Tecido Grosso Para Quarto E Sala Texfine",
+      "preco": 113.9,
+      "preco_original": 173.2,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_664695-MLA96099594865_102025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB29473724",
+      "categoria": "Casa e Decoração",
+      "frete_gratis": true,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB29473724?matt_word=alphapromo&matt_tool=19164688",
+      "score": 72.79,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5119619296",
+        "posicao": 10,
+        "marca": "Texfine",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_664695-MLA96099594865_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_775828-MLU73774763425_012024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_694853-MLU73678671672_012024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_885597-MLU73775155725_012024-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": false,
+        "num_colecao": 7,
+        "arte_feed": "docs/posts/2026-11-02/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-02/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-02/2-reel.mp4"
+      },
+      "desconto": 34
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19755099",
+      "titulo": "Protetor Solar Facial Antioleosidade FPS 80 Anthelios La Roche-Posay 40g",
+      "preco": 83.57,
+      "preco_original": 120.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_752201-MLA113617929791_062026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19755099",
+      "categoria": "Cuidados com a Pele",
+      "frete_gratis": true,
+      "popularidade": 102,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19755099?matt_word=alphapromo&matt_tool=19164688",
+      "score": 76.15,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4195198970",
+        "posicao": 9,
+        "marca": "La Roche-Posay",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_752201-MLA113617929791_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_794248-MLA112452912468_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_712130-MLA113617697143_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_976885-MLA112453205368_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_983895-MLA113617697155_062026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 8,
+        "arte_feed": "docs/posts/2026-11-02/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-02/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-02/3-reel.mp4"
+      },
+      "desconto": 31
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB54982411",
+      "titulo": "Celular Samsung Galaxy A17 Com Ia, 256gb, 8gb Ram, Câm De 50mp, Tela De 6.7 , Nfc, Ip54 - Azul",
+      "preco": 1370.0,
+      "preco_original": 1699.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_889169-MLA96868779849_102025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB54982411",
+      "categoria": "Celulares",
+      "frete_gratis": true,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB54982411?matt_word=alphapromo&matt_tool=19164688",
+      "score": 115.6,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4217058289",
+        "posicao": 1,
+        "marca": "Samsung",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_889169-MLA96868779849_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_736907-MLA106671170287_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_608271-MLA106054492264_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_939525-MLA106672026317_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_755956-MLA106671908511_022026-O.jpg"
+        ],
+        "cat_raiz": "MLB1051",
+        "subcategoria": false,
+        "num_colecao": 9,
+        "arte_feed": "docs/posts/2026-11-02/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-02/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-02/4-reel.mp4"
+      },
+      "desconto": 19
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB40656539",
+      "titulo": "Starlink Mini Kit Antena Satélite com Roteador Wi-Fi",
+      "preco": 493.0,
+      "preco_original": 948.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_799612-MLA95359719699_102025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB40656539",
+      "categoria": "Eletrônicos, Áudio e Vídeo",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB40656539?matt_word=alphapromo&matt_tool=19164688",
+      "score": 112.2,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4248769629",
+        "posicao": 4,
+        "marca": "Starlink",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_799612-MLA95359719699_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_607302-MLA110946584985_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_936659-MLA110583872038_052026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_880337-MLA111529967809_052026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_951518-MLA111531333059_052026-O.jpg"
+        ],
+        "cat_raiz": "MLB1000",
+        "subcategoria": false,
+        "num_colecao": 10,
+        "arte_feed": "docs/posts/2026-11-02/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-02/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-02/5-reel.mp4"
+      },
+      "desconto": 48
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
