@@ -1,0 +1,180 @@
+{
+  "data": "2026-11-03",
+  "gerado_em": "2026-11-03T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB27052615",
+      "titulo": "Touca Descartável Tnt Branca Talge C/ 100 Unidades Cor Branco",
+      "preco": 12.59,
+      "preco_original": 15.5,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_621679-MLA115143633856_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB27052615",
+      "categoria": "Artigos para Cabeleireiros",
+      "frete_gratis": false,
+      "popularidade": 106,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB27052615?matt_word=alphapromo&matt_tool=19164688",
+      "score": 77.66,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7880065506",
+        "posicao": 7,
+        "marca": "Talge",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_621679-MLA115143633856_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_713961-MLA116539724085_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_894897-MLA116540047029_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_603452-MLA115143312924_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_733204-MLA116540134699_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 11,
+        "arte_feed": "docs/posts/2026-11-03/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-03/1-tiktok.jpg"
+      },
+      "desconto": 19
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB18758275",
+      "titulo": "Jogo Elden Ring Standard Edition - PlayStation 5 (Físico)",
+      "preco": 193.97,
+      "preco_original": 291.1,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_774973-MLA99586538384_122025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB18758275",
+      "categoria": "Video Games",
+      "frete_gratis": true,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB18758275?matt_word=alphapromo&matt_tool=19164688",
+      "score": 73.14,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7753680856",
+        "posicao": 10,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_774973-MLA99586538384_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_896826-MLA49012133453_022022-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_936218-MLA49011893981_022022-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_884638-MLA80346591246_112024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_764163-MLA80346847014_112024-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 12,
+        "arte_feed": "docs/posts/2026-11-03/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-03/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-03/2-reel.mp4"
+      },
+      "desconto": 33
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB24326256",
+      "titulo": "Creme Multirreparador Pele Sensível Cicaplast Baume B5+ La Roche-Posay 40ml",
+      "preco": 71.52,
+      "preco_original": 109.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_695558-MLA119937437423_102026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB24326256",
+      "categoria": "Beleza",
+      "frete_gratis": false,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB24326256?matt_word=alphapromo&matt_tool=19164688",
+      "score": 114.77,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3949790433",
+        "posicao": 1,
+        "marca": "La Roche-Posay",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_695558-MLA119937437423_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_905502-MLA119937583471_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_736458-MLA118290879650_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_698021-MLA119938050793_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_650332-MLA119937876087_102026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": false,
+        "tema": "Beleza em alta",
+        "num_colecao": 13,
+        "arte_feed": "docs/posts/2026-11-03/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-03/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-03/3-reel.mp4"
+      },
+      "desconto": 35
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB21278806",
+      "titulo": "Filamento 3D Petg Branco Premium Resistente Impressora 3D Master Print 1,75mm - 1kg",
+      "preco": 48.81,
+      "preco_original": 78.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_913849-MLA105989588051_012026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB21278806",
+      "categoria": "Informática",
+      "frete_gratis": false,
+      "popularidade": 116,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB21278806?matt_word=alphapromo&matt_tool=19164688",
+      "score": 110.8,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB6250730134",
+        "posicao": 2,
+        "marca": "Masterprint",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_913849-MLA105989588051_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_907331-MLA113661645791_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_940384-MLA113661645799_062026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_831251-MLA117660725457_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1648",
+        "subcategoria": false,
+        "num_colecao": 14,
+        "arte_feed": "docs/posts/2026-11-03/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-03/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-03/4-reel.mp4"
+      },
+      "desconto": 38
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB33230345",
+      "titulo": "Kit Jogo de Ferramentas Precisão Magnético 115 Peças Quicko para Reparação Kit Completo Para Assistencia Tecnica Celulares Jogo De Chave Abrir Celular Equipamentos Para Manutenção De Celular",
+      "preco": 27.9,
+      "preco_original": 54.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_646262-MLA114845290949_072026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB33230345",
+      "categoria": "Peças para Celular",
+      "frete_gratis": false,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB33230345?matt_word=alphapromo&matt_tool=19164688",
+      "score": 120.14,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5273950710",
+        "posicao": 1,
+        "marca": "Quicko",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_646262-MLA114845290949_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_920412-MLA118577870138_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_639599-MLA113978197952_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_949690-MLA115293567245_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_749877-MLA113978486508_072026-O.jpg"
+        ],
+        "cat_raiz": "MLB1051",
+        "subcategoria": true,
+        "num_colecao": 15,
+        "arte_feed": "docs/posts/2026-11-03/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-03/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-03/5-reel.mp4"
+      },
+      "desconto": 49
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
