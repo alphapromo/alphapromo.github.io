@@ -1,0 +1,181 @@
+{
+  "data": "2026-11-05",
+  "gerado_em": "2026-11-05T06:18-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB67146264",
+      "titulo": "Mini Mixer Misturador De Bebidas Elétrico 2 Em 1 Portátil Recarregável Mexedor De Ovos Leite Whey Café Espuma Shake Drinks Capuccino Suco Blackbom",
+      "preco": 19.99,
+      "preco_original": 49.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_993099-MLA118374430742_102026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB67146264",
+      "categoria": "Cozinha",
+      "frete_gratis": false,
+      "popularidade": 110,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB67146264?matt_word=alphapromo&matt_tool=19164688",
+      "score": 104.6,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB6519291232",
+        "posicao": 5,
+        "marca": "Blackbom",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_993099-MLA118374430742_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_981724-MLA117420413833_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_965117-MLA117420469611_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_657622-MLA117420994285_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_756770-MLA117420789181_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 21,
+        "arte_feed": "docs/posts/2026-11-05/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-05/1-tiktok.jpg"
+      },
+      "desconto": 60
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB33997846",
+      "titulo": "Controle Sony CFI-ZCT1W Sem Fio White Ps5",
+      "preco": 409.0,
+      "preco_original": 699.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_798856-MLA119118101088_112026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB33997846",
+      "categoria": "Games",
+      "frete_gratis": true,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB33997846?matt_word=alphapromo&matt_tool=19164688",
+      "score": 79.4,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5291125157",
+        "posicao": 10,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_798856-MLA119118101088_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_968126-MLA119118481590_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_978183-MLA119118746400_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_901212-MLA120817664935_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_768245-MLA119118718278_112026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": false,
+        "tema": "Games",
+        "num_colecao": 22,
+        "arte_feed": "docs/posts/2026-11-05/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-05/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-05/2-reel.mp4"
+      },
+      "desconto": 41
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB37946694",
+      "titulo": "Glosslicious Kit Fran - By Franciny Elkhe",
+      "preco": 37.7,
+      "preco_original": 109.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_621041-MLA110838260235_042026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB37946694",
+      "categoria": "Maquiagem",
+      "frete_gratis": false,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB37946694?matt_word=alphapromo&matt_tool=19164688",
+      "score": 100.44,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4836890189",
+        "posicao": 6,
+        "marca": "Fran by Franciny Ehlke",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_621041-MLA110838260235_042026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_717736-MLA106236065732_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_641485-MLA106236184182_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_974071-MLA106862561011_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_844918-MLA110011657218_042026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 23,
+        "arte_feed": "docs/posts/2026-11-05/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-05/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-05/3-reel.mp4"
+      },
+      "desconto": 66
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB23487120",
+      "titulo": "Filamento PLA Voolt3D High Speed Premium de 1.75mm e 1kg Verde Velvet",
+      "preco": 104.4,
+      "preco_original": 145.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB23487120",
+      "categoria": "Informática",
+      "frete_gratis": true,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB23487120?matt_word=alphapromo&matt_tool=19164688",
+      "score": 115.01,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5288497247",
+        "posicao": 1,
+        "marca": "Voolt3D",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_904508-MLA115152627734_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_878283-MLA115152426578_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_809204-MLA116549519761_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_766720-MLA116549491787_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1648",
+        "subcategoria": false,
+        "num_colecao": 24,
+        "arte_feed": "docs/posts/2026-11-05/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-05/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-05/4-reel.mp4"
+      },
+      "desconto": 28
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB65041642",
+      "titulo": "Smartphone Motorola Moto G17 4g - 128gb 4gb Ram + 8gb Ram Boost, Camera 50mp Sony Lytia 600, Tela Fhd+ 60hz, Bateria 5200 Mah - Azul",
+      "preco": 887.0,
+      "preco_original": 1599.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_773592-MLA105493148200_012026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB65041642",
+      "categoria": "Celulares",
+      "frete_gratis": true,
+      "popularidade": 106,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB65041642?matt_word=alphapromo&matt_tool=19164688",
+      "score": 96.0,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB6420215012",
+        "posicao": 7,
+        "marca": "Motorola",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_773592-MLA105493148200_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_720304-MLA105670782906_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_723309-MLA105671427088_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_928749-MLA105670752886_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_978392-MLA105671427102_012026-O.jpg"
+        ],
+        "cat_raiz": "MLB1051",
+        "subcategoria": false,
+        "num_colecao": 25,
+        "arte_feed": "docs/posts/2026-11-05/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-05/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-05/5-reel.mp4"
+      },
+      "desconto": 45
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
