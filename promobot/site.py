@@ -167,6 +167,32 @@ def _semana(hoje: date) -> dict:
     return c if c and str(c.get("post", "")).startswith("ok:") else {}
 
 
+def codigo_curto(dia: date, n: int, avulso: bool = False) -> str:
+    """Código do link curto da oferta: 0611-3 vira alphapromo.github.io/o/06113 (L = lançamento)."""
+    return f"{dia:%d%m}{'L' if avulso else ''}{n}"
+
+
+_REDIRECT = """<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={url}">
+<title>Alpha Promo</title><script>location.replace({js})</script></head>
+<body style="font-family:sans-serif;padding:24px">Abrindo a oferta… <a href="{url}" rel="nofollow sponsored">toque aqui</a></body></html>"""
+
+
+def links_curtos(dia: date) -> None:
+    """Páginas /o/<código> que redirecionam para o link de afiliado (usadas no comentário do post)."""
+    import json as _json
+    from html import escape
+
+    plano = state.load_plan(dia) or {}
+    for lista, avulso in (("deals", False), ("avulsos", True)):
+        for n, raw in enumerate(plano.get(lista, []), start=1):
+            d = Deal.from_dict(raw)
+            url = d.link_afiliado or d.url
+            pasta = DOCS / "o" / codigo_curto(dia, n, avulso)
+            pasta.mkdir(parents=True, exist_ok=True)
+            (pasta / "index.html").write_text(_REDIRECT.format(url=escape(url), js=_json.dumps(url)), encoding="utf-8")
+
+
 def build(hoje: date, atualizado: str) -> None:
     DOCS.mkdir(exist_ok=True)
     brand = DOCS / "brand"
@@ -189,3 +215,4 @@ def build(hoje: date, atualizado: str) -> None:
         hoje=_itens(plano), anteriores=anteriores, semana=_itens(_semana(hoje)), lancamentos=_lancamentos(hoje), atualizado=atualizado, amazon=amazon_ofertas_do_dia()
     )
     (DOCS / "index.html").write_text(html, encoding="utf-8")
+    links_curtos(hoje)

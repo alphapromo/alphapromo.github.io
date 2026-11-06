@@ -332,6 +332,15 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False, avuls
         tarefas.append(("instagram_feed", lambda: instagram.post_reel(reel_url, caption.legenda(d, slot, marca, "instagram"), pub["instagram_api_versao"])))
     elif pub.get("instagram_feed"):
         tarefas.append(("instagram_feed", lambda: instagram.post_feed(feed_raw, caption.legenda(d, slot, marca, "instagram"), pub["instagram_api_versao"])))
+    if pub.get("instagram_feed") and pub.get("comentar_link", True):
+        curto = f"{cfg.pages_url.removeprefix('https://')}/o/{site.codigo_curto(hoje, slot, avulso)}"
+
+        def _comentar():
+            fid = str(feito.get("instagram_feed", ""))
+            if not fid.startswith("ok:") or not fid[3:].isdigit():
+                raise RuntimeError("post do feed ainda não saiu")
+            return instagram.comentar(fid[3:], caption.comentario(d, slot, curto), pub["instagram_api_versao"])
+        tarefas.append(("instagram_comentario", _comentar))
     if pub.get("instagram_stories"):
         tarefas.append(("instagram_story", lambda: instagram.post_story(vert_raw, pub["instagram_api_versao"])))
     if pub.get("tiktok"):
@@ -348,6 +357,7 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False, avuls
             feito["instagram_feed"] = f"ok:{existente}"
             feito.setdefault("instagram_story", "ok:ja-publicado")
 
+    site.links_curtos(hoje)  # garante a página do link curto antes do comentário
     for nome, fn in tarefas:
         if str(feito.get(nome, "")).startswith("ok:"):
             log.info("%s da oferta #%s já publicado — pulando.", nome, slot)
@@ -360,6 +370,10 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False, avuls
             feito[nome] = f"ok:{rid}"
             log.info("Publicado %s da oferta #%s → %s", nome, slot, rid)
         except Exception as e:  # noqa: BLE001
+            if nome == "instagram_comentario":  # comentário é bônus: não trava o horário nem gera alerta
+                feito[nome] = "ok:sem-comentario"
+                log.warning("Não consegui comentar o link na oferta #%s: %s", slot, e)
+                continue
             ok = False
             feito[nome] = f"erro:{str(e)[:300]}"
             log.error("Falhou %s da oferta #%s: %s", nome, slot, e)

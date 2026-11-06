@@ -53,3 +53,9 @@ def legenda(d: Deal, numero: int, marca: dict, plataforma: str) -> str:
 
 def titulo_tiktok(d: Deal, numero: int) -> str:
     return _curto(f"{d.desconto}% OFF: {d.titulo}", 88)
+
+
+def comentario(d: Deal, numero: int, link_curto: str) -> str:
+    if d.extras.get("avulso"):
+        return f"🛒 Link direto: {link_curto}\n(copie e cole no navegador, ou toque no link da bio)"
+    return f"🛒 Link direto da oferta #{numero}: {link_curto}\n(copie e cole no navegador, ou toque no link da bio)"

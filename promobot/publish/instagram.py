@@ -89,6 +89,13 @@ def post_carousel(image_urls: list[str], caption: str, versao: str) -> str:
     return _publish({"media_type": "CAROUSEL", "children": ",".join(filhos), "caption": caption}, versao)
 
 
+def comentar(media_id: str, texto: str, versao: str) -> str:
+    """Comenta no próprio post (precisa da permissão instagram_business_manage_comments)."""
+    token = env("IG_ACCESS_TOKEN")
+    r = requests.post(f"{HOST}/{versao}/{media_id}/comments", data={"message": texto, "access_token": token}, timeout=30)
+    return _check(r)["id"]
+
+
 def post_reel(video_url: str, caption: str, versao: str) -> str:
     return _publish({"media_type": "REELS", "video_url": video_url, "caption": caption, "share_to_feed": "true"}, versao)
 
