@@ -13,7 +13,12 @@ BRT = timezone(timedelta(hours=-3))  # Brasil não tem horário de verão desde 
 
 
 def env(name: str, default: str = "") -> str:
-    return os.environ.get(name, default).strip()
+    v = os.environ.get(name, default).strip()
+    if name.endswith("_TOKEN"):  # token colado com aspas, "Bearer" ou quebra de linha no meio
+        v = "".join(v.split()).strip("\"'")
+        if v.lower().startswith("bearer"):
+            v = v[6:]
+    return v
 
 
 @dataclass

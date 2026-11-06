@@ -363,6 +363,10 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False, avuls
             ok = False
             feito[nome] = f"erro:{str(e)[:300]}"
             log.error("Falhou %s da oferta #%s: %s", nome, slot, e)
+            if "access token" in str(e).lower():
+                t = env("IG_ACCESS_TOKEN")  # só o formato, nunca o conteúdo
+                log.warning("Formato do IG_ACCESS_TOKEN: começa com '%s', %s caracteres (o certo começa com 'IG' e tem ~180)",
+                            t[:2], len(t))
     if not dry_run:
         state.save_plan(hoje, plano)
     return ok
