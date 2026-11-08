@@ -41,8 +41,8 @@ def legenda(d: Deal, numero: int, marca: dict, plataforma: str) -> str:
         linhas.append("Frete grátis.")
     linhas += [
         "",
-        "💬 Comente QUERO que eu te mando o link no direct!",
-        f"👉 Ou {onde[0].lower() + onde[1:]} e escolha a oferta #{numero}" + (f" de {d.extras['dia']}." if d.extras.get("dia") else "."),
+        *(["💬 Comente QUERO que eu te mando o link no direct!"] if marca.get("eu_quero_na_legenda") else []),
+        f"👉 {'Ou ' + onde[0].lower() + onde[1:] if marca.get('eu_quero_na_legenda') else onde} e escolha a oferta #{numero}" + (f" de {d.extras['dia']}." if d.extras.get("dia") else "."),
         "",
         "Preço conferido hoje cedo; preço e estoque podem mudar a qualquer momento.",
         "Contém link de afiliado: posso ganhar comissão, sem custo extra para você.",
