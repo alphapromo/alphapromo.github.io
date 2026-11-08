@@ -1,0 +1,47 @@
+name: Eu quero instantâneo (Cloudflare)
+
+# Publica o Worker que responde "quero" na hora e atualiza o token do Instagram nele.
+# Roda quando o código do Worker muda, toda segunda (depois que o robô renova o token) ou à mão
+# (por exemplo, depois de gerar um token novo do Instagram).
+on:
+  push:
+    branches: [main]
+    paths: ["worker/**", ".github/workflows/quero-worker.yml"]
+  schedule:
+    - cron: "40 13 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: quero-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+      - name: Precisa publicar?
+        id: precisa
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "Cloudflare ainda não configurado."; echo "ok=0" >> $GITHUB_OUTPUT; exit 0; fi
+          echo "ok=1" >> $GITHUB_OUTPUT
+      - name: Publicar Worker e segredos
+        if: steps.precisa.outputs.ok == '1'
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+        run: |
+          npx --yes wrangler@3 deploy
+          printf '%s' "$IG_ACCESS_TOKEN" | npx --yes wrangler@3 secret put IG_ACCESS_TOKEN
+          printf '%s' "$IG_USER_ID" | npx --yes wrangler@3 secret put IG_USER_ID
+          printf '%s' "$IG_APP_SECRET" | npx --yes wrangler@3 secret put IG_APP_SECRET
+          echo "::notice::Worker publicado. Endereço: $(npx --yes wrangler@3 deployments list 2>/dev/null | grep -o 'https://[^ ]*workers.dev' | head -1)"

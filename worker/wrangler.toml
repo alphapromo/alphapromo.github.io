@@ -1,0 +1,9 @@
+name = "alphapromo-quero"
+main = "index.js"
+compatibility_date = "2025-01-01"
+workers_dev = true
+
+[vars]
+VERIFY_TOKEN = "9c1fc0bd423502c258330d44"
+API_VERSION = "v23.0"
+SITE = "https://alphapromo.github.io"

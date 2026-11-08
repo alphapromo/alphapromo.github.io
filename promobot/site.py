@@ -186,6 +186,19 @@ _REDIRECT = """<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
 <body style="font-family:sans-serif;padding:24px">Abrindo a oferta… <a href="{url}" rel="nofollow sponsored">toque aqui</a></body></html>"""
 
 
+def ofertas_por_post() -> None:
+    """docs/ofertas-ig.json: id do post no Instagram -> oferta (usado pelo "eu quero" instantâneo)."""
+    import json as _json
+
+    mapa = {}
+    for iso, itens in state.load_arquivo().items():
+        for x in itens:
+            if x.get("ig"):
+                mapa[x["ig"]] = {"titulo": x["titulo"], "preco": x["preco"], "loja": x["loja"],
+                                 "link": f"https://alphapromo.github.io/o/{codigo_curto(date.fromisoformat(iso), x['n'])}"}
+    (DOCS / "ofertas-ig.json").write_text(_json.dumps(mapa, ensure_ascii=False), encoding="utf-8")
+
+
 def links_curtos(dia: date) -> None:
     """Páginas /o/<código> que redirecionam para o link de afiliado (usadas no comentário do post)."""
     import json as _json
@@ -236,3 +249,4 @@ def build(hoje: date, atualizado: str) -> None:
     )
     (DOCS / "index.html").write_text(html, encoding="utf-8")
     links_curtos(hoje)
+    ofertas_por_post()
