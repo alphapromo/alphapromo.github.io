@@ -35,7 +35,8 @@ def legenda(d: Deal, numero: int, marca: dict, plataforma: str) -> str:
     linhas = [
         f"🔥 {d.extras.get('tema') or 'Oferta'} · #{numero} do dia: {_curto(d.titulo, 100)}",
         "",
-        f"De {brl(d.preco_original)} por {brl(d.preco)} ({d.desconto}% OFF) na {d.loja}.",
+        (f"De {brl(d.preco_original)} por {brl(d.preco)} ({d.desconto}% OFF) na {d.loja}." if d.desconto >= 5
+         else f"Por {brl(d.preco)} no {d.loja}."),
     ]
     if d.frete_gratis:
         linhas.append("Frete grátis.")
