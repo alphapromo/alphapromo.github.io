@@ -207,6 +207,10 @@ def ofertas_por_post() -> None:
     mapa = {}
     for iso, itens in state.load_arquivo().items():
         for x in itens:
+            oferta = {"titulo": x["titulo"], "preco": x["preco"], "loja": x["loja"],
+                      "link": f"https://alphapromo.github.io/o/{codigo_curto(date.fromisoformat(iso), x['n'])}"}
+            if x.get("story"):
+                mapa[x["story"]] = oferta  # resposta ao story também acha a oferta
             if x.get("ig"):
                 mapa[x["ig"]] = {"titulo": x["titulo"], "preco": x["preco"], "loja": x["loja"],
                                  "link": f"https://alphapromo.github.io/o/{codigo_curto(date.fromisoformat(iso), x['n'])}"}

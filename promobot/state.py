@@ -67,8 +67,10 @@ def arquivar(d: date, plano: dict | None) -> None:
     for n, raw in enumerate(plano["deals"], start=1):
         x = Deal.from_dict(raw)
         ig = str(plano.get("posts", {}).get(str(n), {}).get("instagram_feed", ""))
+        st = str(plano.get("posts", {}).get(str(n), {}).get("instagram_story", ""))
         itens.append({"n": n, "titulo": x.titulo, "preco": x.preco, "preco_original": x.preco_original,
                       "desconto": x.desconto, "imagem": x.imagem, "loja": x.loja,
-                      "link": x.link_afiliado or x.url, "ig": ig[3:] if ig.startswith("ok:") else ""})
+                      "link": x.link_afiliado or x.url, "ig": ig[3:] if ig.startswith("ok:") else "",
+                      "story": st[3:] if st.startswith("ok:") and st[3:].isdigit() else ""})
     arq[d.isoformat()] = itens
     _write(STATE / "arquivo.json", dict(sorted(arq.items())))

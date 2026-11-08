@@ -89,7 +89,33 @@ async function responder(v, env) {
   if (!rp.ok) console.log("resposta pública falhou", rp.status, await rp.text());
 }
 
+async function mandarDM(env, destinatario, texto) {
+  const base = `https://graph.instagram.com/${env.API_VERSION}`;
+  return fetch(`${base}/${env.IG_USER_ID}/messages?access_token=${encodeURIComponent(env.IG_ACCESS_TOKEN)}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ recipient: destinatario, message: { text: texto } }),
+  });
+}
+
+// "quero" mandado no direct ou como resposta a um story
+async function processarMensagem(m, env) {
+  const msg = m.message || {};
+  if (!msg.text || msg.is_echo || m.sender?.id === env.IG_USER_ID) return;
+  if (!GATILHO.test(normalizar(msg.text))) return;
+  if (await jaRespondido(env, `m:${msg.mid}`)) return;
+  const mapa = await ofertas(env);
+  const story = msg.reply_to?.story?.id;
+  const oferta = story ? mapa[story] : null;
+  const r = await mandarDM(env, { id: m.sender.id }, mensagem(oferta, "", env.SITE));
+  await anotar(env, { etapa: "direct (story/mensagem)", ok: r.ok, status: r.status, story: story || null,
+                      erro: r.ok ? undefined : (await r.text()).slice(0, 300) });
+}
+
 async function processar(dados, env) {
+  for (const entrada of dados.entry || []) {
+    for (const m of entrada.messaging || []) await processarMensagem(m, env);
+  }
   await anotar(env, { etapa: "aviso recebido", campos: (dados.entry || []).flatMap((e) => (e.changes || []).map((c) => c.field)),
                  texto: (dados.entry?.[0]?.changes?.[0]?.value?.text || "").slice(0, 40) });
   for (const entrada of dados.entry || []) {
