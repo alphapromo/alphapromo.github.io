@@ -181,9 +181,23 @@ def codigo_curto(dia: date, n: int, avulso: bool = False) -> str:
 
 
 _REDIRECT = """<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={url}">
-<title>Alpha Promo</title><script>location.replace({js})</script></head>
+<meta name="robots" content="noindex">
+<meta property="og:type" content="product"><meta property="og:site_name" content="Alpha Promo">
+<meta property="og:title" content="{titulo}"><meta property="og:description" content="{descricao}">
+<meta property="og:image" content="{imagem}"><meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="refresh" content="0; url={url}">
+<title>{titulo}</title><script>location.replace({js})</script></head>
 <body style="font-family:sans-serif;padding:24px">Abrindo a oferta… <a href="{url}" rel="nofollow sponsored">toque aqui</a></body></html>"""
+
+
+def _pagina_redirect(pasta, url: str, titulo: str, preco: float, loja: str, imagem: str) -> None:
+    import json as _json
+    from html import escape
+
+    pasta.mkdir(parents=True, exist_ok=True)
+    (pasta / "index.html").write_text(_REDIRECT.format(
+        url=escape(url), js=_json.dumps(url), titulo=escape(titulo), imagem=escape(imagem or ""),
+        descricao=escape(f"{brl(preco)} no {loja} · oferta da Alpha Promo")), encoding="utf-8")
 
 
 def ofertas_por_post() -> None:
@@ -206,18 +220,14 @@ def links_curtos(dia: date) -> None:
 
     for iso, itens in state.load_arquivo().items():  # ofertas antigas também mantêm o link curto
         for x in itens:
-            pasta = DOCS / "o" / codigo_curto(date.fromisoformat(iso), x["n"])
-            if not (pasta / "index.html").exists():
-                pasta.mkdir(parents=True, exist_ok=True)
-                (pasta / "index.html").write_text(_REDIRECT.format(url=escape(x["link"]), js=_json.dumps(x["link"])), encoding="utf-8")
+            _pagina_redirect(DOCS / "o" / codigo_curto(date.fromisoformat(iso), x["n"]), x["link"], x["titulo"],
+                             x["preco"], x["loja"], x["imagem"])
     plano = state.load_plan(dia) or {}
     for lista, avulso in (("deals", False), ("avulsos", True)):
         for n, raw in enumerate(plano.get(lista, []), start=1):
             d = Deal.from_dict(raw)
-            url = d.link_afiliado or d.url
-            pasta = DOCS / "o" / codigo_curto(dia, n, avulso)
-            pasta.mkdir(parents=True, exist_ok=True)
-            (pasta / "index.html").write_text(_REDIRECT.format(url=escape(url), js=_json.dumps(url)), encoding="utf-8")
+            _pagina_redirect(DOCS / "o" / codigo_curto(dia, n, avulso), d.link_afiliado or d.url, d.titulo,
+                             d.preco, d.loja, d.imagem)
 
 
 def build(hoje: date, atualizado: str) -> None:
