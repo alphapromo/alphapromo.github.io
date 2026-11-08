@@ -153,7 +153,7 @@ def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -
     <span style="font-family:Outfit;font-size:40px;font-weight:800;color:{t['tinta']};white-space:nowrap">{dir_valor}</span>
    </div>
   </div>
-  <div style="position:absolute;left:44px;right:44px;top:1052px;font-size:21px;font-weight:500;color:#6B6F7E">{html.escape(d.loja)}{' · frete grátis' if d.frete_gratis else ''}</div>
+  <div style="position:absolute;left:44px;right:44px;top:1052px;font-size:21px;font-weight:500;color:#6B6F7E">{html.escape(d.loja)}{' · frete grátis' if d.frete_gratis else ''}<span style="float:right;font-weight:700;color:#C8644D">Comente QUERO e receba o link</span></div>
   <div style="position:absolute;left:44px;right:44px;bottom:40px;display:flex;align-items:center;justify-content:space-between;padding-top:22px;border-top:1px solid rgba(36,40,59,.12);font-size:19px;font-weight:700;letter-spacing:2px">
    <span style="display:flex;align-items:center;gap:12px;color:{t['tinta']}"><span style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{t['moldura']}">{_simbolo(t, 20)}</span>{t['nome']}</span>
    <span style="color:#6B6F7E">ALPHA · {nome_colecao} · {numero_colecao}</span>
@@ -174,9 +174,9 @@ def pagina(d: Deal, n_dia: int, total_dia: int, formato: str, num_colecao: int, 
         return (base + f'<div id="arte" style="width:1080px;height:1350px;position:relative;background:#FBF7F2;'
                 f'font-family:\'DM Sans\';color:#24283B;overflow:hidden">{carta}</div></body></html>')
     if _lancamento(d):
-        topo, rodape, total_dia = "CARTA ESPECIAL · LANÇAMENTO", "Link na bio · lançamentos", 0
+        topo, rodape, total_dia = "CARTA ESPECIAL · LANÇAMENTO", "Comente QUERO e receba o link", 0
     else:
-        topo, rodape = f"PACOTE DE HOJE · CARTA {n_dia} DE {max(total_dia, n_dia)}", f"Link na bio · carta #{n_dia}"
+        topo, rodape = f"PACOTE DE HOJE · CARTA {n_dia} DE {max(total_dia, n_dia)}", "Comente QUERO e receba o link"
     barras = "" if _lancamento(d) else "".join(
         f'<span style="width:70px;height:8px;border-radius:4px;background:{t["barra"] if k <= n_dia else t["barra"] + "40"}"></span>'
         for k in range(1, max(total_dia, n_dia) + 1))

@@ -477,7 +477,7 @@ def main(argv=None) -> int:
                     print(f"::{nivel}::{self.format(r)}".replace("\n", " "), flush=True)
         logging.getLogger().addHandler(_Anotar())
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero", "webhook"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero", "webhook", "apagar-comentarios"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
@@ -537,6 +537,30 @@ def main(argv=None) -> int:
         else:
             carrossel.publicar(cfg, hoje, dry_run=dry)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+        return 0
+    if a.cmd == "apagar-comentarios":  # apaga os comentários "🛒 Link direto…" que o robô fez nos posts
+        import requests as _rq
+        from .publish.instagram import _check
+        v = cfg["publicar"]["instagram_api_versao"]
+        tok, uid = env("IG_ACCESS_TOKEN"), env("IG_USER_ID")
+        base = f"https://graph.instagram.com/{v}"
+        url, params, apagados, falhas = f"{base}/{uid}/media", {"fields": "id", "limit": 50, "access_token": tok}, 0, 0
+        while url:
+            pag = _check(_rq.get(url, params=params, timeout=30))
+            for m in pag.get("data", []):
+                coms = _check(_rq.get(f"{base}/{m['id']}/comments", timeout=30, params={
+                    "fields": "id,text,from", "limit": 50, "access_token": tok})).get("data", [])
+                for c in coms:
+                    if (c.get("from") or {}).get("id") == uid and (c.get("text") or "").startswith("🛒 Link direto"):
+                        try:
+                            if not dry:
+                                _check(_rq.delete(f"{base}/{c['id']}", params={"access_token": tok}, timeout=30))
+                            apagados += 1
+                        except Exception as e:  # noqa: BLE001
+                            falhas += 1
+                            log.warning("Não apaguei o comentário %s: %s", c["id"], str(e)[:150])
+            url, params = (pag.get("paging") or {}).get("next"), None
+        _aviso(f"Comentários de link apagados: {apagados} (falhas: {falhas})")
         return 0
     if a.cmd == "webhook":  # liga os avisos de comentários da conta e mostra o diagnóstico do servidor
         import requests as _rq

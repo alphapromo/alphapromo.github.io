@@ -2,7 +2,7 @@
 # Tudo que é segredo (tokens, tags de afiliado) fica nos "Secrets" do GitHub, nunca aqui.
 
 marca:
-  eu_quero_na_legenda: false     # liga quando o app da Meta passar na análise (directs para qualquer pessoa)
+  eu_quero_na_legenda: true      # "Comente QUERO" na legenda e na arte
   nome: "Alpha Promo"
   arroba: "@alphapromo.ofertas"
   hashtags_fixas: ["#publi", "#linkdeafiliado", "#alphapromo", "#promocao", "#oferta", "#achadinhos"]
@@ -80,6 +80,7 @@ publicar:
   tiktok_backend: "uploadpost"     # "uploadpost" (serviço já auditado) ou "oficial" (app próprio auditado)
   tiktok_musica_automatica: true
   instagram_api_versao: "v23.0"
+  comentar_link: false             # não comenta mais o link curto nos posts (o "quero" no direct substituiu)
 
 site:
   manter_dias: 7                   # dias de imagens mantidos no repositório
