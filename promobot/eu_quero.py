@@ -60,7 +60,7 @@ def processar(cfg: Settings, hoje: date, dias: int = 3, dry_run: bool = False) -
                     "fields": "id,text,username,from", "limit": 50, "access_token": token})
                 comentarios = _check(r).get("data", [])
             except Exception as e:  # noqa: BLE001
-                log.debug("comentários de %s: %s", item["ig"], e)
+                log.warning("Eu quero: não consegui ler os comentários do post %s: %s", item["ig"], str(e)[:200])
                 continue
             for c in comentarios:
                 cid = c.get("id")
