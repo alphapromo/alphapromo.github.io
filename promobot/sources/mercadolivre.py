@@ -265,7 +265,7 @@ def produto_por_id(pid: str, item_id: str = "", preco_manual: float | None = Non
     if not p:
         aviso.info("produto %s não encontrado", pid)
         return None
-    bb = p.get("buy_box_winner") or {}
+    bb = p.get("buy_box_winner") or parse_product_items(cli.get(f"/products/{pid}/items")) or {}
     preco, original = bb.get("price"), bb.get("original_price")
     iid = bb.get("item_id") or item_id
     if iid and (not preco or not original):
