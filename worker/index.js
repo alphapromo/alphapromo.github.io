@@ -49,20 +49,18 @@ async function ofertas(env) {
   return r.ok ? r.json() : {};
 }
 
-async function anotar(evento) {
-  // guarda os últimos avisos recebidos (para diagnóstico em /status)
-  const chave = new Request("https://quero.local/status");
-  const atual = await caches.default.match(chave);
-  const lista = atual ? await atual.json() : [];
+// Observação: a Cache API não funciona em *.workers.dev, por isso usamos o KV (env.KV).
+async function anotar(env, evento) {
+  if (!env.KV) return;
+  const lista = JSON.parse((await env.KV.get("status")) || "[]");
   lista.unshift({ quando: new Date().toISOString(), ...evento });
-  await caches.default.put(chave, new Response(JSON.stringify(lista.slice(0, 15)), {
-    headers: { "Content-Type": "application/json", "Cache-Control": "max-age=604800" } }));
+  await env.KV.put("status", JSON.stringify(lista.slice(0, 15)));
 }
 
-async function jaRespondido(cid) {
-  const chave = new Request(`https://quero.local/${cid}`);
-  if (await caches.default.match(chave)) return true;
-  await caches.default.put(chave, new Response("1", { headers: { "Cache-Control": "max-age=604800" } }));
+async function jaRespondido(env, cid) {
+  if (!env.KV) return false;
+  if (await env.KV.get(`c:${cid}`)) return true;
+  await env.KV.put(`c:${cid}`, "1", { expirationTtl: 604800 });
   return false;
 }
 
@@ -79,10 +77,10 @@ async function responder(v, env) {
   if (!dm.ok) {
     const erro = await dm.text();
     console.log("direct falhou", dm.status, erro);
-    await anotar({ etapa: "direct", ok: false, status: dm.status, erro: erro.slice(0, 300) });
+    await anotar(env, { etapa: "direct", ok: false, status: dm.status, erro: erro.slice(0, 300) });
     return;
   }
-  await anotar({ etapa: "direct", ok: true, usuario, post: v.media?.id });
+  await anotar(env, { etapa: "direct", ok: true, usuario, post: v.media?.id });
   const texto = usuario ? `@${usuario} te mandei o link no direct! 📩` : "Te mandei o link no direct! 📩";
   const rp = await fetch(`${base}/${v.id}/replies`, {
     method: "POST",
@@ -92,7 +90,7 @@ async function responder(v, env) {
 }
 
 async function processar(dados, env) {
-  await anotar({ etapa: "aviso recebido", campos: (dados.entry || []).flatMap((e) => (e.changes || []).map((c) => c.field)),
+  await anotar(env, { etapa: "aviso recebido", campos: (dados.entry || []).flatMap((e) => (e.changes || []).map((c) => c.field)),
                  texto: (dados.entry?.[0]?.changes?.[0]?.value?.text || "").slice(0, 40) });
   for (const entrada of dados.entry || []) {
     for (const mudanca of entrada.changes || []) {
@@ -101,7 +99,7 @@ async function processar(dados, env) {
       if (!v.id || v.from?.id === env.IG_USER_ID) continue; // comentário da própria Alpha Promo
       if (v.parent_id) continue; // resposta dentro de outro comentário
       if (!GATILHO.test(normalizar(v.text))) continue;
-      if (await jaRespondido(v.id)) continue; // o Instagram às vezes reenvia o mesmo aviso
+      if (await jaRespondido(env, v.id)) continue; // o Instagram às vezes reenvia o mesmo aviso
       await responder(v, env);
     }
   }
@@ -117,15 +115,15 @@ export default {
         return new Response(url.searchParams.get("hub.challenge") || "");
       }
       if (url.pathname === "/status") {
-        const st = await caches.default.match(new Request("https://quero.local/status"));
-        return new Response(st ? await st.text() : "[]", { headers: { "Content-Type": "application/json" } });
+        const st = env.KV ? await env.KV.get("status") : null;
+        return new Response(st || (env.KV ? "[]" : "sem KV"), { headers: { "Content-Type": "application/json" } });
       }
       return new Response("Alpha Promo: eu quero ✓");
     }
     if (req.method !== "POST") return new Response("", { status: 405 });
     const corpo = await req.text();
     if (!(await assinaturaOk(corpo, req.headers.get("x-hub-signature-256"), env.IG_APP_SECRET))) {
-      ctx.waitUntil(anotar({ etapa: "assinatura", ok: false, segredo_configurado: !!env.IG_APP_SECRET }));
+      ctx.waitUntil(anotar(env, { etapa: "assinatura", ok: false, segredo_configurado: !!env.IG_APP_SECRET }));
       return new Response("assinatura inválida", { status: 401 });
     }
     ctx.waitUntil(processar(JSON.parse(corpo), env));

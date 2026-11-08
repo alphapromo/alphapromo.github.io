@@ -40,6 +40,11 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
         run: |
+          # KV para guardar o diagnóstico e os comentários já respondidos (cria na primeira vez)
+          achar() { npx --yes wrangler@3 kv namespace list 2>/dev/null | python3 -c "import json,sys;print(next((n['id'] for n in json.load(sys.stdin) if n['title'].endswith('QUERO')),''))"; }
+          KV_ID=$(achar)
+          if [ -z "$KV_ID" ]; then npx --yes wrangler@3 kv namespace create QUERO; KV_ID=$(achar); fi
+          printf '\n[[kv_namespaces]]\nbinding = "KV"\nid = "%s"\n' "$KV_ID" >> wrangler.toml
           npx --yes wrangler@3 deploy
           printf '%s' "$IG_ACCESS_TOKEN" | npx --yes wrangler@3 secret put IG_ACCESS_TOKEN
           printf '%s' "$IG_USER_ID" | npx --yes wrangler@3 secret put IG_USER_ID
