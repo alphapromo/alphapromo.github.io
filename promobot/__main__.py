@@ -19,7 +19,7 @@ import time
 
 import requests
 
-from . import affiliate, caption, carrossel, carta, reel, render, site, state
+from . import affiliate, caption, carrossel, carta, eu_quero, reel, render, site, state
 from .config import BRT, ROOT, Settings, env, now_brt
 from .models import Deal
 from .publish import instagram, tiktok
@@ -453,6 +453,13 @@ def run(cfg: Settings, dry_run: bool, mock: bool) -> int:
         elif dados and not str(dados.get("post", "")).startswith(("ok:", "pulado")) and hora <= agora <= hora + tol:
             ok &= carrossel.publicar(cfg, hoje, dry_run=dry_run)
             mudou = True
+    # "eu quero" nos comentários -> link no direct (erros aqui nunca derrubam a execução)
+    if cfg["publicar"].get("eu_quero", True):
+        try:
+            if eu_quero.processar(cfg, hoje, dry_run=dry_run):
+                mudou = True
+        except Exception as e:  # noqa: BLE001
+            log.warning("Eu quero: %s", e)
     if mudou:
         site.build(hoje, agora.strftime("%d/%m às %Hh%M"))
     if not mudou:
@@ -470,7 +477,7 @@ def main(argv=None) -> int:
                     print(f"::{nivel}::{self.format(r)}".replace("\n", " "), flush=True)
         logging.getLogger().addHandler(_Anotar())
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
@@ -530,6 +537,9 @@ def main(argv=None) -> int:
         else:
             carrossel.publicar(cfg, hoje, dry_run=dry)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+        return 0
+    if a.cmd == "eu-quero":
+        _aviso(f"Eu quero: {eu_quero.processar(cfg, hoje, dry_run=dry)} directs enviados")
         return 0
     if a.cmd == "comentar-antigos":  # comenta o link curto nos posts antigos que ainda não têm
         import time as _t
