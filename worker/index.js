@@ -49,6 +49,16 @@ async function ofertas(env) {
   return r.ok ? r.json() : {};
 }
 
+async function anotar(evento) {
+  // guarda os últimos avisos recebidos (para diagnóstico em /status)
+  const chave = new Request("https://quero.local/status");
+  const atual = await caches.default.match(chave);
+  const lista = atual ? await atual.json() : [];
+  lista.unshift({ quando: new Date().toISOString(), ...evento });
+  await caches.default.put(chave, new Response(JSON.stringify(lista.slice(0, 15)), {
+    headers: { "Content-Type": "application/json", "Cache-Control": "max-age=604800" } }));
+}
+
 async function jaRespondido(cid) {
   const chave = new Request(`https://quero.local/${cid}`);
   if (await caches.default.match(chave)) return true;
@@ -67,9 +77,12 @@ async function responder(v, env) {
     body: JSON.stringify({ recipient: { comment_id: v.id }, message: { text: mensagem(oferta, usuario, env.SITE) } }),
   });
   if (!dm.ok) {
-    console.log("direct falhou", dm.status, await dm.text());
+    const erro = await dm.text();
+    console.log("direct falhou", dm.status, erro);
+    await anotar({ etapa: "direct", ok: false, status: dm.status, erro: erro.slice(0, 300) });
     return;
   }
+  await anotar({ etapa: "direct", ok: true, usuario, post: v.media?.id });
   const texto = usuario ? `@${usuario} te mandei o link no direct! 📩` : "Te mandei o link no direct! 📩";
   const rp = await fetch(`${base}/${v.id}/replies`, {
     method: "POST",
@@ -79,6 +92,8 @@ async function responder(v, env) {
 }
 
 async function processar(dados, env) {
+  await anotar({ etapa: "aviso recebido", campos: (dados.entry || []).flatMap((e) => (e.changes || []).map((c) => c.field)),
+                 texto: (dados.entry?.[0]?.changes?.[0]?.value?.text || "").slice(0, 40) });
   for (const entrada of dados.entry || []) {
     for (const mudanca of entrada.changes || []) {
       if (mudanca.field !== "comments") continue;
@@ -101,11 +116,16 @@ export default {
           url.searchParams.get("hub.verify_token") === env.VERIFY_TOKEN) {
         return new Response(url.searchParams.get("hub.challenge") || "");
       }
+      if (url.pathname === "/status") {
+        const st = await caches.default.match(new Request("https://quero.local/status"));
+        return new Response(st ? await st.text() : "[]", { headers: { "Content-Type": "application/json" } });
+      }
       return new Response("Alpha Promo: eu quero ✓");
     }
     if (req.method !== "POST") return new Response("", { status: 405 });
     const corpo = await req.text();
     if (!(await assinaturaOk(corpo, req.headers.get("x-hub-signature-256"), env.IG_APP_SECRET))) {
+      ctx.waitUntil(anotar({ etapa: "assinatura", ok: false, segredo_configurado: !!env.IG_APP_SECRET }));
       return new Response("assinatura inválida", { status: 401 });
     }
     ctx.waitUntil(processar(JSON.parse(corpo), env));

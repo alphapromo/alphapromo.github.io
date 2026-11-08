@@ -477,7 +477,7 @@ def main(argv=None) -> int:
                     print(f"::{nivel}::{self.format(r)}".replace("\n", " "), flush=True)
         logging.getLogger().addHandler(_Anotar())
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero", "webhook"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
@@ -537,6 +537,21 @@ def main(argv=None) -> int:
         else:
             carrossel.publicar(cfg, hoje, dry_run=dry)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+        return 0
+    if a.cmd == "webhook":  # liga os avisos de comentários da conta e mostra o diagnóstico do servidor
+        import requests as _rq
+        v = cfg["publicar"]["instagram_api_versao"]
+        tok = env("IG_ACCESS_TOKEN")
+        r = _rq.post(f"https://graph.instagram.com/{v}/me/subscribed_apps",
+                     params={"subscribed_fields": "comments,messages", "access_token": tok}, timeout=30)
+        _aviso(f"Assinar avisos da conta: {r.status_code} {r.text[:300]}")
+        r = _rq.get(f"https://graph.instagram.com/{v}/me/subscribed_apps", params={"access_token": tok}, timeout=30)
+        _aviso(f"Avisos assinados: {r.status_code} {r.text[:300]}")
+        try:
+            st = _rq.get("https://alphapromo-quero.alphapromo-ofertas.workers.dev/status", timeout=30)
+            _aviso(f"Servidor: {st.status_code} {st.text[:900]}")
+        except Exception as e:  # noqa: BLE001
+            _aviso(f"Servidor fora do ar: {e}")
         return 0
     if a.cmd == "eu-quero":
         _aviso(f"Eu quero: {eu_quero.processar(cfg, hoje, dry_run=dry)} directs enviados")
