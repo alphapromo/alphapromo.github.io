@@ -173,6 +173,38 @@
         "reel": "docs/posts/2026-11-08/5-reel.mp4"
       },
       "desconto": 35
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB36014524",
+      "titulo": "Principia PS-01 Protetor Solar Facial FPS 60 40 ml",
+      "preco": 36.42,
+      "preco_original": 36.42,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_885738-MLA120594348313_112026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB36014524",
+      "categoria": "Beleza",
+      "frete_gratis": false,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB36014524?matt_word=alphapromo&matt_tool=19164688",
+      "score": 0.0,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5426802209",
+        "posicao": 1,
+        "marca": "Principia",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_885738-MLA120594348313_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_786502-MLA118904643262_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_766276-MLA120594173909_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_751686-MLA88387554459_072025-O.jpg"
+        ],
+        "tema": "Beleza em alta",
+        "num_colecao": 41,
+        "extra": true,
+        "arte_feed": "docs/posts/2026-11-08/6-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-08/6-tiktok.jpg"
+      },
+      "desconto": 0
     }
   ],
   "posts": {
