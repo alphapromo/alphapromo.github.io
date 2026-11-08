@@ -48,23 +48,35 @@ def processar(cfg: Settings, hoje: date, dias: int = 3, dry_run: bool = False) -
     versao = cfg["publicar"]["instagram_api_versao"]
     base = f"{HOST}/{versao}"
     feitos = state._read(state.STATE / ARQ, {})
+    contagem = feitos.setdefault("_contagem", {})
     enviados = 0
-    arq = state.load_arquivo()
-    for k in range(dias):
-        dia = hoje - timedelta(days=k)
-        for item in arq.get(dia.isoformat(), []):
-            if not item.get("ig"):
-                continue
+    # posts que receberam comentário novo (1 chamada lista os 50 posts mais recentes com o nº de comentários)
+    por_ig = {x["ig"]: (date.fromisoformat(iso), x) for iso, itens in state.load_arquivo().items() for x in itens if x.get("ig")}
+    try:
+        midias = _check(requests.get(f"{base}/{uid}/media", timeout=30, params={
+            "fields": "id,comments_count", "limit": 50, "access_token": token})).get("data", [])
+    except Exception as e:  # noqa: BLE001
+        log.warning("Eu quero: não consegui listar os posts: %s", str(e)[:200])
+        return 0
+    for m in midias:
+        mid, n_com = m.get("id"), int(m.get("comments_count") or 0)
+        if mid not in por_ig or contagem.get(mid) == n_com:
+            continue
+        dia, item = por_ig[mid]
+        if True:
             try:
                 r = requests.get(f"{base}/{item['ig']}/comments", timeout=30, params={
                     "fields": "id,text,username,from", "limit": 50, "access_token": token})
                 comentarios = _check(r).get("data", [])
+                contagem[mid] = n_com
             except Exception as e:  # noqa: BLE001
                 log.warning("Eu quero: não consegui ler os comentários do post %s: %s", item["ig"], str(e)[:200])
                 continue
             for c in comentarios:
                 cid = c.get("id")
-                if not cid or cid in feitos or not GATILHO.search(_norm(c.get("text", ""))):
+                tentativas = int(str(feitos.get(cid, "")).split(":")[1]) if str(feitos.get(cid, "")).startswith("erro:") else 0
+                if not cid or str(feitos.get(cid, "")).startswith("ok") or tentativas >= 3 \
+                        or not GATILHO.search(_norm(c.get("text", ""))):
                     continue
                 if (c.get("from") or {}).get("id") == uid:
                     continue  # comentário da própria Alpha Promo
@@ -88,7 +100,8 @@ def processar(cfg: Settings, hoje: date, dias: int = 3, dry_run: bool = False) -
                         log.debug("resposta pública: %s", e)
                     log.getChild("aviso").info("Eu quero: link de %s #%s enviado para @%s", dia.strftime("%d/%m"), item["n"], usuario)
                 except Exception as e:  # noqa: BLE001
-                    feitos[cid] = f"erro:{str(e)[:200]}"
+                    feitos[cid] = f"erro:{tentativas + 1}:{str(e)[:200]}"
+                    contagem.pop(mid, None)  # tenta de novo na próxima rodada (até 3 vezes)
                     log.warning("Eu quero: não consegui mandar direct para @%s: %s", usuario, str(e)[:200])
     if not dry_run:
         state._write(state.STATE / ARQ, feitos)
