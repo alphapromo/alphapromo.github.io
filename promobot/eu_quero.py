@@ -66,7 +66,7 @@ def processar(cfg: Settings, hoje: date, dias: int = 3, dry_run: bool = False) -
         if True:
             try:
                 r = requests.get(f"{base}/{item['ig']}/comments", timeout=30, params={
-                    "fields": "id,text,username,from", "limit": 50, "access_token": token})
+                    "fields": "id,text,username,from{id,username}", "limit": 50, "access_token": token})
                 comentarios = _check(r).get("data", [])
                 contagem[mid] = n_com
             except Exception as e:  # noqa: BLE001
@@ -80,7 +80,7 @@ def processar(cfg: Settings, hoje: date, dias: int = 3, dry_run: bool = False) -
                     continue
                 if (c.get("from") or {}).get("id") == uid:
                     continue  # comentário da própria Alpha Promo
-                usuario = c.get("username", "")
+                usuario = c.get("username") or (c.get("from") or {}).get("username", "")
                 curto = f"{cfg.pages_url.removeprefix('https://')}/o/{site.codigo_curto(dia, item['n'])}"
                 if dry_run:
                     log.info("[dry-run] mandaria o link de #%s para @%s", item["n"], usuario)
