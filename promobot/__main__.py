@@ -303,6 +303,7 @@ def post_slot(cfg: Settings, hoje: date, slot: int, dry_run: bool = False, avuls
         log.error("Sem %s #%s no plano de %s", lista, slot, hoje)
         return False
     d = Deal.from_dict(plano[lista][slot - 1])
+    d.extras.setdefault("dia", hoje.strftime("%d/%m"))
     pub = cfg["publicar"]
     marca = cfg["marca"]
     feito = plano.setdefault(chave_posts, {}).setdefault(str(slot), {})
@@ -469,7 +470,7 @@ def main(argv=None) -> int:
                     print(f"::{nivel}::{self.format(r)}".replace("\n", " "), flush=True)
         logging.getLogger().addHandler(_Anotar())
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
@@ -529,6 +530,29 @@ def main(argv=None) -> int:
         else:
             carrossel.publicar(cfg, hoje, dry_run=dry)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+        return 0
+    if a.cmd == "comentar-antigos":  # comenta o link curto nos posts antigos que ainda não têm
+        import time as _t
+        arq = state.load_arquivo()
+        feitos = 0
+        for iso, itens in arq.items():
+            for x in itens:
+                if not x.get("ig") or x.get("comentado"):
+                    continue
+                curto = f"{cfg.pages_url.removeprefix('https://')}/o/{site.codigo_curto(date.fromisoformat(iso), x['n'])}"
+                texto = (f"🛒 Link direto desta oferta: {curto}\n(copie e cole no navegador, ou veja em "
+                         f"\"Ofertas anteriores\" no link da bio). Preço do dia do post, pode ter mudado.")
+                try:
+                    if not dry:
+                        instagram.comentar(x["ig"], texto, cfg["publicar"]["instagram_api_versao"])
+                    x["comentado"] = True
+                    feitos += 1
+                    _t.sleep(4)
+                except Exception as e:  # noqa: BLE001  (post apagado etc.)
+                    x["comentado"] = "falhou"
+                    log.warning("Post %s (%s #%s): %s", x["ig"], iso, x["n"], str(e)[:160])
+        state._write(state.STATE / "arquivo.json", arq)
+        _aviso(f"Comentários com link em posts antigos: {feitos}")
         return 0
     if a.cmd == "produto":
         produto(cfg, hoje, a.busca, [x.strip() for x in a.exigir.split(",") if x.strip()], a.rotulo, a.lancamento,

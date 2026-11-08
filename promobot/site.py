@@ -49,7 +49,9 @@ h2{font-family:Outfit,sans-serif;font-size:20px;margin:28px 0 12px}
 .num{width:32px!important;height:32px!important;font-size:14px}
 .off{flex:none;font-family:Outfit,sans-serif;font-weight:800;color:#fff;background:var(--coral);border-radius:12px;padding:6px 8px;font-size:15px}
 .amz{display:block;text-align:center;padding:16px;border-radius:16px;background:var(--tinta);color:var(--creme);font-weight:700;text-decoration:none;margin-top:8px}
-.velho .deal{opacity:.8}
+.velho .deal{opacity:.9}
+.aviso{color:var(--cinza);font-size:14px;margin:-4px 0 10px}
+#busca{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--linha);background:var(--card);color:var(--tinta);font:inherit;margin-bottom:6px}
 footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-align:center}
 </style>
 </head>
@@ -102,11 +104,14 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 
 <a class="amz" href="{{ amazon }}" rel="nofollow sponsored noopener" target="_blank">Ver todas as ofertas do dia na Amazon</a>
 
+<h2 id="anteriores">Ofertas anteriores</h2>
+<p class="aviso">Procurando a oferta de um post antigo? Ache pelo dia do post ou pelo nome do produto. O preço é o do dia do post e pode ter mudado.</p>
+<input id="busca" type="search" placeholder="Buscar produto ou código (ex.: 25103)" oninput="filtrar(this.value)">
 {% for dia in anteriores %}
-<section class="velho">
+<section class="velho dia">
 <h2>{{ dia.titulo }}</h2>
 {% for d in dia.deals %}
-<a class="deal" href="{{ d.link }}" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="{{ (d.titulo ~ ' ' ~ d.codigo)|lower }}" href="{{ d.link }}" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#{{ d.numero }}</span>
 <img src="{{ d.imagem }}" alt="" loading="lazy">
 <span class="info"><span class="t">{{ d.titulo }}</span>
@@ -116,6 +121,9 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 {% endfor %}
 </section>
 {% endfor %}
+<script>
+function filtrar(q){q=q.toLowerCase().trim();document.querySelectorAll('.dia').forEach(function(s){var vis=0;s.querySelectorAll('.deal').forEach(function(a){var ok=!q||a.dataset.k.indexOf(q)>=0;a.style.display=ok?'':'none';if(ok)vis++});s.style.display=vis?'':'none'})}
+</script>
 
 <footer>Preços conferidos no início de cada dia; preço e estoque podem mudar a qualquer momento.<br>
 Esta página contém links de afiliado: posso receber comissão pelas compras, sem custo extra para você.<br>
@@ -183,6 +191,12 @@ def links_curtos(dia: date) -> None:
     import json as _json
     from html import escape
 
+    for iso, itens in state.load_arquivo().items():  # ofertas antigas também mantêm o link curto
+        for x in itens:
+            pasta = DOCS / "o" / codigo_curto(date.fromisoformat(iso), x["n"])
+            if not (pasta / "index.html").exists():
+                pasta.mkdir(parents=True, exist_ok=True)
+                (pasta / "index.html").write_text(_REDIRECT.format(url=escape(x["link"]), js=_json.dumps(x["link"])), encoding="utf-8")
     plano = state.load_plan(dia) or {}
     for lista, avulso in (("deals", False), ("avulsos", True)):
         for n, raw in enumerate(plano.get(lista, []), start=1):
@@ -204,13 +218,19 @@ def build(hoje: date, atualizado: str) -> None:
     (DOCS / ".nojekyll").write_text("")
 
     plano = state.load_plan(hoje) or {}
+    state.arquivar(hoje, plano)
     anteriores = []
-    nomes = {1: "Ofertas de ontem", 2: "Anteontem"}
-    for k in (1, 2):
-        dia = hoje - timedelta(days=k)
-        p = state.load_plan(dia)
-        if p:
-            anteriores.append({"titulo": nomes[k] + f" ({dia.strftime('%d/%m')})", "deals": _itens(p)})
+    arq = state.load_arquivo()
+    corte = (hoje - timedelta(days=90)).isoformat()
+    for iso in sorted(arq, reverse=True):
+        if iso >= hoje.isoformat() or iso < corte:
+            continue
+        dia = date.fromisoformat(iso)
+        itens = [{"numero": x["n"], "titulo": x["titulo"], "de": brl(x["preco_original"]), "por": brl(x["preco"]),
+                  "loja": x["loja"], "desconto": x["desconto"], "imagem": x["imagem"], "link": x["link"],
+                  "codigo": codigo_curto(dia, x["n"])} for x in arq[iso]]
+        rotulo = "Ontem" if (hoje - dia).days == 1 else f"Post de {dia.strftime('%d/%m')}"
+        anteriores.append({"titulo": f"{rotulo} ({dia.strftime('%d/%m')})" if rotulo == "Ontem" else rotulo, "deals": itens})
     html = TEMPLATE.render(
         hoje=_itens(plano), anteriores=anteriores, semana=_itens(_semana(hoje)), lancamentos=_lancamentos(hoje), atualizado=atualizado, amazon=amazon_ofertas_do_dia()
     )

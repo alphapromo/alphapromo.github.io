@@ -33,7 +33,9 @@ h2{font-family:Outfit,sans-serif;font-size:20px;margin:28px 0 12px}
 .num{width:32px!important;height:32px!important;font-size:14px}
 .off{flex:none;font-family:Outfit,sans-serif;font-weight:800;color:#fff;background:var(--coral);border-radius:12px;padding:6px 8px;font-size:15px}
 .amz{display:block;text-align:center;padding:16px;border-radius:16px;background:var(--tinta);color:var(--creme);font-weight:700;text-decoration:none;margin-top:8px}
-.velho .deal{opacity:.8}
+.velho .deal{opacity:.9}
+.aviso{color:var(--cinza);font-size:14px;margin:-4px 0 10px}
+#busca{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--linha);background:var(--card);color:var(--tinta);font:inherit;margin-bottom:6px}
 footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-align:center}
 </style>
 </head>
@@ -42,7 +44,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <header>
 <img src="brand/avatar.png" alt="Alpha Promo">
 <h1>alpha <span>promo</span></h1>
-<p>As ofertas mais quentes do dia. Atualizado 08/11 às 09h45.</p>
+<p>As ofertas mais quentes do dia. Atualizado teste.</p>
 </header>
 
 
@@ -94,11 +96,14 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 
 <a class="amz" href="https://www.amazon.com.br/deals" rel="nofollow sponsored noopener" target="_blank">Ver todas as ofertas do dia na Amazon</a>
 
+<h2 id="anteriores">Ofertas anteriores</h2>
+<p class="aviso">Procurando a oferta de um post antigo? Ache pelo dia do post ou pelo nome do produto. O preço é o do dia do post e pode ter mudado.</p>
+<input id="busca" type="search" placeholder="Buscar produto ou código (ex.: 25103)" oninput="filtrar(this.value)">
 
-<section class="velho">
-<h2>Ofertas de ontem (07/11)</h2>
+<section class="velho dia">
+<h2>Ontem (07/11)</h2>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB22780317?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="bendita cânfora refinada pote com 30 tabletes multiuso bravir casa 07111" href="https://www.mercadolivre.com.br/p/MLB22780317?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#1</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_997287-MLA99479083573_112025-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Bendita Cânfora Refinada Pote com 30 Tabletes Multiuso Bravir Casa</span>
@@ -106,7 +111,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-51%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB47814270?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="carregador 30w turbo para iphone 8 x xr 11 12 13 14 pro max fonte usb c cor branca dtimp 07112" href="https://www.mercadolivre.com.br/p/MLB47814270?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#2</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_826850-MLA116465697992_092026-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Carregador 30w Turbo Para iPhone 8 X Xr 11 12 13 14 Pro Max Fonte Usb C Cor Branca Dtimp</span>
@@ -114,7 +119,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-56%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB10481238?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="máscara de cílios maybelline lash sensational à prova d'água para volume e definição 07113" href="https://www.mercadolivre.com.br/p/MLB10481238?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#3</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_645424-MLU72821012247_112023-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Máscara de Cílios Maybelline Lash Sensational à Prova d'Água para Volume e Definição</span>
@@ -122,7 +127,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-56%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB19603205?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="creatina growth supplements monohidratada em pó sem sabor x 250g 07114" href="https://www.mercadolivre.com.br/p/MLB19603205?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#4</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_662415-MLA97812910758_112025-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g</span>
@@ -130,7 +135,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-39%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB65806827?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="kit cobre leito colcha king 3 peças boutis dupla face porta travesseiro aba americana - sofia rose 07115" href="https://www.mercadolivre.com.br/p/MLB65806827?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#5</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_600929-MLA107442530491_022026-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Kit Cobre Leito Colcha King 3 Peças Boutis Dupla Face Porta Travesseiro Aba Americana - Sofia Rose</span>
@@ -140,10 +145,10 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 
 </section>
 
-<section class="velho">
-<h2>Anteontem (06/11)</h2>
+<section class="velho dia">
+<h2>Post de 06/11</h2>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB18392264?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="hastes flexíveis cotonetes 300 unidades 06111" href="https://www.mercadolivre.com.br/p/MLB18392264?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#1</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_703135-MLA117325856544_102026-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Hastes Flexíveis COTONETES 300 unidades</span>
@@ -151,7 +156,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-33%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB37700507?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="liquidificador pratic turbo, mondial, 550w - l-98-b 06112" href="https://www.mercadolivre.com.br/p/MLB37700507?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#2</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_929681-MLA99450771766_112025-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Liquidificador Pratic Turbo, Mondial, 550W - L-98-B</span>
@@ -159,7 +164,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-39%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB24208936?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="shampoo johnson's baby glicerina hipoalergênico 750ml 06113" href="https://www.mercadolivre.com.br/p/MLB24208936?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#3</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_973923-MLA99918118901_112025-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Shampoo Johnson's Baby Glicerina Hipoalergênico 750ml</span>
@@ -167,7 +172,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-49%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB53222689?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="kit 10 potes herméticos vidro 640ml starhouse marmita forno micro-ondas airfryer com 4 travas de super vedação 06114" href="https://www.mercadolivre.com.br/p/MLB53222689?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#4</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_942823-MLA113526261849_062026-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Kit 10 Potes Herméticos Vidro 640ml Starhouse Marmita Forno Micro-ondas Airfryer com 4 travas de super vedação</span>
@@ -175,7 +180,7 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 <span class="off">-52%</span>
 </a>
 
-<a class="deal" href="https://www.mercadolivre.com.br/p/MLB63966639?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<a class="deal" data-k="filamento pla plus 1kg impressão 3d nacional - cores cor preto 06115" href="https://www.mercadolivre.com.br/p/MLB63966639?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
 <span class="num">#5</span>
 <img src="https://http2.mlstatic.com/D_NQ_NP_903418-MLA107165042644_022026-O.jpg" alt="" loading="lazy">
 <span class="info"><span class="t">Filamento Pla Plus 1kg Impressão 3d Nacional - Cores Cor Preto</span>
@@ -185,6 +190,890 @@ footer{margin-top:36px;font-size:13px;color:var(--cinza);line-height:1.5;text-al
 
 </section>
 
+<section class="velho dia">
+<h2>Post de 05/11</h2>
+
+<a class="deal" data-k="mini mixer misturador de bebidas elétrico 2 em 1 portátil recarregável mexedor de ovos leite whey café espuma shake drinks capuccino suco blackbom 05111" href="https://www.mercadolivre.com.br/p/MLB67146264?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_993099-MLA118374430742_102026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Mini Mixer Misturador De Bebidas Elétrico 2 Em 1 Portátil Recarregável Mexedor De Ovos Leite Whey Café Espuma Shake Drinks Capuccino Suco Blackbom</span>
+<span class="p"><s>R$ 49,99</s><b>R$ 19,99</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-60%</span>
+</a>
+
+<a class="deal" data-k="controle sony cfi-zct1w sem fio white ps5 05112" href="https://www.mercadolivre.com.br/p/MLB33997846?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_798856-MLA119118101088_112026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Controle Sony CFI-ZCT1W Sem Fio White Ps5</span>
+<span class="p"><s>R$ 699,00</s><b>R$ 409,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-41%</span>
+</a>
+
+<a class="deal" data-k="glosslicious kit fran - by franciny elkhe 05113" href="https://www.mercadolivre.com.br/p/MLB37946694?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_621041-MLA110838260235_042026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Glosslicious Kit Fran - By Franciny Elkhe</span>
+<span class="p"><s>R$ 109,90</s><b>R$ 37,70</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-66%</span>
+</a>
+
+<a class="deal" data-k="filamento pla voolt3d high speed premium de 1.75mm e 1kg verde velvet 05114" href="https://www.mercadolivre.com.br/p/MLB23487120?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Filamento PLA Voolt3D High Speed Premium de 1.75mm e 1kg Verde Velvet</span>
+<span class="p"><s>R$ 145,00</s><b>R$ 104,40</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-28%</span>
+</a>
+
+<a class="deal" data-k="smartphone motorola moto g17 4g - 128gb 4gb ram + 8gb ram boost, camera 50mp sony lytia 600, tela fhd+ 60hz, bateria 5200 mah - azul 05115" href="https://www.mercadolivre.com.br/p/MLB65041642?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_773592-MLA105493148200_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Smartphone Motorola Moto G17 4g - 128gb 4gb Ram + 8gb Ram Boost, Camera 50mp Sony Lytia 600, Tela Fhd+ 60hz, Bateria 5200 Mah - Azul</span>
+<span class="p"><s>R$ 1.599,00</s><b>R$ 887,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-45%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 04/11</h2>
+
+<a class="deal" data-k="balança digital davely cook para cozinha com função tara e 10 kg de capacidade uso domestico e profissional fitness ideal para dietas treinos gramas alimentos receitas confeitaria nutrição 04111" href="https://www.mercadolivre.com.br/p/MLB62997555?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_903976-MLA109751277529_032026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Balança Digital Davely Cook para Cozinha Com Função Tara e 10 kg de Capacidade Uso Domestico E Profissional Fitness Ideal Para Dietas Treinos Gramas Alimentos Receitas Confeitaria Nutrição</span>
+<span class="p"><s>R$ 38,90</s><b>R$ 19,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+<a class="deal" data-k="bundle nintendo switch 2 + mario kart world + 3 meses nso 04112" href="https://www.mercadolivre.com.br/p/MLB80167828?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_642168-MLA118780566083_102026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Bundle Nintendo Switch 2 + Mario Kart World + 3 Meses NSO</span>
+<span class="p"><s>R$ 7.999,99</s><b>R$ 4.354,89</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-46%</span>
+</a>
+
+<a class="deal" data-k="bioré óleo demaquilante facial cleansing oil original 150ml 04113" href="https://www.mercadolivre.com.br/p/MLB56546186?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_855741-MLA119030355352_112026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Bioré Óleo Demaquilante Facial Cleansing Oil Original 150ml</span>
+<span class="p"><s>R$ 88,90</s><b>R$ 69,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-21%</span>
+</a>
+
+<a class="deal" data-k="controle joystick sem fio sony playstation dualshock 4 wireless controller crystal 04114" href="https://www.mercadolivre.com.br/p/MLB10295973?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_872886-MLA99579736450_122025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Controle joystick sem fio Sony PlayStation Dualshock 4 Wireless controller crystal</span>
+<span class="p"><s>R$ 399,90</s><b>R$ 249,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-38%</span>
+</a>
+
+<a class="deal" data-k="escova secadora britânia bivolt 1300w soft bec07r original 04115" href="https://www.mercadolivre.com.br/p/MLB19694427?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_717664-MLA116175833066_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Escova Secadora Britânia Bivolt 1300w Soft Bec07r Original</span>
+<span class="p"><s>R$ 139,90</s><b>R$ 89,58</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-36%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 03/11</h2>
+
+<a class="deal" data-k="touca descartável tnt branca talge c/ 100 unidades cor branco 03111" href="https://www.mercadolivre.com.br/p/MLB27052615?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_621679-MLA115143633856_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Touca Descartável Tnt Branca Talge C/ 100 Unidades Cor Branco</span>
+<span class="p"><s>R$ 15,50</s><b>R$ 12,59</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-19%</span>
+</a>
+
+<a class="deal" data-k="jogo elden ring standard edition - playstation 5 (físico) 03112" href="https://www.mercadolivre.com.br/p/MLB18758275?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_774973-MLA99586538384_122025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Jogo Elden Ring Standard Edition - PlayStation 5 (Físico)</span>
+<span class="p"><s>R$ 291,10</s><b>R$ 193,97</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-33%</span>
+</a>
+
+<a class="deal" data-k="creme multirreparador pele sensível cicaplast baume b5+ la roche-posay 40ml 03113" href="https://www.mercadolivre.com.br/p/MLB24326256?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_695558-MLA119937437423_102026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Creme Multirreparador Pele Sensível Cicaplast Baume B5+ La Roche-Posay 40ml</span>
+<span class="p"><s>R$ 109,90</s><b>R$ 71,52</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-35%</span>
+</a>
+
+<a class="deal" data-k="filamento 3d petg branco premium resistente impressora 3d master print 1,75mm - 1kg 03114" href="https://www.mercadolivre.com.br/p/MLB21278806?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_913849-MLA105989588051_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Filamento 3D Petg Branco Premium Resistente Impressora 3D Master Print 1,75mm - 1kg</span>
+<span class="p"><s>R$ 78,90</s><b>R$ 48,81</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-38%</span>
+</a>
+
+<a class="deal" data-k="kit jogo de ferramentas precisão magnético 115 peças quicko para reparação kit completo para assistencia tecnica celulares jogo de chave abrir celular equipamentos para manutenção de celular 03115" href="https://www.mercadolivre.com.br/p/MLB33230345?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_646262-MLA114845290949_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit Jogo de Ferramentas Precisão Magnético 115 Peças Quicko para Reparação Kit Completo Para Assistencia Tecnica Celulares Jogo De Chave Abrir Celular Equipamentos Para Manutenção De Celular</span>
+<span class="p"><s>R$ 54,90</s><b>R$ 27,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 02/11</h2>
+
+<a class="deal" data-k="esmalte em gel x&d premium 15ml alta pigmentação xd01 02111" href="https://www.mercadolivre.com.br/p/MLB75011116?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_833057-MLA113001704072_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Esmalte Em Gel X&d Premium 15ml Alta Pigmentação XD01</span>
+<span class="p"><s>R$ 39,39</s><b>R$ 19,99</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+<a class="deal" data-k="cortina 4,00x2,80 metros blackout blecaute preto corta luz em tecido grosso para quarto e sala texfine 02112" href="https://www.mercadolivre.com.br/p/MLB29473724?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_664695-MLA96099594865_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Cortina 4,00x2,80 Metros Blackout Blecaute Preto Corta Luz Em Tecido Grosso Para Quarto E Sala Texfine</span>
+<span class="p"><s>R$ 173,20</s><b>R$ 113,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-34%</span>
+</a>
+
+<a class="deal" data-k="protetor solar facial antioleosidade fps 80 anthelios la roche-posay 40g 02113" href="https://www.mercadolivre.com.br/p/MLB19755099?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_752201-MLA113617929791_062026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Protetor Solar Facial Antioleosidade FPS 80 Anthelios La Roche-Posay 40g</span>
+<span class="p"><s>R$ 120,90</s><b>R$ 83,57</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-31%</span>
+</a>
+
+<a class="deal" data-k="celular samsung galaxy a17 com ia, 256gb, 8gb ram, câm de 50mp, tela de 6.7 , nfc, ip54 - azul 02114" href="https://www.mercadolivre.com.br/p/MLB54982411?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_889169-MLA96868779849_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Celular Samsung Galaxy A17 Com Ia, 256gb, 8gb Ram, Câm De 50mp, Tela De 6.7 , Nfc, Ip54 - Azul</span>
+<span class="p"><s>R$ 1.699,00</s><b>R$ 1.370,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-19%</span>
+</a>
+
+<a class="deal" data-k="starlink mini kit antena satélite com roteador wi-fi 02115" href="https://www.mercadolivre.com.br/p/MLB40656539?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_799612-MLA95359719699_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Starlink Mini Kit Antena Satélite com Roteador Wi-Fi</span>
+<span class="p"><s>R$ 948,00</s><b>R$ 493,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-48%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 01/11</h2>
+
+<a class="deal" data-k="água sanitária e alvejante cloro ativo 5 litros ypê 01111" href="https://www.mercadolivre.com.br/p/MLB19745649?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_950605-MLA99927683925_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Água sanitária e alvejante cloro ativo 5 litros Ypê</span>
+<span class="p"><s>R$ 19,99</s><b>R$ 14,99</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-25%</span>
+</a>
+
+<a class="deal" data-k="onimusha: way of the sword - ps5 01112" href="https://www.mercadolivre.com.br/p/MLB76247569?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_881104-MLA115527858355_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Onimusha: Way of the Sword - PS5</span>
+<span class="p"><s>R$ 699,90</s><b>R$ 316,10</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-55%</span>
+</a>
+
+<a class="deal" data-k="protetor solar facial alta cobertura anthelios la roche-posay cor 3.0 30g 01113" href="https://www.mercadolivre.com.br/p/MLB19767143?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_728452-MLA103883256579_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Protetor Solar Facial Alta Cobertura Anthelios La Roche-Posay Cor 3.0 30g</span>
+<span class="p"><s>R$ 109,90</s><b>R$ 74,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-32%</span>
+</a>
+
+<a class="deal" data-k="proteína max titanium whey pro concetrado em pó sabor morango x 1kg 01114" href="https://www.mercadolivre.com.br/p/MLB6087971?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_608162-MLA112813208483_062026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Proteína Max Titanium Whey Pro Concetrado em pó sabor Morango x 1kg</span>
+<span class="p"><s>R$ 179,84</s><b>R$ 78,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-56%</span>
+</a>
+
+<a class="deal" data-k="carregador super rápido 25w para samsung galaxy s24 s23 s22 s21 s20 fe ultra motorola m22 m31 m32 m62 m63 m64 g15 xiaomi redmi note 12 13 14 15 lg - super fast cabo blindado tipo usb c -dtimp 01115" href="https://www.mercadolivre.com.br/p/MLB47889235?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_923598-MLA113044313715_062026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Carregador Super Rápido 25w Para Samsung Galaxy S24 S23 S22 S21 S20 Fe Ultra Motorola M22 M31 M32 M62 M63 M64 G15 Xiaomi Redmi Note 12 13 14 15 LG - Super Fast Cabo Blindado Tipo Usb C -Dtimp</span>
+<span class="p"><s>R$ 78,90</s><b>R$ 32,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-58%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 31/10</h2>
+
+<a class="deal" data-k="nivea creme hidratante lata 56g, hidratação profunda 24h, corporal, multibenefícios, todas as peles 31101" href="https://www.mercadolivre.com.br/p/MLB16151498?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_951737-MLU72573455252_112023-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">NIVEA Creme Hidratante Lata 56g, Hidratação Profunda 24h, Corporal, Multibenefícios, Todas as Peles</span>
+<span class="p"><s>R$ 28,49</s><b>R$ 19,38</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-32%</span>
+</a>
+
+<a class="deal" data-k="torneira gourmet luxo flexível cozinha parede 2 jatos pia metal cor aço inox e preto- marca camperluz 31102" href="https://www.mercadolivre.com.br/p/MLB45553868?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_746561-MLA111291534913_052026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Torneira Gourmet Luxo Flexível Cozinha Parede 2 Jatos Pia Metal Cor Aço Inox e Preto- Marca Camperluz</span>
+<span class="p"><s>R$ 59,97</s><b>R$ 29,97</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-50%</span>
+</a>
+
+<a class="deal" data-k="isdin protetor solar facial fusion water 5 stars sem cor fps 60 - 50ml 31103" href="https://www.mercadolivre.com.br/p/MLB19508984?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_655535-MLA115527373103_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">ISDIN Protetor Solar Facial Fusion Water 5 Stars Sem Cor FPS 60 - 50ml</span>
+<span class="p"><s>R$ 114,90</s><b>R$ 77,62</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-32%</span>
+</a>
+
+<a class="deal" data-k="kit 10 pote de vidro marmita hermético 640ml freezer fitness vitrex 31104" href="https://www.mercadolivre.com.br/p/MLB65269789?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_932662-MLA114564682923_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit 10 Pote De Vidro Marmita Hermético 640ml Freezer Fitness Vitrex</span>
+<span class="p"><s>R$ 189,90</s><b>R$ 97,17</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+<a class="deal" data-k="relógio inteligente gps smartwatch amoled 3atm sport gps caixa preto 31105" href="https://www.mercadolivre.com.br/p/MLB62756066?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_984233-MLA105531058053_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Relógio Inteligente Gps Smartwatch Amoled 3atm Sport Gps Caixa Preto</span>
+<span class="p"><s>R$ 599,00</s><b>R$ 287,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-52%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 30/10</h2>
+
+<a class="deal" data-k="fio de fada 100 leds 10 metros ip44 bateria cordão pisca luzes festa decoração árvore natal branco frio luvinco 30101" href="https://www.mercadolivre.com.br/p/MLB62800491?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_637293-MLA116846266298_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Fio De Fada 100 Leds 10 Metros Ip44 Bateria Cordão Pisca Luzes Festa Decoração Árvore Natal Branco Frio Luvinco</span>
+<span class="p"><s>R$ 23,75</s><b>R$ 19,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-20%</span>
+</a>
+
+<a class="deal" data-k="controle sem fio playstation dualsense – remix green 30102" href="https://www.mercadolivre.com.br/p/MLB64368352?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_745279-MLA105010226029_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Controle sem fio PlayStation DualSense – Remix Green</span>
+<span class="p"><s>R$ 599,90</s><b>R$ 408,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-32%</span>
+</a>
+
+<a class="deal" data-k="shampoo tonalizante grecin control gx reduz grisalho 118ml 30103" href="https://www.mercadolivre.com.br/p/MLB25708528?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_631595-MLA99350047876_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Shampoo Tonalizante Grecin Control GX Reduz Grisalho 118ml</span>
+<span class="p"><s>R$ 111,90</s><b>R$ 74,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-34%</span>
+</a>
+
+<a class="deal" data-k="l'oréal paris elseve óleo extraordinário 100ml - leave in anti frizz protetor térmico tratamento reconstrutor para todos os tipos de cabelo 30104" href="https://www.mercadolivre.com.br/p/MLB26080271?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_605503-MLA114497234356_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave In Anti Frizz Protetor Térmico Tratamento Reconstrutor Para Todos Os Tipos De Cabelo</span>
+<span class="p"><s>R$ 49,99</s><b>R$ 34,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-32%</span>
+</a>
+
+<a class="deal" data-k="smartwatch huawei band 10 caixa de polímeros duráveis análise do sono em nível profissional assistente de bem-estar emocional relógio smartwatch compatível com android e ios preto 30105" href="https://www.mercadolivre.com.br/p/MLB46202402?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_772291-MLA100008466405_122025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Smartwatch HUAWEI Band 10 Caixa de Polímeros Duráveis Análise do Sono em Nível Profissional Assistente de Bem-estar Emocional Relógio Smartwatch Compatível com Android e iOS Preto</span>
+<span class="p"><s>R$ 659,00</s><b>R$ 215,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-67%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 29/10</h2>
+
+<a class="deal" data-k="kit 3 pincéis 2 pontas unhas gel acrigel decoração nail art manicure acabamento profissional ponta dupla boa dica 29101" href="https://www.mercadolivre.com.br/p/MLB74847566?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_974497-MLA113003838008_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit 3 Pincéis 2 Pontas Unhas Gel Acrigel Decoração Nail Art Manicure Acabamento Profissional Ponta Dupla Boa Dica</span>
+<span class="p"><s>R$ 26,90</s><b>R$ 19,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-29%</span>
+</a>
+
+<a class="deal" data-k="console nintendo switch 2, modelo nacional de tomada 29102" href="https://www.mercadolivre.com.br/p/MLB49200061?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_785396-MLA99867558581_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Console Nintendo Switch 2, Modelo Nacional de Tomada</span>
+<span class="p"><s>R$ 3.335,74</s><b>R$ 2.852,94</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-14%</span>
+</a>
+
+<a class="deal" data-k="kit cortador de unha portátil estojo alicate manicure 12 pç desencravador de unha manicure alicate lixa profissional tesoura empurrador de cutículas pinça portátil dobrável 29103" href="https://www.mercadolivre.com.br/p/MLB36221657?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_811129-MLA117945327664_102026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit Cortador De Unha Portátil Estojo Alicate Manicure 12 Pç Desencravador De Unha Manicure Alicate Lixa Profissional Tesoura Empurrador De Cutículas Pinça Portátil Dobrável</span>
+<span class="p"><s>R$ 35,90</s><b>R$ 23,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-33%</span>
+</a>
+
+<a class="deal" data-k="smartphone samsung galaxy a07 4g 256gb 8gb preto 6,7" 29104" href="https://www.mercadolivre.com.br/p/MLB54961556?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_895724-MLA91526198522_092025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Smartphone Samsung Galaxy A07 4G 256GB 8GB Preto 6,7"</span>
+<span class="p"><s>R$ 1.499,00</s><b>R$ 1.099,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-27%</span>
+</a>
+
+<a class="deal" data-k="tapete 2x1,5 sala peludo quarto cores variadas cor branco desenho do tecido pelo alto 29105" href="https://www.mercadolivre.com.br/p/MLB32043715?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_753255-MLA95501946854_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Tapete 2x1,5 Sala Peludo Quarto Cores Variadas Cor Branco Desenho Do Tecido Pelo Alto</span>
+<span class="p"><s>R$ 115,90</s><b>R$ 59,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-48%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 28/10</h2>
+
+<a class="deal" data-k="mouse recarregável bluetooth wireless ergonômico óptico informática gamer led rgb notebook pc tablet smartphone blackbom 28101" href="https://www.mercadolivre.com.br/p/MLB72674962?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_698387-MLA112152526650_062026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Mouse Recarregável Bluetooth Wireless Ergonômico Óptico Informática Gamer Led Rgb Notebook Pc Tablet Smartphone Blackbom</span>
+<span class="p"><s>R$ 49,99</s><b>R$ 19,97</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-60%</span>
+</a>
+
+<a class="deal" data-k="pokémon pokopia - nintendo switch 2 28102" href="https://www.mercadolivre.com.br/p/MLB63980306?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_877218-MLA104113006671_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Pokémon Pokopia - Nintendo Switch 2</span>
+<span class="p"><s>R$ 556,83</s><b>R$ 439,89</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-21%</span>
+</a>
+
+<a class="deal" data-k="l'oréal paris elseve collagen lifter leave-in sérum capilar para cabelos finos injeção de massa com peptídeos de colágeno aumenta o volume em 61% e encorpa os fios por 72h 100ml 28103" href="https://www.mercadolivre.com.br/p/MLB64174316?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_683166-MLA103936334574_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">L'oréal Paris Elseve Collagen Lifter Leave-in Sérum Capilar Para Cabelos Finos Injeção de Massa com Peptídeos de Colágeno Aumenta o Volume em 61% e Encorpa os Fios por 72h 100ml</span>
+<span class="p"><s>R$ 65,09</s><b>R$ 32,50</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-50%</span>
+</a>
+
+<a class="deal" data-k="creatina monohidratada 1kg 100% pura - dark lab 28104" href="https://www.mercadolivre.com.br/p/MLB25929487?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_603981-MLA115262802698_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Creatina Monohidratada 1kg 100% Pura - Dark Lab</span>
+<span class="p"><s>R$ 159,90</s><b>R$ 78,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-51%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 27/10</h2>
+
+<a class="deal" data-k="algodao prensado para limpeza de unhas 1000un bmed 27101" href="https://www.mercadolivre.com.br/p/MLB64531761?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_695032-MLA116846349410_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Algodao Prensado Para Limpeza De Unhas 1000un BMED</span>
+<span class="p"><s>R$ 22,90</s><b>R$ 19,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-17%</span>
+</a>
+
+<a class="deal" data-k="pancake pó branco colormake 10g maquiagem artística tom branco 27102" href="https://www.mercadolivre.com.br/p/MLB24366895?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_636793-MLA92731632563_092025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Pancake Pó Branco Colormake 10g Maquiagem Artística Tom Branco</span>
+<span class="p"><s>R$ 26,90</s><b>R$ 20,17</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-25%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 26/10</h2>
+
+<a class="deal" data-k="creatina integralmedica 100% pura 60 cápsulas - aumento de resistência e desempenho para atletas e treinos intensos 26101" href="https://www.mercadolivre.com.br/p/MLB19533185?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_782298-MLA100076194863_122025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Creatina Integralmedica 100% Pura 60 Cápsulas - Aumento de Resistência e Desempenho para Atletas e Treinos Intensos</span>
+<span class="p"><s>R$ 32,00</s><b>R$ 16,98</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-47%</span>
+</a>
+
+<a class="deal" data-k="deo colônia natura hoje masculino 100ml 26102" href="https://www.mercadolivre.com.br/p/MLB19380821?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_809219-MLU72675777427_112023-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Deo Colônia Natura Hoje Masculino 100ml</span>
+<span class="p"><s>R$ 168,90</s><b>R$ 87,20</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-48%</span>
+</a>
+
+<a class="deal" data-k="papel higiênico familiar folha dupla kit 24 rolos de 30 m 26103" href="https://www.mercadolivre.com.br/p/MLB66453791?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_790904-MLA108570211465_032026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Papel Higiênico Familiar Folha Dupla Kit 24 Rolos de 30 m</span>
+<span class="p"><s>R$ 38,99</s><b>R$ 34,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-10%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 25/10</h2>
+
+<a class="deal" data-k="kit 10 fio fada cordão luz decoração artezenato luzes de fada led pisca 2m 20 leds iluminação pilhas para garrafas árvore de natal casamento 25101" href="https://www.mercadolivre.com.br/p/MLB53507162?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_964358-MLA99843231633_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit 10 Fio Fada Cordão Luz Decoração Artezenato Luzes De Fada Led Pisca 2m 20 Leds Iluminação Pilhas Para Garrafas Árvore De Natal Casamento</span>
+<span class="p"><s>R$ 37,00</s><b>R$ 19,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+<a class="deal" data-k="mangueira de jardim 50m metros com esguicho trançada reforçada flexível 7/16 anti dobra irrigação quintal poço lavagem durável marqs home 25102" href="https://www.mercadolivre.com.br/p/MLB34506613?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_922054-MLA109736714470_042026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Mangueira De Jardim 50m Metros Com Esguicho Trançada Reforçada Flexível 7/16 Anti Dobra Irrigação Quintal Poço Lavagem Durável Marqs Home</span>
+<span class="p"><s>R$ 119,90</s><b>R$ 99,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-17%</span>
+</a>
+
+<a class="deal" data-k="principia ps-01 protetor solar facial fps 60 40 ml 25103" href="https://www.mercadolivre.com.br/p/MLB36014524?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_941953-MLA115524012043_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Principia PS-01 Protetor Solar Facial FPS 60 40 ml</span>
+<span class="p"><s>R$ 40,00</s><b>R$ 35,31</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-12%</span>
+</a>
+
+<a class="deal" data-k="fone de ouvido bluetooth 5.4 soundcore p30i da anker, cancelamento de ruído adaptativo, graves poderosos, 45h de reprodução, estojo 2-em-1 com suporte para celular, ip54, fone sem fio tws, preto 25104" href="https://www.mercadolivre.com.br/p/MLB38176139?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_760745-MLA95700724020_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Fone de Ouvido Bluetooth 5.4 soundcore P30i da Anker, Cancelamento de Ruído Adaptativo, Graves Poderosos, 45H de Reprodução, Estojo 2-em-1 com Suporte para Celular, IP54, Fone sem fio TWS, Preto</span>
+<span class="p"><s>R$ 389,00</s><b>R$ 196,50</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+<a class="deal" data-k="hidrabene protetor facial solar fps 70 toque seco antissinais clareia a pele 50g 25105" href="https://www.mercadolivre.com.br/p/MLB60416809?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_655805-MLA116956226142_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Hidrabene Protetor facial Solar FPS 70 Toque Seco Antissinais Clareia a pele 50g</span>
+<span class="p"><s>R$ 59,90</s><b>R$ 29,36</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-51%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 24/10</h2>
+
+<a class="deal" data-k="sabonete líquido corpo mãos chá branco coala home 500ml 24101" href="https://www.mercadolivre.com.br/p/MLB26942336?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_937856-MLA110921130953_042026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Sabonete Líquido Corpo Mãos Chá Branco Coala Home 500ml</span>
+<span class="p"><s>R$ 23,75</s><b>R$ 12,45</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-48%</span>
+</a>
+
+<a class="deal" data-k="controle dualsense sem fio playstation 5 cobalt blue 24102" href="https://www.mercadolivre.com.br/p/MLB28083897?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_934470-MLA99513531000_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Controle DualSense Sem Fio PlayStation 5 Cobalt Blue</span>
+<span class="p"><s>R$ 583,47</s><b>R$ 437,59</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-25%</span>
+</a>
+
+<a class="deal" data-k="creme multirreparador pele sensível cicaplast baume b5+ la roche-posay 20ml 24103" href="https://www.mercadolivre.com.br/p/MLB25904875?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_906529-MLA115584916886_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Creme Multirreparador Pele Sensível Cicaplast Baume B5+ La Roche-Posay 20ml</span>
+<span class="p"><s>R$ 59,90</s><b>R$ 38,89</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-35%</span>
+</a>
+
+<a class="deal" data-k="percarbonato de sódio 100% puro tira manchas alvejante - 1kg calisul 24104" href="https://www.mercadolivre.com.br/p/MLB75542419?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_670568-MLA113572446412_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Percarbonato De Sódio 100% Puro Tira Manchas Alvejante - 1kg Calisul</span>
+<span class="p"><s>R$ 39,90</s><b>R$ 26,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-35%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 23/10</h2>
+
+<a class="deal" data-k="suporte tv fixo universal 10" a 100" polegadas forte para todas as marcas 23101" href="https://www.mercadolivre.com.br/p/MLB45862017?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_854028-MLA117416860537_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Suporte TV Fixo Universal 10" a 100" Polegadas Forte Para Todas as Marcas</span>
+<span class="p"><s>R$ 21,90</s><b>R$ 19,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-13%</span>
+</a>
+
+<a class="deal" data-k="kit 3 perfumes cebolinha jequiti 25ml infantil turma da mônica colônia masculina kit presente original 23102" href="https://www.mercadolivre.com.br/p/MLB41221309?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_735112-MLA115743494554_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit 3 Perfumes Cebolinha Jequiti 25ml Infantil Turma da Mônica Colônia Masculina Kit Presente Original</span>
+<span class="p"><s>R$ 129,99</s><b>R$ 56,86</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-56%</span>
+</a>
+
+<a class="deal" data-k="carregador 30w turbo para iphone 8 x xr 11 12 13 14 pro max fonte usb c cor branca dtimp 23103" href="https://www.mercadolivre.com.br/p/MLB47814270?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_826850-MLA116465697992_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Carregador 30w Turbo Para iPhone 8 X Xr 11 12 13 14 Pro Max Fonte Usb C Cor Branca Dtimp</span>
+<span class="p"><s>R$ 99,90</s><b>R$ 44,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-56%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 22/10</h2>
+
+<a class="deal" data-k="nivea hidratante desodorante beleza radiante cuidado intenso 400ml, hidratação profunda 48h, brilho natural, corporal, pele seca e extrasseca 22101" href="https://www.mercadolivre.com.br/p/MLB19150371?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_959443-MLA93494140268_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">NIVEA Hidratante Desodorante Beleza Radiante Cuidado Intenso 400ml, Hidratação Profunda 48h, Brilho Natural, Corporal, Pele Seca e Extrasseca</span>
+<span class="p"><s>R$ 26,99</s><b>R$ 18,49</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-31%</span>
+</a>
+
+<a class="deal" data-k="pokémon pokopia - ns2 22102" href="https://www.mercadolivre.com.br/p/MLB65579452?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_855317-MLA118464798297_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Pokémon Pokopia - Ns2</span>
+<span class="p"><s>R$ 599,99</s><b>R$ 439,89</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-27%</span>
+</a>
+
+<a class="deal" data-k="papel higiênico vip folha dupla 30m leve 18 pague 16 personal 22103" href="https://www.mercadolivre.com.br/p/MLB22827783?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_998012-MLU73186603451_122023-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Papel Higiênico Vip Folha Dupla 30m Leve 18 pague 16 Personal</span>
+<span class="p"><s>R$ 35,79</s><b>R$ 21,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-39%</span>
+</a>
+
+<a class="deal" data-k="tv stick 4k android chromecast smart hdmi wifi ao vivo preto padrão 22104" href="https://www.mercadolivre.com.br/p/MLB66140783?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_928830-MLA115777838275_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Tv Stick 4k Android Chromecast Smart Hdmi Wifi Ao Vivo Preto Padrão</span>
+<span class="p"><s>R$ 329,00</s><b>R$ 179,94</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-45%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 21/10</h2>
+
+<a class="deal" data-k="mini mixer misturador de bebidas elétrico 2 em 1 portátil recarregável mexedor de ovos leite whey café espuma shake drinks capuccino suco blackbom 21101" href="https://www.mercadolivre.com.br/p/MLB67146264?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_896126-MLA115949165434_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Mini Mixer Misturador De Bebidas Elétrico 2 Em 1 Portátil Recarregável Mexedor De Ovos Leite Whey Café Espuma Shake Drinks Capuccino Suco Blackbom</span>
+<span class="p"><s>R$ 49,99</s><b>R$ 19,99</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-60%</span>
+</a>
+
+<a class="deal" data-k="nintendo switch console oled 64gb 21102" href="https://www.mercadolivre.com.br/p/MLB58623212?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_928841-MLA93525033946_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Nintendo Switch Console OLED 64gb</span>
+<span class="p"><s>R$ 2.999,90</s><b>R$ 1.999,94</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-33%</span>
+</a>
+
+<a class="deal" data-k="medix touca descartável sanfonada tnt 21103" href="https://www.mercadolivre.com.br/p/MLB38328312?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_853224-MLA115143800326_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Medix Touca descartável sanfonada TNT</span>
+<span class="p"><s>R$ 18,99</s><b>R$ 14,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-26%</span>
+</a>
+
+<a class="deal" data-k="fone de ouvido headphone dapon h02d bluetooth 5.1 over-ear 22h preto 21104" href="https://www.mercadolivre.com.br/p/MLB24117280?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_673950-MLA99394598783_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Fone De Ouvido Headphone Dapon H02D Bluetooth 5.1 Over-ear 22h Preto</span>
+<span class="p"><s>R$ 149,00</s><b>R$ 78,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-47%</span>
+</a>
+
+<a class="deal" data-k="filamento pla plus 1kg impressão 3d nacional - cores cor preto 21105" href="https://www.mercadolivre.com.br/p/MLB63966639?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_903418-MLA107165042644_022026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Filamento Pla Plus 1kg Impressão 3d Nacional - Cores Cor Preto</span>
+<span class="p"><s>R$ 219,30</s><b>R$ 109,65</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-50%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 20/10</h2>
+
+<a class="deal" data-k="bendita cânfora refinada pote com 30 tabletes multiuso bravir casa 20101" href="https://www.mercadolivre.com.br/p/MLB22780317?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_997287-MLA99479083573_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Bendita Cânfora Refinada Pote com 30 Tabletes Multiuso Bravir Casa</span>
+<span class="p"><s>R$ 39,90</s><b>R$ 15,39</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-61%</span>
+</a>
+
+<a class="deal" data-k="playstation 5 slim digital 825gb branco novo cfi-2114 2 controles dualsense originais sony ps5 lacrado console completo ssd ultra rápido 4k ray tracing wifi bluetooth 20102" href="https://www.mercadolivre.com.br/p/MLB70042630?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_979186-MLA110974759368_052026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Playstation 5 Slim Digital 825gb Branco Novo Cfi-2114 2 Controles Dualsense Originais Sony Ps5 Lacrado Console Completo Ssd Ultra Rápido 4k Ray Tracing Wifi Bluetooth</span>
+<span class="p"><s>R$ 6.000,00</s><b>R$ 4.947,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-18%</span>
+</a>
+
+<a class="deal" data-k="escova secadora britânia bivolt 1300w soft bec07r original 20103" href="https://www.mercadolivre.com.br/p/MLB19694427?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_771757-MLA118854476707_102026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Escova Secadora Britânia Bivolt 1300w Soft Bec07r Original</span>
+<span class="p"><s>R$ 139,90</s><b>R$ 89,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-36%</span>
+</a>
+
+<a class="deal" data-k="shampoo anticaspa cabelos normais a oleosos, dercos ds vichy, 300g 20104" href="https://www.mercadolivre.com.br/p/MLB37257779?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_646464-MLA112810161826_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Shampoo Anticaspa Cabelos Normais a Oleosos, Dercos DS Vichy, 300g</span>
+<span class="p"><s>R$ 153,90</s><b>R$ 95,99</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-38%</span>
+</a>
+
+<a class="deal" data-k="mineral/vitamina bodyaction nutri science magnésio e inositol taurina melatonina 210g em pó sabor maracujá x 210g 20105" href="https://www.mercadolivre.com.br/p/MLB35959035?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_653067-MLA110738695437_042026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Mineral/Vitamina Bodyaction Nutri Science Magnésio E Inositol Taurina Melatonina 210g em pó sabor Maracujá x 210g</span>
+<span class="p"><s>R$ 72,59</s><b>R$ 43,80</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-40%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 19/10</h2>
+
+<a class="deal" data-k="touca descartável tnt branca talge c/ 100 unidades cor branco 19101" href="https://www.mercadolivre.com.br/p/MLB27052615?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_621679-MLA115143633856_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Touca Descartável Tnt Branca Talge C/ 100 Unidades Cor Branco</span>
+<span class="p"><s>R$ 18,39</s><b>R$ 8,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-56%</span>
+</a>
+
+<a class="deal" data-k="jogo marvel's wolverine para playstation 5 (físico) 19102" href="https://www.mercadolivre.com.br/p/MLB66764100?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_758991-MLA108103450088_032026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Jogo Marvel's Wolverine Para Playstation 5 (físico)</span>
+<span class="p"><s>R$ 377,00</s><b>R$ 316,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-16%</span>
+</a>
+
+<a class="deal" data-k="la roche-posay cicaplast baume b5+ tempo de aplicação dia/noite tipo de pele todos os tipos de pele 19103" href="https://www.mercadolivre.com.br/p/MLB24326256?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_684143-MLU74084950937_012024-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">La Roche-posay Cicaplast Baume B5+ Tempo de aplicação Dia/Noite Tipo de pele Todos os tipos de pele</span>
+<span class="p"><s>R$ 109,90</s><b>R$ 71,52</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-35%</span>
+</a>
+
+<a class="deal" data-k="ducha eletrônica lorenzetti loren shower ultra 7500w 220v branco 19104" href="https://www.mercadolivre.com.br/p/MLB19590092?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_638677-MLA118516851287_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Ducha Eletrônica Lorenzetti Loren Shower Ultra 7500W 220V Branco</span>
+<span class="p"><s>R$ 130,09</s><b>R$ 97,11</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-25%</span>
+</a>
+
+<a class="deal" data-k="bambu lab pla lite vermelho 19105" href="https://www.mercadolivre.com.br/p/MLB60276890?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_998645-MLA99980485903_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Bambu Lab PLA Lite vermelho</span>
+<span class="p"><s>R$ 159,99</s><b>R$ 139,97</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-13%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 18/10</h2>
+
+<a class="deal" data-k="esmalte em gel x&d premium 15ml alta pigmentação xd01 18101" href="https://www.mercadolivre.com.br/p/MLB75011116?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_833057-MLA113001704072_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Esmalte Em Gel X&d Premium 15ml Alta Pigmentação XD01</span>
+<span class="p"><s>R$ 39,39</s><b>R$ 19,99</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-49%</span>
+</a>
+
+<a class="deal" data-k="ea sports fc 27 - ps4 18102" href="https://www.mercadolivre.com.br/p/MLB78026014?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_855638-MLA115157177774_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">EA Sports FC 27 - PS4</span>
+<span class="p"><s>R$ 379,90</s><b>R$ 324,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-15%</span>
+</a>
+
+<a class="deal" data-k="protetor solar facial antioleosidade fps 80 anthelios la roche-posay 40g 18103" href="https://www.mercadolivre.com.br/p/MLB19755099?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_752201-MLA113617929791_062026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Protetor Solar Facial Antioleosidade FPS 80 Anthelios La Roche-Posay 40g</span>
+<span class="p"><s>R$ 120,90</s><b>R$ 83,57</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-31%</span>
+</a>
+
+<a class="deal" data-k="starlink mini kit antena satélite com roteador wi-fi 18104" href="https://www.mercadolivre.com.br/p/MLB40656539?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_799612-MLA95359719699_102025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Starlink Mini Kit Antena Satélite com Roteador Wi-Fi</span>
+<span class="p"><s>R$ 699,00</s><b>R$ 489,30</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-30%</span>
+</a>
+
+<a class="deal" data-k="filamento voolt 3d pla verde efeito fosco velvet premium 1kg verde velvet 18105" href="https://www.mercadolivre.com.br/p/MLB23487120?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Filamento Voolt 3d Pla Verde Efeito Fosco Velvet Premium 1kg Verde Velvet</span>
+<span class="p"><s>R$ 145,00</s><b>R$ 104,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-28%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 17/10</h2>
+
+<a class="deal" data-k="fone de ouvido soundcore by anker p20i graves poderosos e impactantes bluetooth 5.3 30h de reprodução resistência à água 2 mics ia para chamadas claras personalização de som via app cor preto 17101" href="https://www.mercadolivre.com.br/p/MLB24028629?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_730568-MLA99983575997_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Fone De Ouvido Soundcore by Anker P20i Graves Poderosos e Impactantes Bluetooth 5.3 30H de Reprodução Resistência à Água 2 Mics IA para Chamadas Claras Personalização de Som via App Cor Preto</span>
+<span class="p"><s>R$ 299,00</s><b>R$ 146,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-51%</span>
+</a>
+
+<a class="deal" data-k="carregador super rápido 25w para samsung galaxy s24 s23 s22 s21 s20 fe ultra motorola m22 m31 m32 m62 m63 m64 g15 xiaomi redmi note 12 13 14 15 lg - super fast cabo blindado tipo usb c -dtimp 17102" href="https://www.mercadolivre.com.br/p/MLB47889235?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_923598-MLA113044313715_062026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Carregador Super Rápido 25w Para Samsung Galaxy S24 S23 S22 S21 S20 Fe Ultra Motorola M22 M31 M32 M62 M63 M64 G15 Xiaomi Redmi Note 12 13 14 15 LG - Super Fast Cabo Blindado Tipo Usb C -Dtimp</span>
+<span class="p"><s>R$ 78,90</s><b>R$ 29,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-63%</span>
+</a>
+
+<a class="deal" data-k="protetor solar facial alta cobertura anthelios la roche-posay cor 3.0 30g 17103" href="https://www.mercadolivre.com.br/p/MLB19767143?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_728452-MLA103883256579_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Protetor Solar Facial Alta Cobertura Anthelios La Roche-Posay Cor 3.0 30g</span>
+<span class="p"><s>R$ 109,90</s><b>R$ 67,40</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-39%</span>
+</a>
+
+<a class="deal" data-k="smartwatch s10 série 10 relógio digital masculino feminino resistente a agua caixa preta com 2 pulseiras smartwatch completo compatível android e ios monitor atividades 3 tech preto liso 17104" href="https://www.mercadolivre.com.br/p/MLB64997788?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_892588-MLA113463134832_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Smartwatch S10 Série 10 Relógio Digital Masculino Feminino Resistente A Agua Caixa Preta Com 2 Pulseiras Smartwatch Completo Compatível Android E Ios Monitor Atividades 3 Tech Preto Liso</span>
+<span class="p"><s>R$ 183,00</s><b>R$ 78,69</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-57%</span>
+</a>
+
+<a class="deal" data-k="kit cobre leito colcha king 3 peças boutis dupla face porta travesseiro aba americana - sofia rose 17105" href="https://www.mercadolivre.com.br/p/MLB65806827?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_600929-MLA107442530491_022026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Kit Cobre Leito Colcha King 3 Peças Boutis Dupla Face Porta Travesseiro Aba Americana - Sofia Rose</span>
+<span class="p"><s>R$ 187,90</s><b>R$ 90,89</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-52%</span>
+</a>
+
+<a class="deal" data-k="controle sem fio joystick redfin bluetooth compatível para ps4 videogame tv samsung pc p4 ps 4 manete pc gamer tv smart controle bluetooth celular headset sem fio com p2 marca redfin 17106" href="https://www.mercadolivre.com.br/p/MLB39960346?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#6</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_762912-MLA105696431793_012026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Controle Sem Fio Joystick REDFIN Bluetooth Compatível Para Ps4 Videogame Tv Samsung Pc P4 Ps 4 Manete Pc Gamer Tv Smart Controle Bluetooth Celular Headset Sem Fio Com P2 Marca Redfin</span>
+<span class="p"><s>R$ 114,90</s><b>R$ 51,32</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-55%</span>
+</a>
+
+<a class="deal" data-k="controle para xbox 360 com fio usb joystick manete gamepad controle pc gamer para computador windows steam game pass android gamepass tv vibração analógico ergonômico plug and play redfin 17107" href="https://www.mercadolivre.com.br/p/MLB22778772?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#7</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_961602-MLA115141279683_072026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Controle Para Xbox 360 Com Fio USB Joystick Manete Gamepad Controle PC Gamer Para Computador Windows Steam Game Pass Android Gamepass TV Vibração Analógico Ergonômico Plug And Play Redfin</span>
+<span class="p"><s>R$ 89,90</s><b>R$ 45,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-50%</span>
+</a>
+
+</section>
+
+<section class="velho dia">
+<h2>Post de 16/10</h2>
+
+<a class="deal" data-k="escova rotativa mondial ceramica tourmaline ion 3x1 erb-01 rosa 127/220v 16101" href="https://www.mercadolivre.com.br/p/MLB22871761?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#1</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_842831-MLA99963285219_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Escova Rotativa Mondial Ceramica Tourmaline Ion 3x1 Erb-01 Rosa 127/220v</span>
+<span class="p"><s>R$ 299,00</s><b>R$ 125,00</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-58%</span>
+</a>
+
+<a class="deal" data-k="fone de ouvido jbl tune 530bt bluetooth sem fio preto headphone com microfone wireless estéreo graves potentes confortável 16102" href="https://www.mercadolivre.com.br/p/MLB65541449?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#2</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_608030-MLA106478715282_022026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Fone de Ouvido JBL Tune 530BT Bluetooth Sem Fio Preto Headphone com Microfone Wireless Estéreo Graves Potentes Confortável</span>
+<span class="p"><s>R$ 619,00</s><b>R$ 193,03</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-69%</span>
+</a>
+
+<a class="deal" data-k="carregador portátil power bank turbo 20000mah 22.5w universal para iphone samsung motorola xiaomi com display digital dtimp 16103" href="https://www.mercadolivre.com.br/p/MLB54026101?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#3</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_899751-MLA99504871320_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Carregador Portátil Power Bank Turbo 20000mah 22.5w universal para iphone samsung motorola xiaomi Com Display Digital DTimp</span>
+<span class="p"><s>R$ 299,90</s><b>R$ 109,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-63%</span>
+</a>
+
+<a class="deal" data-k="suplemento whey isolate protein fuse 1,8kg sabor morango dark lab 16104" href="https://www.mercadolivre.com.br/p/MLB19140415?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#4</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_989007-MLA99405715766_112025-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Suplemento Whey Isolate Protein Fuse 1,8kg sabor Morango Dark Lab</span>
+<span class="p"><s>R$ 699,90</s><b>R$ 179,90</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-74%</span>
+</a>
+
+<a class="deal" data-k="carregador fonte usb-c 20w compativel com iphone tipo-c turbo adaptador branco - distribuidor autorizado 16105" href="https://www.mercadolivre.com.br/p/MLB1019713876?matt_word=alphapromo&matt_tool=19164688" rel="nofollow sponsored noopener" target="_blank">
+<span class="num">#5</span>
+<img src="https://http2.mlstatic.com/D_NQ_NP_922337-MLA117833547829_092026-O.jpg" alt="" loading="lazy">
+<span class="info"><span class="t">Carregador Fonte Usb-c 20w Compativel com iPhone Tipo-c Turbo Adaptador Branco - Distribuidor Autorizado</span>
+<span class="p"><s>R$ 419,00</s><b>R$ 166,56</b><span class="tag">Mercado Livre</span></span></span>
+<span class="off">-60%</span>
+</a>
+
+</section>
+
+<script>
+function filtrar(q){q=q.toLowerCase().trim();document.querySelectorAll('.dia').forEach(function(s){var vis=0;s.querySelectorAll('.deal').forEach(function(a){var ok=!q||a.dataset.k.indexOf(q)>=0;a.style.display=ok?'':'none';if(ok)vis++});s.style.display=vis?'':'none'})}
+</script>
 
 <footer>Preços conferidos no início de cada dia; preço e estoque podem mudar a qualquer momento.<br>
 Esta página contém links de afiliado: posso receber comissão pelas compras, sem custo extra para você.<br>

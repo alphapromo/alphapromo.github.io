@@ -50,3 +50,25 @@ def prune_plans(hoje: date, manter_dias: int) -> None:
                 p.unlink()
         except ValueError:
             pass
+
+
+def load_arquivo() -> dict:
+    """Todas as ofertas já escolhidas, por dia (não é apagado com os planos antigos)."""
+    return _read(STATE / "arquivo.json", {})
+
+
+def arquivar(d: date, plano: dict | None) -> None:
+    if not plano or not plano.get("deals"):
+        return
+    from .models import Deal
+
+    arq = load_arquivo()
+    itens = []
+    for n, raw in enumerate(plano["deals"], start=1):
+        x = Deal.from_dict(raw)
+        ig = str(plano.get("posts", {}).get(str(n), {}).get("instagram_feed", ""))
+        itens.append({"n": n, "titulo": x.titulo, "preco": x.preco, "preco_original": x.preco_original,
+                      "desconto": x.desconto, "imagem": x.imagem, "loja": x.loja,
+                      "link": x.link_afiliado or x.url, "ig": ig[3:] if ig.startswith("ok:") else ""})
+    arq[d.isoformat()] = itens
+    _write(STATE / "arquivo.json", dict(sorted(arq.items())))
