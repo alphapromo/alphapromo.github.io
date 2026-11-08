@@ -121,6 +121,7 @@ def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -
     tem_desc = d.desconto >= 5
     pill = f"-{d.desconto}%" if tem_desc and not _lancamento(d) else html.escape((d.extras.get("tema") or "Lançamento").upper())
     pill_tam = 44 if pill.startswith("-") else 30
+    pill_vis = "" if (tem_desc or _lancamento(d)) else "display:none;"
     if tem_desc:
         de_txt, de_estilo = f"de R$ {_sem_rs(d.preco_original)}", "text-decoration:line-through"
         if d.extras.get("pix"):
@@ -140,7 +141,7 @@ def _carta_html(d: Deal, numero_colecao: str, nome_colecao: str, img_uri: str) -
     <span style="font-size:18px;font-weight:700;letter-spacing:4px;color:{t['tinta']}">{categoria}</span>
     <span style="font-family:Outfit;font-size:{tam_nome}px;font-weight:800;letter-spacing:-1px;line-height:1.05;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{produto}</span>
    </div>
-   <span style="flex-shrink:0;padding:12px 22px;border-radius:999px;background:#E07A62;color:#fff;font-family:Outfit;font-size:{pill_tam}px;font-weight:800;white-space:nowrap">{pill}</span>
+   <span style="{pill_vis}flex-shrink:0;padding:12px 22px;border-radius:999px;background:#E07A62;color:#fff;font-family:Outfit;font-size:{pill_tam}px;font-weight:800;white-space:nowrap">{pill}</span>
   </div>
   <div id="vitrine" style="position:absolute;left:44px;right:44px;top:200px;height:640px;border-radius:30px;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(36,40,59,.06),0 10px 30px rgba(80,60,40,.08);display:flex;align-items:center;justify-content:center;overflow:hidden">{foto}</div>
   <div style="position:absolute;left:44px;right:44px;top:870px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px">
