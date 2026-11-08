@@ -12,7 +12,7 @@ on:
       comando:
         description: "run = automático | curate = refazer as ofertas de hoje | recurar = refazer só as que ainda não saíram | extra = ofertas extras do tema | post = publicar uma oferta agora | arte = refazer as artes de hoje"
         type: choice
-        options: [run, curate, recurar, extra, produto, post-lancamento, carrossel, comentar-antigos, eu-quero, webhook, apagar-comentarios, post, arte, reel, diag]
+        options: [run, curate, recurar, extra, produto, post-lancamento, carrossel, comentar-antigos, eu-quero, webhook, apagar-comentarios, repostar, post, arte, reel, diag]
         default: run
       oferta:
         description: "Número da oferta (para 'post' e 'reel') ou quantas extras (para 'extra')"
@@ -100,6 +100,10 @@ jobs:
           if [ "$CMD" = "post" ] || [ "$CMD" = "reel" ]; then ARGS="--slot ${{ inputs.oferta }}"; fi
           if [ "$CMD" = "recurar" ]; then CMD="curate"; ARGS="--manter"; fi
           if [ "$CMD" = "post-lancamento" ]; then CMD="post"; ARGS="--avulso --slot ${{ inputs.oferta }}"; fi
+          if [ "$CMD" = "repostar" ]; then
+            python -m promobot repostar --busca "$IN_BUSCA" --rotulo "Beleza em alta" --exigir "Beleza"
+            exit $?
+          fi
           if [ "$CMD" = "produto" ]; then
             python -m promobot produto --busca "$IN_BUSCA" --exigir "$IN_EXIGIR" --lancamento "$IN_LANC" --preco "$IN_PRECO"
             exit $?

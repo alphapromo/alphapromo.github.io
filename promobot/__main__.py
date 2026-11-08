@@ -194,6 +194,26 @@ def produto(cfg: Settings, hoje: date, busca: str, exigir: list[str], rotulo: st
     return n
 
 
+def repostar(cfg: Settings, hoje: date, pid: str, tema: str = "", categoria: str = "Oferta") -> int:
+    """Põe um produto escolhido a dedo (código MLB do catálogo) como oferta extra de hoje, com preço de agora."""
+    plano = state.load_plan(hoje)
+    if not plano:
+        raise SystemExit("Ainda não há plano hoje.")
+    d = mercadolivre.produto_por_id(pid, categoria=categoria)
+    if d is None:
+        raise SystemExit(f"Não consegui ler o preço atual de {pid}.")
+    img = render.baixar_imagem(d.imagem)
+    n = len(plano["deals"]) + 1
+    d.link_afiliado = affiliate.afiliar(d.loja, d.url)
+    d.extras.update({"tema": tema or None, "num_colecao": _numeros_colecao(hoje, 1)[0], "extra": True})
+    gerar_artes([(d, n, img)], hoje, n)
+    plano["deals"].append(d.to_dict())
+    state.save_plan(hoje, plano)
+    site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+    _aviso(f"Extra #{n} | {d.desconto}% OFF R$ {d.preco:.2f} (de R$ {d.preco_original:.2f}) | {d.titulo[:60]}")
+    return n
+
+
 def extra(cfg: Settings, hoje: date, tema_n: int, quantos: int, mock: bool = False) -> list[int]:
     """Acrescenta ao plano de hoje `quantos` ofertas extras do tema (ex.: 2 = Games).
 
@@ -477,7 +497,7 @@ def main(argv=None) -> int:
                     print(f"::{nivel}::{self.format(r)}".replace("\n", " "), flush=True)
         logging.getLogger().addHandler(_Anotar())
     p = argparse.ArgumentParser(prog="promobot")
-    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero", "webhook", "apagar-comentarios"], nargs="?", default="run")
+    p.add_argument("cmd", choices=["run", "curate", "post", "brand", "site", "arte", "diag", "reel", "extra", "carrossel", "produto", "comentar-antigos", "eu-quero", "webhook", "apagar-comentarios", "repostar"], nargs="?", default="run")
     p.add_argument("--slot", type=int)
     p.add_argument("--force", action="store_true")
     p.add_argument("--manter", action="store_true", help="curate: mantém as ofertas já publicadas hoje")
@@ -537,6 +557,9 @@ def main(argv=None) -> int:
         else:
             carrossel.publicar(cfg, hoje, dry_run=dry)
         site.build(hoje, now_brt().strftime("%d/%m às %Hh%M"))
+        return 0
+    if a.cmd == "repostar":  # --busca MLB… --rotulo "Beleza em alta" --exigir <categoria>
+        repostar(cfg, hoje, a.busca.strip(), a.rotulo if a.rotulo != "Pré-venda" else "", a.exigir or "Oferta")
         return 0
     if a.cmd == "apagar-comentarios":  # apaga os comentários "🛒 Link direto…" que o robô fez nos posts
         import requests as _rq

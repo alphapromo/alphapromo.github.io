@@ -257,7 +257,7 @@ def _tem(nome: str, termo: str) -> bool:
     return any(re.search(rf"\b{re.escape(_norm(t.strip()))}\b", n) for t in termo.split("|") if t.strip())
 
 
-def produto_por_id(pid: str, item_id: str = "", preco_manual: float | None = None) -> Deal | None:
+def produto_por_id(pid: str, item_id: str = "", preco_manual: float | None = None, categoria: str = "Games") -> Deal | None:
     """Produto do catálogo pelo código (MLB…) da página /p/; item_id = anúncio (wid) se não houver buy box."""
     aviso = logging.getLogger("promobot.aviso")
     cli = _Client(_token())
@@ -291,7 +291,7 @@ def produto_por_id(pid: str, item_id: str = "", preco_manual: float | None = Non
     if not preco:
         return None
     original = max(original or preco, preco)
-    d = parse_product({**p, "buy_box_winner": {**bb, "price": preco, "original_price": original + 0.0001, "item_id": iid}}, 1, "Games")
+    d = parse_product({**p, "buy_box_winner": {**bb, "price": preco, "original_price": original + 0.0001, "item_id": iid}}, 1, categoria)
     if d and d.preco_original - d.preco < 0.01:
         d.preco_original = d.preco
     return d
