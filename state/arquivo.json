@@ -1381,5 +1381,67 @@
       "ig": "18040506350839890",
       "story": "18139105600632645"
     }
+  ],
+  "2026-11-09": [
+    {
+      "n": 1,
+      "titulo": "Sabonete Líquido Hora Do Sono 200ml Baby Johnson's",
+      "preco": 16.96,
+      "preco_original": 26.39,
+      "desconto": 36,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_940727-MLA117363373934_102026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB17876024?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "EA Sports FC 27 - PS5",
+      "preco": 328.58,
+      "preco_original": 379.9,
+      "desconto": 14,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_758069-MLA116701281297_082026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB78276789?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "Floratta Flores Secretas 75ml O Boticário Feminino",
+      "preco": 86.9,
+      "preco_original": 174.9,
+      "desconto": 50,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_889465-MLA99767551238_122025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB62797467?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Fone de Ouvido Bluetooth 5.4 soundcore P30i da Anker, Cancelamento de Ruído Adaptativo, Graves Poderosos, 45H de Reprodução, Estojo 2-em-1 com Suporte para Celular, IP54, Fone sem fio TWS, Preto",
+      "preco": 196.0,
+      "preco_original": 389.0,
+      "desconto": 50,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_760745-MLA95700724020_102025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB38176139?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Pisca Cortina 300 Leds 3x3m Usb Ip44 8 Modos Iluminação Luzes Fada Decoração De Natal Festa Branco Frio Luvinco",
+      "preco": 29.99,
+      "preco_original": 49.87,
+      "desconto": 40,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_720324-MLA118519912953_092026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB64256647?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }

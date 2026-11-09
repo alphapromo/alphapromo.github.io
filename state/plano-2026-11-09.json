@@ -1,0 +1,181 @@
+{
+  "data": "2026-11-09",
+  "gerado_em": "2026-11-09T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB17876024",
+      "titulo": "Sabonete Líquido Hora Do Sono 200ml Baby Johnson's",
+      "preco": 16.96,
+      "preco_original": 26.39,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_940727-MLA117363373934_102026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB17876024",
+      "categoria": "Higiene Pessoal",
+      "frete_gratis": true,
+      "popularidade": 102,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB17876024?matt_word=alphapromo&matt_tool=19164688",
+      "score": 77.59,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB2688880244",
+        "posicao": 9,
+        "marca": "Johnson's",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_940727-MLA117363373934_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_922296-MLA117363373954_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_928753-MLA117363985256_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_675948-MLA117364216682_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_740294-MLA118959729165_102026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 42,
+        "arte_feed": "docs/posts/2026-11-09/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-09/1-tiktok.jpg"
+      },
+      "desconto": 36
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB78276789",
+      "titulo": "EA Sports FC 27 - PS5",
+      "preco": 328.58,
+      "preco_original": 379.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_758069-MLA116701281297_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB78276789",
+      "categoria": "Video Games",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB78276789?matt_word=alphapromo&matt_tool=19164688",
+      "score": 94.63,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5166470939",
+        "posicao": 4,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_758069-MLA116701281297_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_979952-MLA115294097432_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_996984-MLA116701947449_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_826070-MLA116701887855_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_776846-MLA115293606592_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 43,
+        "arte_feed": "docs/posts/2026-11-09/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-09/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-09/2-reel.mp4"
+      },
+      "desconto": 14
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB62797467",
+      "titulo": "Floratta Flores Secretas 75ml O Boticário Feminino",
+      "preco": 86.9,
+      "preco_original": 174.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_889465-MLA99767551238_122025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB62797467",
+      "categoria": "Perfumes",
+      "frete_gratis": true,
+      "popularidade": 104,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB62797467?matt_word=alphapromo&matt_tool=19164688",
+      "score": 89.76,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5940016354",
+        "posicao": 8,
+        "marca": "O Boticário",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_889465-MLA99767551238_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_872933-MLA99767551242_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_969915-MLA99767511852_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_689537-MLA99767571268_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_941763-MLA99767975160_122025-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 44,
+        "arte_feed": "docs/posts/2026-11-09/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-09/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-09/3-reel.mp4"
+      },
+      "desconto": 50
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB38176139",
+      "titulo": "Fone de Ouvido Bluetooth 5.4 soundcore P30i da Anker, Cancelamento de Ruído Adaptativo, Graves Poderosos, 45H de Reprodução, Estojo 2-em-1 com Suporte para Celular, IP54, Fone sem fio TWS, Preto",
+      "preco": 196.0,
+      "preco_original": 389.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_760745-MLA95700724020_102025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB38176139",
+      "categoria": "Eletrônicos, Áudio e Vídeo",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB38176139?matt_word=alphapromo&matt_tool=19164688",
+      "score": 111.86,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5410636044",
+        "posicao": 4,
+        "marca": "Anker",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_760745-MLA95700724020_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_655167-MLA109764490885_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_981758-MLA108936906254_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_793296-MLA109764610819_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_730509-MLA108936487982_032026-O.jpg"
+        ],
+        "cat_raiz": "MLB1000",
+        "subcategoria": false,
+        "num_colecao": 45,
+        "arte_feed": "docs/posts/2026-11-09/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-09/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-09/4-reel.mp4"
+      },
+      "desconto": 50
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB64256647",
+      "titulo": "Pisca Cortina 300 Leds 3x3m Usb Ip44 8 Modos Iluminação Luzes Fada Decoração De Natal Festa Branco Frio Luvinco",
+      "preco": 29.99,
+      "preco_original": 49.87,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_720324-MLA118519912953_092026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB64256647",
+      "categoria": "Casa e Decoração",
+      "frete_gratis": false,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB64256647?matt_word=alphapromo&matt_tool=19164688",
+      "score": 91.4,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4482447119",
+        "posicao": 6,
+        "marca": "LuvinCo",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_720324-MLA118519912953_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_808533-MLA118520002231_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_956663-MLA118520264221_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_940610-MLA118520290529_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_680899-MLA116956286400_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": false,
+        "num_colecao": 46,
+        "arte_feed": "docs/posts/2026-11-09/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-09/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-09/5-reel.mp4"
+      },
+      "desconto": 40
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
