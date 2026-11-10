@@ -1443,5 +1443,67 @@
       "ig": "17882423505547683",
       "story": "18114589322128332"
     }
+  ],
+  "2026-11-10": [
+    {
+      "n": 1,
+      "titulo": "Creatina Integralmedica 100% Pura 60 Cápsulas - Aumento de Resistência e Desempenho para Atletas e Treinos Intensos",
+      "preco": 16.63,
+      "preco_original": 32.0,
+      "desconto": 48,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_782298-MLA100076194863_122025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB19533185?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "Final Fantasy Vii Rebirth Standard Edition Nintendo Switch 2",
+      "preco": 229.0,
+      "preco_original": 409.0,
+      "desconto": 44,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_803522-MLA110943215072_052026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB70032471?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "Máscara Acidificante Amend Equilíbrio do pH 250g",
+      "preco": 33.98,
+      "preco_original": 48.98,
+      "desconto": 31,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_997869-MLA119798411771_102026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB42456000?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Fone de Ouvido Bluetooth Dapon H02D, Bluetooth 5.1, Modo Sem Fio e P2 3,5mm, Dobrável, Almofadas Macias, Bateria 350mAh até 22h, Microfone Integrado, Controle no Fone, Carregamento Tipo-C Preto",
+      "preco": 76.53,
+      "preco_original": 149.0,
+      "desconto": 49,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_871158-MLA99870084511_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB24117280?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Hidrabene Protetor facial Solar FPS 70 Toque Seco Antissinais Clareia a pele 50g",
+      "preco": 29.66,
+      "preco_original": 59.9,
+      "desconto": 50,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_655805-MLA116956226142_092026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB60416809?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }
