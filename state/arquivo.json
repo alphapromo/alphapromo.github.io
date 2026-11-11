@@ -1505,5 +1505,67 @@
       "ig": "18118362659519773",
       "story": "18078635723732313"
     }
+  ],
+  "2026-11-11": [
+    {
+      "n": 1,
+      "titulo": "Creme Dental Colgate Total Anti Tártaro 180g",
+      "preco": 17.38,
+      "preco_original": 20.13,
+      "desconto": 14,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_934788-MLA115583677394_092026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB17823763?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "Nintendo Switch Console OLED 64gb",
+      "preco": 1999.0,
+      "preco_original": 2999.0,
+      "desconto": 33,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_928841-MLA93525033946_102025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB58623212?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "O Boticário Quasar Blue Desodorante Colônia 100ml",
+      "preco": 74.9,
+      "preco_original": 189.9,
+      "desconto": 61,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_645686-MLA82876911341_032025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB39016247?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Whey Protein Concentrado 1kg Morango Dark Lab",
+      "preco": 136.9,
+      "preco_original": 349.9,
+      "desconto": 61,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_927988-MLA99469885866_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB40182325?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Batedeira Prática Mondial 400W - B-44-B",
+      "preco": 69.9,
+      "preco_original": 154.9,
+      "desconto": 55,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_877834-MLA99469550350_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB16016316?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }

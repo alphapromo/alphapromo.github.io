@@ -1,0 +1,181 @@
+{
+  "data": "2026-11-11",
+  "gerado_em": "2026-11-11T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB17823763",
+      "titulo": "Creme Dental Colgate Total Anti Tártaro 180g",
+      "preco": 17.38,
+      "preco_original": 20.13,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_934788-MLA115583677394_092026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB17823763",
+      "categoria": "Higiene Pessoal",
+      "frete_gratis": false,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB17823763?matt_word=alphapromo&matt_tool=19164688",
+      "score": 60.66,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3504824952",
+        "posicao": 10,
+        "marca": "Colgate",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_934788-MLA115583677394_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_784828-MLA99919115141_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_702648-MLA82103858083_012025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_654525-MLA82103809469_012025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_747191-MLA82103858111_012025-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 52,
+        "arte_feed": "docs/posts/2026-11-11/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-11/1-tiktok.jpg"
+      },
+      "desconto": 14
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB58623212",
+      "titulo": "Nintendo Switch Console OLED 64gb",
+      "preco": 1999.0,
+      "preco_original": 2999.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_928841-MLA93525033946_102025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB58623212",
+      "categoria": "Consoles",
+      "frete_gratis": true,
+      "popularidade": 106,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB58623212?matt_word=alphapromo&matt_tool=19164688",
+      "score": 91.2,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4338707725",
+        "posicao": 7,
+        "marca": "Nintendo",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_928841-MLA93525033946_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_825058-MLA93945568607_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_678205-MLA93525196100_102025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_937884-MLA118515321196_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_678746-MLA118515321208_102026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 53,
+        "arte_feed": "docs/posts/2026-11-11/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-11/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-11/2-reel.mp4"
+      },
+      "desconto": 33
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB39016247",
+      "titulo": "O Boticário Quasar Blue Desodorante Colônia 100ml",
+      "preco": 74.9,
+      "preco_original": 189.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_645686-MLA82876911341_032025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB39016247",
+      "categoria": "Beleza",
+      "frete_gratis": true,
+      "popularidade": 114,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB39016247?matt_word=alphapromo&matt_tool=19164688",
+      "score": 119.3,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5105377440",
+        "posicao": 3,
+        "marca": "Boticário",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_645686-MLA82876911341_032025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_761200-MLA82876841611_032025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_846320-MLA82877489095_032025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_955386-MLA116264384732_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_808004-MLA117754664735_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": false,
+        "tema": "Beleza em alta",
+        "num_colecao": 54,
+        "arte_feed": "docs/posts/2026-11-11/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-11/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-11/3-reel.mp4"
+      },
+      "desconto": 61
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB40182325",
+      "titulo": "Whey Protein Concentrado 1kg Morango Dark Lab",
+      "preco": 136.9,
+      "preco_original": 349.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_927988-MLA99469885866_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB40182325",
+      "categoria": "Esportes e Fitness",
+      "frete_gratis": true,
+      "popularidade": 102,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB40182325?matt_word=alphapromo&matt_tool=19164688",
+      "score": 91.26,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5052087506",
+        "posicao": 9,
+        "marca": "Dark Lab",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_927988-MLA99469885866_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_753382-MLA89083301608_082025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_726794-MLA84853867221_052025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_721809-MLA84555493670_052025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_633771-MLU78663798506_092024-O.jpg"
+        ],
+        "cat_raiz": "MLB1276",
+        "subcategoria": false,
+        "num_colecao": 55,
+        "arte_feed": "docs/posts/2026-11-11/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-11/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-11/4-reel.mp4"
+      },
+      "desconto": 61
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB16016316",
+      "titulo": "Batedeira Prática Mondial 400W - B-44-B",
+      "preco": 69.9,
+      "preco_original": 154.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_877834-MLA99469550350_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB16016316",
+      "categoria": "Eletrodomésticos",
+      "frete_gratis": false,
+      "popularidade": 104,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB16016316?matt_word=alphapromo&matt_tool=19164688",
+      "score": 88.7,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3602385150",
+        "posicao": 8,
+        "marca": "Mondial",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_877834-MLA99469550350_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_777515-MLA90109539371_082025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_924839-MLA90109588935_082025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_627445-MLA90109598727_082025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_950446-MLA89733172914_082025-O.jpg"
+        ],
+        "cat_raiz": "MLB5726",
+        "subcategoria": false,
+        "num_colecao": 56,
+        "arte_feed": "docs/posts/2026-11-11/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-11/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-11/5-reel.mp4"
+      },
+      "desconto": 55
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
