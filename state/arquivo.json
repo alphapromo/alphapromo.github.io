@@ -1567,5 +1567,67 @@
       "ig": "18378657115241017",
       "story": "18135576793783416"
     }
+  ],
+  "2026-11-12": [
+    {
+      "n": 1,
+      "titulo": "NIVEA Loção Deo-Hidratante Corporal Milk 400ml, 72h de hidratação, Cuidado Intensivo",
+      "preco": 18.9,
+      "preco_original": 26.99,
+      "desconto": 30,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_974841-MLA121137466497_112026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB18391232?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "Elden Ring Standard Edition PlayStation 4 físico",
+      "preco": 229.96,
+      "preco_original": 291.1,
+      "desconto": 21,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_786484-MLA99509325904_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB18758278?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "L'oréal Paris Elseve Collagen Lifter Leave-in Sérum Capilar Para Cabelos Finos Injeção de Massa com Peptídeos de Colágeno Aumenta o Volume em 61% e Encorpa os Fios por 72h 100ml",
+      "preco": 31.56,
+      "preco_original": 65.09,
+      "desconto": 52,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_683166-MLA103936334574_012026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB64174316?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Creatina Monohidratada 1kg 100% Pura - Dark Lab",
+      "preco": 69.99,
+      "preco_original": 159.9,
+      "desconto": 56,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_603981-MLA115262802698_082026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB25929487?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Sanduicheira Grill 2 Em 1 Kian Preta Elétrica 750w Cor Preto,Seu Mixto Quente Ultra Rápido, e Outros Petiscos",
+      "preco": 54.0,
+      "preco_original": 79.0,
+      "desconto": 32,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_811189-MLA117367368715_092026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB35276826?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }

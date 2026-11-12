@@ -1,0 +1,179 @@
+{
+  "data": "2026-11-12",
+  "gerado_em": "2026-11-12T06:16-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB18391232",
+      "titulo": "NIVEA Loção Deo-Hidratante Corporal Milk 400ml, 72h de hidratação, Cuidado Intensivo",
+      "preco": 18.9,
+      "preco_original": 26.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_974841-MLA121137466497_112026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB18391232",
+      "categoria": "Cuidados com a Pele",
+      "frete_gratis": false,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB18391232?matt_word=alphapromo&matt_tool=19164688",
+      "score": 87.16,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3339445269",
+        "posicao": 6,
+        "marca": "Nivea",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_974841-MLA121137466497_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_758039-MLA119424549450_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_663268-MLA121137200951_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_784576-MLA121137408249_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_736855-MLA121137229881_112026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 57,
+        "arte_feed": "docs/posts/2026-11-12/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-12/1-tiktok.jpg"
+      },
+      "desconto": 30
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB18758278",
+      "titulo": "Elden Ring Standard Edition PlayStation 4 físico",
+      "preco": 229.96,
+      "preco_original": 291.1,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_786484-MLA99509325904_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB18758278",
+      "categoria": "Video Games",
+      "frete_gratis": true,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB18758278?matt_word=alphapromo&matt_tool=19164688",
+      "score": 67.62,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5119374205",
+        "posicao": 10,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_786484-MLA99509325904_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_808991-MLA49011893982_022022-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_896826-MLA49012133453_022022-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_936218-MLA49011893981_022022-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_858011-MLA108559947181_032026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 58,
+        "arte_feed": "docs/posts/2026-11-12/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-12/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-12/2-reel.mp4"
+      },
+      "desconto": 21
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB64174316",
+      "titulo": "L'oréal Paris Elseve Collagen Lifter Leave-in Sérum Capilar Para Cabelos Finos Injeção de Massa com Peptídeos de Colágeno Aumenta o Volume em 61% e Encorpa os Fios por 72h 100ml",
+      "preco": 31.56,
+      "preco_original": 65.09,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_683166-MLA103936334574_012026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB64174316",
+      "categoria": "Cuidados com o Cabelo",
+      "frete_gratis": false,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB64174316?matt_word=alphapromo&matt_tool=19164688",
+      "score": 96.47,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4701793653",
+        "posicao": 6,
+        "marca": "L'Oréal Paris",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_683166-MLA103936334574_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_759142-MLA114293842341_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_956620-MLA105117361832_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_806617-MLA111153900322_052026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_859408-MLA112156782097_052026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 59,
+        "arte_feed": "docs/posts/2026-11-12/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-12/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-12/3-reel.mp4"
+      },
+      "desconto": 52
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB25929487",
+      "titulo": "Creatina Monohidratada 1kg 100% Pura - Dark Lab",
+      "preco": 69.99,
+      "preco_original": 159.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_603981-MLA115262802698_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB25929487",
+      "categoria": "Esportes e Fitness",
+      "frete_gratis": false,
+      "popularidade": 116,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB25929487?matt_word=alphapromo&matt_tool=19164688",
+      "score": 119.2,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4812130742",
+        "posicao": 2,
+        "marca": "Dark Lab",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_603981-MLA115262802698_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_616897-MLA116436385553_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_664206-MLA116324753429_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1276",
+        "subcategoria": false,
+        "num_colecao": 60,
+        "arte_feed": "docs/posts/2026-11-12/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-12/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-12/4-reel.mp4"
+      },
+      "desconto": 56
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB35276826",
+      "titulo": "Sanduicheira Grill 2 Em 1 Kian Preta Elétrica 750w Cor Preto,Seu Mixto Quente Ultra Rápido, e Outros Petiscos",
+      "preco": 54.0,
+      "preco_original": 79.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_811189-MLA117367368715_092026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB35276826",
+      "categoria": "Eletrodomésticos",
+      "frete_gratis": false,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB35276826?matt_word=alphapromo&matt_tool=19164688",
+      "score": 98.3,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4239417597",
+        "posicao": 4,
+        "marca": "Kian",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_811189-MLA117367368715_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_691664-MLA117367368721_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_941013-MLA114920928907_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_698420-MLA115899811460_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_942684-MLA91561291638_092025-O.jpg"
+        ],
+        "cat_raiz": "MLB5726",
+        "subcategoria": false,
+        "num_colecao": 61,
+        "arte_feed": "docs/posts/2026-11-12/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-12/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-12/5-reel.mp4"
+      },
+      "desconto": 32
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
