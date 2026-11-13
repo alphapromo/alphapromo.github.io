@@ -139,7 +139,8 @@
         "num_colecao": 65,
         "arte_feed": "docs/posts/2026-11-13/4-feed.jpg",
         "arte_tiktok": "docs/posts/2026-11-13/4-tiktok.jpg",
-        "reel": "docs/posts/2026-11-13/4-reel.mp4"
+        "reel": "docs/posts/2026-11-13/4-reel.mp4",
+        "dia": "13/11"
       },
       "desconto": 42
     },
@@ -190,6 +191,10 @@
     "3": {
       "instagram_feed": "ok:17985897491906085",
       "instagram_story": "ok:18085818665380720"
+    },
+    "4": {
+      "instagram_feed": "ok:17975260026191449",
+      "instagram_story": "erro:400: {'message': 'The requested resource does not exist', 'type': 'OAuthException', 'code': 24, 'error_subcode': 2207006, 'is_transient': False, 'error_user_title': 'Media Not Found', 'error_user_msg': 'The media with 18,252,577,207,313,809 cannot be found.', 'fbtrace_id': 'A-4fSeAt7vjRe7Y0fbQelRz'}"
     }
   },
   "avulsos": [],
