@@ -1,0 +1,181 @@
+{
+  "data": "2026-11-13",
+  "gerado_em": "2026-11-13T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB74847566",
+      "titulo": "Kit 3 Pincéis 2 Pontas Unhas Gel Acrigel Decoração Nail Art Manicure Acabamento Profissional Ponta Dupla Boa Dica",
+      "preco": 19.0,
+      "preco_original": 26.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_974497-MLA113003838008_072026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB74847566",
+      "categoria": "Manicure e Pedicure",
+      "frete_gratis": false,
+      "popularidade": 110,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB74847566?matt_word=alphapromo&matt_tool=19164688",
+      "score": 91.76,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7079844812",
+        "posicao": 5,
+        "marca": "boa dica",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_974497-MLA113003838008_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_801742-MLA113003560488_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_796782-MLA114220579067_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_879573-MLA114220767129_072026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_758239-MLA113003809282_072026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 62,
+        "arte_feed": "docs/posts/2026-11-13/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-13/1-tiktok.jpg"
+      },
+      "desconto": 29
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB63980306",
+      "titulo": "Pokémon Pokopia - Nintendo Switch 2",
+      "preco": 439.89,
+      "preco_original": 556.83,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_877218-MLA104113006671_012026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB63980306",
+      "categoria": "Video Games",
+      "frete_gratis": true,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB63980306?matt_word=alphapromo&matt_tool=19164688",
+      "score": 68.74,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4962524945",
+        "posicao": 10,
+        "marca": "Nintendo",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_877218-MLA104113006671_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_675244-MLA104112947413_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_624549-MLA104114351705_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_742026-MLA104118447389_012026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_656054-MLA104113156217_012026-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 63,
+        "arte_feed": "docs/posts/2026-11-13/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-13/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-13/2-reel.mp4"
+      },
+      "desconto": 21
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB36136752",
+      "titulo": "O Boticário Liz Flora Desodorante Colônia 100ml",
+      "preco": 71.9,
+      "preco_original": 179.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_837324-MLU75963465495_042024-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB36136752",
+      "categoria": "Beleza",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB36136752?matt_word=alphapromo&matt_tool=19164688",
+      "score": 114.16,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5343808690",
+        "posicao": 4,
+        "marca": "Boticário",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_837324-MLU75963465495_042024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_612703-MLU75793302414_042024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_828798-MLU75963244429_042024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_949738-MLU75963465515_042024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_790414-MLU75963244451_042024-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": false,
+        "tema": "Beleza em alta",
+        "num_colecao": 64,
+        "arte_feed": "docs/posts/2026-11-13/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-13/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-13/3-reel.mp4"
+      },
+      "desconto": 60
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB52052995",
+      "titulo": "Air Fryer Philco 6,5L Visor Glass e Redstone 1700W PAF65A",
+      "preco": 280.0,
+      "preco_original": 485.0,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_761173-MLA99475995202_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB52052995",
+      "categoria": "Eletrodomésticos",
+      "frete_gratis": true,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB52052995?matt_word=alphapromo&matt_tool=19164688",
+      "score": 98.9,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7117184492",
+        "posicao": 6,
+        "marca": "Philco",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_761173-MLA99475995202_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_658785-MLA88539381950_072025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_768391-MLA88539441700_072025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_645113-MLA88888341723_072025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_982683-MLA88539352218_072025-O.jpg"
+        ],
+        "cat_raiz": "MLB5726",
+        "subcategoria": false,
+        "num_colecao": 65,
+        "arte_feed": "docs/posts/2026-11-13/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-13/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-13/4-reel.mp4"
+      },
+      "desconto": 42
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB18725403",
+      "titulo": "Proteína Growth Supplements Basic Whey em pó sabor Chocolate x 1kg",
+      "preco": 74.9,
+      "preco_original": 104.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_819000-MLA101180020755_122025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB18725403",
+      "categoria": "Esportes e Fitness",
+      "frete_gratis": false,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB18725403?matt_word=alphapromo&matt_tool=19164688",
+      "score": 87.2,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB4324797875",
+        "posicao": 6,
+        "marca": "Growth Supplements",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_819000-MLA101180020755_122025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_972255-MLA99744097959_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_984367-MLA99261619062_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_742061-MLA99744000897_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_757798-MLA99261756822_112025-O.jpg"
+        ],
+        "cat_raiz": "MLB1276",
+        "subcategoria": false,
+        "num_colecao": 66,
+        "arte_feed": "docs/posts/2026-11-13/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-13/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-13/5-reel.mp4"
+      },
+      "desconto": 29
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
