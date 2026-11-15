@@ -1753,5 +1753,67 @@
       "ig": "18170426248472614",
       "story": "18117427412038085"
     }
+  ],
+  "2026-11-15": [
+    {
+      "n": 1,
+      "titulo": "FIO DENTAL ESSENCIAL MENTA JOHNSONS REACH 100M",
+      "preco": 16.99,
+      "preco_original": 19.19,
+      "desconto": 11,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_722309-MLA99452525954_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB23985124?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "Mesa De Canto Pé Palito 2 Mesas Tripe Redonda Fosca *** Cor Mesa Lateral Branca",
+      "preco": 62.9,
+      "preco_original": 157.9,
+      "desconto": 60,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_690305-MLA99566910084_122025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB50732147?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "Máscara de Cílios Payot Boca Rosa Preta Volume Instantâneo",
+      "preco": 14.8,
+      "preco_original": 19.0,
+      "desconto": 22,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_775812-MLA97120768966_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB61852968?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Kit 10 Pote De Vidro Marmita Hermético 640ml Freezer Fitness Vitrex",
+      "preco": 93.22,
+      "preco_original": 198.87,
+      "desconto": 53,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_994871-MLA119301626806_112026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB65269789?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Fritadeira Elétrica Air Fryer Quad Fry Elgin 4,2 L, 1400w",
+      "preco": 145.0,
+      "preco_original": 299.0,
+      "desconto": 52,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_927559-MLA99450788218_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB50376945?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }
