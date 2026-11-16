@@ -1815,5 +1815,67 @@
       "ig": "17899556391412578",
       "story": "17974000698179439"
     }
+  ],
+  "2026-11-16": [
+    {
+      "n": 1,
+      "titulo": "Água Sanitária Ypê Cloro Ativo 5 L Original",
+      "preco": 14.99,
+      "preco_original": 19.99,
+      "desconto": 25,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_950605-MLA99927683925_112025-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB19745649?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "Kit 2 Rádios Comunicadores WalkieTalkie BF-777S Alta Performance UHF 16 Canais Longo Alcance com Fones de Ouvido, Baterias Recarregáveis e Carregadores para Segurança, Eventos, Obras Sígux",
+      "preco": 108.97,
+      "preco_original": 199.0,
+      "desconto": 45,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_867795-MLA119167492610_112026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB81561218?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave In Anti Frizz Protetor Térmico Tratamento Reconstrutor Para Todos Os Tipos De Cabelo",
+      "preco": 36.14,
+      "preco_original": 64.19,
+      "desconto": 44,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_605503-MLA114497234356_082026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB26080271?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Proteína Max Titanium Whey Pro Concetrado em pó sabor Morango x 1kg",
+      "preco": 99.9,
+      "preco_original": 179.84,
+      "desconto": 44,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_608162-MLA112813208483_062026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB6087971?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Carregador Dtimp Super Rápido 25w Fast Cabo Blindado Tipo Usb C",
+      "preco": 32.9,
+      "preco_original": 78.9,
+      "desconto": 58,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_923598-MLA113044313715_062026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB47889235?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }
