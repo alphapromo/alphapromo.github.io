@@ -67,7 +67,8 @@
         "num_colecao": 88,
         "arte_feed": "docs/posts/2026-11-18/2-feed.jpg",
         "arte_tiktok": "docs/posts/2026-11-18/2-tiktok.jpg",
-        "reel": "docs/posts/2026-11-18/2-reel.mp4"
+        "reel": "docs/posts/2026-11-18/2-reel.mp4",
+        "dia": "18/11"
       },
       "desconto": 23
     },
@@ -178,6 +179,10 @@
     "1": {
       "instagram_feed": "ok:18356472370271092",
       "instagram_story": "ok:18143809216620401"
+    },
+    "2": {
+      "instagram_feed": "erro:container 18253247059313809: {'status_code': 'ERROR', 'id': '18253247059313809'}",
+      "instagram_story": "ok:17922874353243702"
     }
   },
   "avulsos": [],
