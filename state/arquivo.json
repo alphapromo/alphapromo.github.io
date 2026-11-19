@@ -2001,5 +2001,67 @@
       "ig": "18115376828173335",
       "story": "18101913338087801"
     }
+  ],
+  "2026-11-19": [
+    {
+      "n": 1,
+      "titulo": "Medix Touca descartável sanfonada TNT",
+      "preco": 13.69,
+      "preco_original": 29.48,
+      "desconto": 54,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_853224-MLA115143800326_082026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB38328312?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 2,
+      "titulo": "Smartwatch S10 Série 10 Relógio Digital Masculino Feminino Resistente A Agua Caixa Preta Com 2 Pulseiras Smartwatch Completo Compatível Android E Ios Monitor Atividades 3 Tech Preto Liso",
+      "preco": 76.0,
+      "preco_original": 183.0,
+      "desconto": 58,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_892588-MLA113463134832_072026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB64997788?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 3,
+      "titulo": "Body Splash Masculino Vibration 200ml - Primacial Perfume Bergamota Fresco",
+      "preco": 41.19,
+      "preco_original": 69.9,
+      "desconto": 41,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_617155-MLA118231595864_102026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB70449712?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 4,
+      "titulo": "Cabo De Rede Internet 30m 30 Metros Cat6 Azul Crimpado Giga Lan Ethernet Boyu Cell",
+      "preco": 41.45,
+      "preco_original": 64.9,
+      "desconto": 36,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_795187-MLA107571017470_032026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB44361342?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    },
+    {
+      "n": 5,
+      "titulo": "Kit Jogo de Ferramentas Precisão Magnético 115 Peças Quicko para Reparação Kit Completo Para Assistencia Tecnica Celulares Jogo De Chave Abrir Celular Equipamentos Para Manutenção De Celular",
+      "preco": 29.9,
+      "preco_original": 54.9,
+      "desconto": 46,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_920412-MLA118577870138_102026-O.jpg",
+      "loja": "Mercado Livre",
+      "link": "https://www.mercadolivre.com.br/p/MLB33230345?matt_word=alphapromo&matt_tool=19164688",
+      "ig": "",
+      "story": ""
+    }
   ]
 }
