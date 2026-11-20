@@ -1,0 +1,178 @@
+{
+  "data": "2026-11-20",
+  "gerado_em": "2026-11-20T06:16-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB67146264",
+      "titulo": "Mini Mixer Misturador De Bebidas Elétrico 2 Em 1 Portátil Recarregável Mexedor De Ovos Leite Whey Café Espuma Shake Drinks Capuccino Suco Blackbom",
+      "preco": 19.99,
+      "preco_original": 49.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_993099-MLA118374430742_102026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB67146264",
+      "categoria": "Cozinha",
+      "frete_gratis": false,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB67146264?matt_word=alphapromo&matt_tool=19164688",
+      "score": 79.6,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB6519291232",
+        "posicao": 10,
+        "marca": "Blackbom",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_993099-MLA118374430742_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_981724-MLA117420413833_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_965117-MLA117420469611_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_657622-MLA117420994285_092026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_756770-MLA117420789181_092026-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 97,
+        "arte_feed": "docs/posts/2026-11-20/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-20/1-tiktok.jpg"
+      },
+      "desconto": 60
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB18917848",
+      "titulo": "Controle Dualsense Cfi-zct1 Sem Fio Ps5 Galactic Purple",
+      "preco": 399.0,
+      "preco_original": 499.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_988275-MLA99995954413_112025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB18917848",
+      "categoria": "Acessórios para PC Gaming",
+      "frete_gratis": true,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB18917848?matt_word=alphapromo&matt_tool=19164688",
+      "score": 113.02,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7771588290",
+        "posicao": 1,
+        "marca": "PlayStation",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_988275-MLA99995954413_112025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_882225-MLA84547999024_052025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_695745-MLA84846248667_052025-O.jpg"
+        ],
+        "cat_raiz": "MLB1144",
+        "subcategoria": true,
+        "tema": "Games",
+        "num_colecao": 98,
+        "arte_feed": "docs/posts/2026-11-20/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-20/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-20/2-reel.mp4"
+      },
+      "desconto": 20
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB19508984",
+      "titulo": "ISDIN Protetor Solar Facial Fusion Water 5 Stars Sem Cor FPS 60 - 50ml",
+      "preco": 89.9,
+      "preco_original": 114.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_980727-MLA119667556620_112026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB19508984",
+      "categoria": "Cuidados com a Pele",
+      "frete_gratis": true,
+      "popularidade": 102,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB19508984?matt_word=alphapromo&matt_tool=19164688",
+      "score": 72.3,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB2751486961",
+        "posicao": 9,
+        "marca": "Isdin",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_980727-MLA119667556620_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_638963-MLA121392792749_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_659586-MLA119666555936_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_927064-MLA89969728851_082025-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 99,
+        "arte_feed": "docs/posts/2026-11-20/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-20/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-20/3-reel.mp4"
+      },
+      "desconto": 22
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB23487120",
+      "titulo": "Filamento PLA Voolt3D High Speed Premium de 1.75mm e 1kg Verde Velvet",
+      "preco": 116.39,
+      "preco_original": 159.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB23487120",
+      "categoria": "Informática",
+      "frete_gratis": true,
+      "popularidade": 112,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB23487120?matt_word=alphapromo&matt_tool=19164688",
+      "score": 99.67,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5568480151",
+        "posicao": 4,
+        "marca": "Voolt3D",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_647571-MLA116549201715_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_904508-MLA115152627734_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_878283-MLA115152426578_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_809204-MLA116549519761_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_766720-MLA116549491787_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1648",
+        "subcategoria": false,
+        "num_colecao": 100,
+        "arte_feed": "docs/posts/2026-11-20/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-20/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-20/4-reel.mp4"
+      },
+      "desconto": 27
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB80706033",
+      "titulo": "Carregador Super Rápido 25w Para Samsung Galaxy S24 S23 S22 S21 S20 Fe Ultra Motorola M22 M31 M32 M62 M63 M64 G15 Xiaomi Redmi Note 12 13 14 15 LG - Super Fast Cabo Blindado Tipo Usb C Fast Plug",
+      "preco": 26.99,
+      "preco_original": 69.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_788037-MLA121827658023_112026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB80706033",
+      "categoria": "Celulares",
+      "frete_gratis": false,
+      "popularidade": 100,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB80706033?matt_word=alphapromo&matt_tool=19164688",
+      "score": 79.86,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7853262704",
+        "posicao": 10,
+        "marca": "Fast plug",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_788037-MLA121827658023_112026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_832390-MLA118433976260_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_679749-MLA120088343383_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_962537-MLA120088905525_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_767887-MLA120087704221_102026-O.jpg"
+        ],
+        "cat_raiz": "MLB1051",
+        "subcategoria": false,
+        "num_colecao": 101,
+        "arte_feed": "docs/posts/2026-11-20/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-20/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-20/5-reel.mp4"
+      },
+      "desconto": 61
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
