@@ -32,7 +32,8 @@
         "tema": "Achadinho até R$ 20",
         "num_colecao": 97,
         "arte_feed": "docs/posts/2026-11-20/1-feed.jpg",
-        "arte_tiktok": "docs/posts/2026-11-20/1-tiktok.jpg"
+        "arte_tiktok": "docs/posts/2026-11-20/1-tiktok.jpg",
+        "dia": "20/11"
       },
       "desconto": 60
     },
@@ -172,7 +173,12 @@
       "desconto": 61
     }
   ],
-  "posts": {},
+  "posts": {
+    "1": {
+      "instagram_feed": "ok:17945974512374836",
+      "instagram_story": "ok:18646495483020882"
+    }
+  },
   "avulsos": [],
   "posts_avulsos": {}
 }
