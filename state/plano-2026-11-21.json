@@ -1,0 +1,180 @@
+{
+  "data": "2026-11-21",
+  "gerado_em": "2026-11-21T06:17-03:00",
+  "deals": [
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB18392264",
+      "titulo": "Hastes Flexíveis COTONETES 300 unidades",
+      "preco": 14.45,
+      "preco_original": 23.79,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_703135-MLA117325856544_102026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB18392264",
+      "categoria": "Higiene Pessoal",
+      "frete_gratis": true,
+      "popularidade": 106,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB18392264?matt_word=alphapromo&matt_tool=19164688",
+      "score": 88.79,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3480909781",
+        "posicao": 7,
+        "marca": "Johnson & Johnson",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_703135-MLA117325856544_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_635348-MLA118966184087_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_979808-MLA108910036426_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_695909-MLA118919244391_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_930262-MLA118919536371_102026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Achadinho até R$ 20",
+        "num_colecao": 102,
+        "arte_feed": "docs/posts/2026-11-21/1-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-21/1-tiktok.jpg"
+      },
+      "desconto": 39
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB45553868",
+      "titulo": "Torneira Gourmet Luxo Flexível Cozinha Parede 2 Jatos Pia Metal Cor Aço Inox e Preto- Marca Camperluz",
+      "preco": 34.97,
+      "preco_original": 59.97,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_746561-MLA111291534913_052026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB45553868",
+      "categoria": "Móveis para Casa",
+      "frete_gratis": false,
+      "popularidade": 118,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB45553868?matt_word=alphapromo&matt_tool=19164688",
+      "score": 117.3,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB3954862383",
+        "posicao": 1,
+        "marca": "Camperluz",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_746561-MLA111291534913_052026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_821590-MLA88558578192_072025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_854186-MLA114991174770_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_798018-MLA114990882044_082026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_987718-MLA114991465140_082026-O.jpg"
+        ],
+        "cat_raiz": "MLB1574",
+        "subcategoria": true,
+        "num_colecao": 103,
+        "arte_feed": "docs/posts/2026-11-21/2-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-21/2-tiktok.jpg",
+        "reel": "docs/posts/2026-11-21/2-reel.mp4"
+      },
+      "desconto": 42
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB27450485",
+      "titulo": "Alicate para Cutículas Mundial 522 Classic Profissional",
+      "preco": 20.64,
+      "preco_original": 34.99,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_722474-MLA79169456531_092024-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB27450485",
+      "categoria": "Manicure e Pedicure",
+      "frete_gratis": false,
+      "popularidade": 106,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB27450485?matt_word=alphapromo&matt_tool=19164688",
+      "score": 86.69,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7945730056",
+        "posicao": 7,
+        "marca": "Mundial",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_722474-MLA79169456531_092024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_690060-MLA84817726208_052025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_716340-MLA84817726202_052025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_779060-MLU79169360469_092024-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_821961-MLA118742587494_102026-O.jpg"
+        ],
+        "cat_raiz": "MLB1246",
+        "subcategoria": true,
+        "tema": "Beleza em alta",
+        "num_colecao": 104,
+        "arte_feed": "docs/posts/2026-11-21/3-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-21/3-tiktok.jpg",
+        "reel": "docs/posts/2026-11-21/3-reel.mp4"
+      },
+      "desconto": 41
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB54961556",
+      "titulo": "Smartphone Samsung Galaxy A07 4G 256GB 8GB Preto 6,7\"",
+      "preco": 1299.0,
+      "preco_original": 1799.9,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_895724-MLA91526198522_092025-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB54961556",
+      "categoria": "Celulares",
+      "frete_gratis": true,
+      "popularidade": 116,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB54961556?matt_word=alphapromo&matt_tool=19164688",
+      "score": 114.2,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB5515002893",
+        "posicao": 2,
+        "marca": "Samsung",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_895724-MLA91526198522_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_703966-MLA119791882853_102026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_888100-MLA91526178878_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_780063-MLA91924687141_092025-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_947617-MLA91526227804_092025-O.jpg"
+        ],
+        "cat_raiz": "MLB1051",
+        "subcategoria": false,
+        "num_colecao": 105,
+        "arte_feed": "docs/posts/2026-11-21/4-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-21/4-tiktok.jpg",
+        "reel": "docs/posts/2026-11-21/4-reel.mp4"
+      },
+      "desconto": 28
+    },
+    {
+      "loja": "Mercado Livre",
+      "id": "MLB63966639",
+      "titulo": "Filamento Pla Plus 1kg Impressão 3d Nacional - Cores Cor Preto",
+      "preco": 101.99,
+      "preco_original": 219.3,
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_903418-MLA107165042644_022026-O.jpg",
+      "url": "https://www.mercadolivre.com.br/p/MLB63966639",
+      "categoria": "Informática",
+      "frete_gratis": true,
+      "popularidade": 108,
+      "link_afiliado": "https://www.mercadolivre.com.br/p/MLB63966639?matt_word=alphapromo&matt_tool=19164688",
+      "score": 101.55,
+      "extras": {
+        "fonte": "api_highlights",
+        "item_id": "MLB7831786404",
+        "posicao": 6,
+        "marca": "Filamento Pla Plus 3D Impressora",
+        "fotos": [
+          "https://http2.mlstatic.com/D_NQ_NP_903418-MLA107165042644_022026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_825716-MLA108256168791_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_916522-MLA107529490618_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_792516-MLA108255412915_032026-O.jpg",
+          "https://http2.mlstatic.com/D_NQ_NP_669978-MLA103492154176_012026-O.jpg"
+        ],
+        "cat_raiz": "MLB1648",
+        "subcategoria": false,
+        "num_colecao": 106,
+        "arte_feed": "docs/posts/2026-11-21/5-feed.jpg",
+        "arte_tiktok": "docs/posts/2026-11-21/5-tiktok.jpg",
+        "reel": "docs/posts/2026-11-21/5-reel.mp4"
+      },
+      "desconto": 53
+    }
+  ],
+  "posts": {},
+  "avulsos": [],
+  "posts_avulsos": {}
+}
