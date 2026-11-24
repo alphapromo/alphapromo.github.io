@@ -169,7 +169,8 @@
         "num_colecao": 116,
         "arte_feed": "docs/posts/2026-11-23/5-feed.jpg",
         "arte_tiktok": "docs/posts/2026-11-23/5-tiktok.jpg",
-        "reel": "docs/posts/2026-11-23/5-reel.mp4"
+        "reel": "docs/posts/2026-11-23/5-reel.mp4",
+        "dia": "23/11"
       },
       "desconto": 26
     }
@@ -190,6 +191,10 @@
     "4": {
       "instagram_feed": "ok:18506390626098517",
       "instagram_story": "ok:18124150558947743"
+    },
+    "5": {
+      "instagram_feed": "ok:17923738392539653",
+      "instagram_story": "ok:18131499142868880"
     }
   },
   "avulsos": [],
